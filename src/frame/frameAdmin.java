@@ -389,8 +389,11 @@ public class frameAdmin extends javax.swing.JFrame {
         iconPengaturan = new javax.swing.JLabel();
         arrowPengaturan = new javax.swing.JLabel();
         txtPengaturan = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1347, 765));
+        setPreferredSize(new java.awt.Dimension(1347, 765));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setMaximumSize(new java.awt.Dimension(2147483647, 72));
@@ -628,6 +631,9 @@ public class frameAdmin extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2, java.awt.BorderLayout.LINE_START);
 
+        jPanel7.setLayout(new java.awt.CardLayout());
+        getContentPane().add(jPanel7, java.awt.BorderLayout.CENTER);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -706,6 +712,7 @@ public class frameAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel panelMenu;
     private javax.swing.JLabel txtAbsensi;
