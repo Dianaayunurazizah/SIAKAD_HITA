@@ -7,8 +7,12 @@ package frame;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import custom.PanelCustom;
+import java.awt.CardLayout;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import java.awt.CardLayout;
+import panelMasterAdmin.dashboard;
+
 
 /**
  *
@@ -17,6 +21,8 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class frameSiswa extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(frameSiswa.class.getName());
+    
+    private CardLayout cardLayout;
 
     private PanelCustom dashboard, jadwal, absensiSaya;
     private PanelCustom[] semuaMenu;
@@ -30,6 +36,8 @@ public class frameSiswa extends javax.swing.JFrame {
         panelSidebar();
         
         radiusPanel();
+        
+        inisiasiPanel();
     }
     
     private void panelSidebar() {
@@ -64,9 +72,16 @@ public class frameSiswa extends javax.swing.JFrame {
     }
 
     private void radiusPanel(){
+        
+        
         btnDashboard.putClientProperty("FlatLaf.style", "arc: 25");
         btnJadwal.putClientProperty("FlatLaf.style", "arc: 25");
         btnAbsensiSaya.putClientProperty("FlatLaf.style", "arc: 25");
+    }
+    
+    void inisiasiPanel(){
+        cardLayout = (CardLayout)panelContainer.getLayout();
+        panelContainer.add(new panelMasterAdmin.panelGuru(),"guru");
     }
 
     /**
@@ -93,8 +108,11 @@ public class frameSiswa extends javax.swing.JFrame {
         btnAbsensiSaya = new javax.swing.JPanel();
         iconAbsensiSaya = new javax.swing.JLabel();
         txtAbsensiSaya = new javax.swing.JLabel();
+        panelContainer = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1488, 765));
+        setPreferredSize(new java.awt.Dimension(1488, 765));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setMaximumSize(new java.awt.Dimension(2147483647, 72));
@@ -207,6 +225,9 @@ public class frameSiswa extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2, java.awt.BorderLayout.LINE_START);
 
+        panelContainer.setLayout(new java.awt.CardLayout());
+        getContentPane().add(panelContainer, java.awt.BorderLayout.CENTER);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -256,6 +277,7 @@ public class frameSiswa extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPanel panelContainer;
     private javax.swing.JPanel panelMenu;
     private javax.swing.JLabel txtAbsensiSaya;
     private javax.swing.JLabel txtDashboard;
