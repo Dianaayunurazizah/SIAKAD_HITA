@@ -25,7 +25,7 @@ public class panelGuru extends javax.swing.JPanel {
         initComponents();
         iconPanel();
         loadTable();
-        
+        radiusPanel();
     }
     
     public void iconPanel() {
@@ -51,6 +51,10 @@ public class panelGuru extends javax.swing.JPanel {
         cStatus.setForeground(new Color(0x6B7280));
     }
     
+    public void radiusPanel(){
+        panelUtama.putClientProperty("FlatLaf.style", "arc: 20");
+    }
+    
     private void loadTable(){
         DefaultTableModel tabel = new DefaultTableModel();
         tabel.addColumn("No");
@@ -64,7 +68,7 @@ public class panelGuru extends javax.swing.JPanel {
         
         tGuru.setModel(tabel);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -79,7 +83,7 @@ public class panelGuru extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
+        panelUtama = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         pHeader = new javax.swing.JPanel();
         pCari = new javax.swing.JPanel();
@@ -88,9 +92,6 @@ public class panelGuru extends javax.swing.JPanel {
         btnTambah = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         cStatus = new javax.swing.JComboBox<>();
-        jPanel7 = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tGuru = new javax.swing.JTable();
 
@@ -165,8 +166,9 @@ public class panelGuru extends javax.swing.JPanel {
 
         add(jPanel5, java.awt.BorderLayout.LINE_START);
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setLayout(new java.awt.BorderLayout());
+        panelUtama.setBackground(new java.awt.Color(255, 255, 255));
+        panelUtama.setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
+        panelUtama.setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 24, 1, 24));
@@ -215,7 +217,7 @@ public class panelGuru extends javax.swing.JPanel {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addComponent(cStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 243, Short.MAX_VALUE))
+                .addGap(0, 195, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,7 +230,7 @@ public class panelGuru extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pHeader, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pHeader, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 939, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,55 +240,7 @@ public class panelGuru extends javax.swing.JPanel {
                 .addGap(26, 26, 26))
         );
 
-        jPanel6.add(jPanel1, java.awt.BorderLayout.NORTH);
-
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel7.setPreferredSize(new java.awt.Dimension(1035, 10));
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1035, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-
-        jPanel6.add(jPanel7, java.awt.BorderLayout.PAGE_END);
-
-        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel8.setPreferredSize(new java.awt.Dimension(24, 369));
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 24, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 401, Short.MAX_VALUE)
-        );
-
-        jPanel6.add(jPanel8, java.awt.BorderLayout.LINE_END);
-
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setPreferredSize(new java.awt.Dimension(24, 369));
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 24, Short.MAX_VALUE)
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 401, Short.MAX_VALUE)
-        );
-
-        jPanel6.add(jPanel9, java.awt.BorderLayout.LINE_START);
+        panelUtama.add(jPanel1, java.awt.BorderLayout.NORTH);
 
         tGuru.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -301,9 +255,9 @@ public class panelGuru extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tGuru);
 
-        jPanel6.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        panelUtama.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        add(jPanel6, java.awt.BorderLayout.CENTER);
+        add(panelUtama, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -318,13 +272,10 @@ public class panelGuru extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pCari;
     private javax.swing.JPanel pHeader;
+    private javax.swing.JPanel panelUtama;
     private javax.swing.JTextField tCari;
     private javax.swing.JTable tGuru;
     // End of variables declaration//GEN-END:variables

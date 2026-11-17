@@ -12,7 +12,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import java.awt.CardLayout;
 import java.awt.Color;
-import panelMasterAdmin.dashboard;
+import panelMasterAdmin.panelGuru;
 
 
 /**
