@@ -48,6 +48,8 @@ public class panelGuru extends javax.swing.JPanel {
         btnTambah.setForeground(Color.WHITE);
         btnTambah.putClientProperty("FlatLaf.style","arc: 10");
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,7 +66,7 @@ public class panelGuru extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        jPanel1 = new panelMasterAdmin.PanelRadius(20, 20, 0, 0);
         pHeader = new javax.swing.JPanel();
         pCari = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
