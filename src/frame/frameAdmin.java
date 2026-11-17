@@ -11,13 +11,15 @@ import card.subMasterAdmin;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import custom.PanelCustom;
+import java.awt.CardLayout;
 
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.ImageIcon;
+import javax.swing.Box;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import panelMasterAdmin.dashboard;
 
 /**
  *
@@ -27,6 +29,8 @@ public class frameAdmin extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(frameAdmin.class.getName());
 
+    private CardLayout cardLayout;
+    
     private PanelCustom dashboard, master, akademik, absensi, laporan, pengaturan;
     private PanelCustom[] semuaMenu;
 
@@ -52,12 +56,18 @@ public class frameAdmin extends javax.swing.JFrame {
         panelSidebar();
         
         radiusPanel();
+        
+        panelUser.add(Box.createHorizontalStrut(12), 1);
+        panelUser.add(Box.createHorizontalStrut(8), 3);
     }
 
     private void panelSidebar() {
         
         iconLogoAplikasi.setIcon(new FlatSVGIcon("iconSidebar/logoaplikasi_sidebar.svg", 185, 34));
         iconGaris.setIcon(new FlatSVGIcon("iconSidebar/garis3.svg", 32, 32));
+        
+        btnArrowProfil.setIcon(new FlatSVGIcon("iconSidebar/panahPengguna_normal.svg", 24, 24));
+        btnArrowProfil.setSelectedIcon(new FlatSVGIcon("iconSidebar/panahPengguna_aktif.svg", 24, 24));
 
         dashboard = new PanelCustom(iconDashboard, txtDashboard, btnDashboard);
         dashboard.setIconNormal(new FlatSVGIcon("iconSidebar/dashboard_normal.svg", 24, 24));
@@ -337,14 +347,29 @@ public class frameAdmin extends javax.swing.JFrame {
         tutupSemuaSub();
         refreshSidebar();
     }
+    
+    public void setNamaUser(String nama){
+        lUsername.setText(nama);
+        panelUser.revalidate();
+        panelUser.repaint();
+        panelHeader.revalidate();
+        panelHeader.repaint();
+    }
 
     private void radiusPanel(){
+        pFotoProfil.putClientProperty("FlatLaf.style", "arc: 100");
+        
         btnDashboard.putClientProperty("FlatLaf.style", "arc: 25");
         btnMaster.putClientProperty("FlatLaf.style", "arc: 25");
         btnAkademik.putClientProperty("FlatLaf.style", "arc: 25");
         btnAbsensi.putClientProperty("FlatLaf.style", "arc: 25");
         btnLaporan.putClientProperty("FlatLaf.style", "arc: 25");
         btnPengaturan.putClientProperty("FlatLaf.style", "arc: 25");
+    }
+    
+    void inisiasiPanel(){
+        cardLayout = (CardLayout)panelContainer.getLayout();
+        panelContainer.add(new dashboard(), "dashboard");
     }
     
     /**
@@ -356,13 +381,14 @@ public class frameAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel4 = new javax.swing.JPanel();
+        panelHeader = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         iconLogoAplikasi = new javax.swing.JLabel();
         iconGaris = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
+        panelUser = new javax.swing.JPanel();
+        pFotoProfil = new javax.swing.JPanel();
+        lUsername = new javax.swing.JLabel();
+        btnArrowProfil = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         panelMenu = new javax.swing.JPanel();
@@ -389,17 +415,17 @@ public class frameAdmin extends javax.swing.JFrame {
         iconPengaturan = new javax.swing.JLabel();
         arrowPengaturan = new javax.swing.JLabel();
         txtPengaturan = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
+        panelContainer = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1347, 765));
         setPreferredSize(new java.awt.Dimension(1347, 765));
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setMaximumSize(new java.awt.Dimension(2147483647, 72));
-        jPanel4.setMinimumSize(new java.awt.Dimension(1488, 72));
-        jPanel4.setPreferredSize(new java.awt.Dimension(1488, 72));
-        jPanel4.setLayout(new java.awt.BorderLayout());
+        panelHeader.setBackground(new java.awt.Color(255, 255, 255));
+        panelHeader.setMaximumSize(new java.awt.Dimension(2147483647, 72));
+        panelHeader.setMinimumSize(new java.awt.Dimension(1488, 72));
+        panelHeader.setPreferredSize(new java.awt.Dimension(1488, 72));
+        panelHeader.setLayout(new java.awt.BorderLayout());
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(16, 16, 16, 16));
@@ -411,29 +437,38 @@ public class frameAdmin extends javax.swing.JFrame {
         iconGaris.setPreferredSize(new java.awt.Dimension(36, 36));
         jPanel3.add(iconGaris, java.awt.BorderLayout.WEST);
 
-        jPanel4.add(jPanel3, java.awt.BorderLayout.LINE_START);
+        panelHeader.add(jPanel3, java.awt.BorderLayout.LINE_START);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 0, 8, 16));
-        jPanel1.setMinimumSize(new java.awt.Dimension(100, 100));
-        jPanel1.setPreferredSize(new java.awt.Dimension(300, 100));
-        jPanel1.setLayout(new java.awt.BorderLayout());
+        panelUser.setBackground(new java.awt.Color(255, 255, 255));
+        panelUser.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 8, 4, 8));
+        panelUser.setLayout(new javax.swing.BoxLayout(panelUser, javax.swing.BoxLayout.X_AXIS));
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setLayout(new java.awt.BorderLayout());
+        pFotoProfil.setMaximumSize(new java.awt.Dimension(56, 56));
+        pFotoProfil.setMinimumSize(new java.awt.Dimension(56, 56));
+        pFotoProfil.setPreferredSize(new java.awt.Dimension(56, 56));
+        panelUser.add(pFotoProfil);
 
-        jPanel6.setMinimumSize(new java.awt.Dimension(100, 100));
-        jPanel6.setPreferredSize(new java.awt.Dimension(56, 56));
-        jPanel5.add(jPanel6, java.awt.BorderLayout.WEST);
+        lUsername.setFont(new java.awt.Font("Poppins Medium", 0, 18)); // NOI18N
+        lUsername.setText("nama yang login");
+        lUsername.setMaximumSize(new java.awt.Dimension(400, 30));
+        lUsername.setMinimumSize(null);
+        lUsername.setPreferredSize(null);
+        panelUser.add(lUsername);
 
-        jPanel1.add(jPanel5, java.awt.BorderLayout.CENTER);
+        btnArrowProfil.setBorder(null);
+        btnArrowProfil.setContentAreaFilled(false);
+        btnArrowProfil.setMaximumSize(new java.awt.Dimension(34, 56));
+        btnArrowProfil.setMinimumSize(new java.awt.Dimension(34, 56));
+        btnArrowProfil.setPreferredSize(new java.awt.Dimension(34, 56));
+        btnArrowProfil.addActionListener(this::btnArrowProfilActionPerformed);
+        panelUser.add(btnArrowProfil);
 
-        jPanel4.add(jPanel1, java.awt.BorderLayout.EAST);
+        panelHeader.add(panelUser, java.awt.BorderLayout.EAST);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.add(jPanel2, java.awt.BorderLayout.CENTER);
+        panelHeader.add(jPanel2, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(jPanel4, java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(panelHeader, java.awt.BorderLayout.PAGE_START);
 
         jScrollPane2.setInheritsPopupMenu(true);
         jScrollPane2.setMaximumSize(new java.awt.Dimension(256, 32767));
@@ -631,8 +666,9 @@ public class frameAdmin extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2, java.awt.BorderLayout.LINE_START);
 
-        jPanel7.setLayout(new java.awt.CardLayout());
-        getContentPane().add(jPanel7, java.awt.BorderLayout.CENTER);
+        panelContainer.setPreferredSize(new java.awt.Dimension(56, 56));
+        panelContainer.setLayout(new java.awt.CardLayout());
+        getContentPane().add(panelContainer, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -640,6 +676,7 @@ public class frameAdmin extends javax.swing.JFrame {
     private void btnDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDashboardMouseClicked
         // TODO add your handling code here:
         aktifkanMenu(dashboard);
+        cardLayout.show(panelContainer, "dashboard");
     }//GEN-LAST:event_btnDashboardMouseClicked
 
     private void btnMasterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMasterMouseClicked
@@ -666,6 +703,10 @@ public class frameAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         aktifkanMenu(pengaturan);
     }//GEN-LAST:event_btnPengaturanMouseClicked
+
+    private void btnArrowProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArrowProfilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnArrowProfilActionPerformed
 
     /**
      * @param args the command line arguments
@@ -694,6 +735,7 @@ public class frameAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel arrowPengaturan;
     private javax.swing.JPanel btnAbsensi;
     private javax.swing.JPanel btnAkademik;
+    private javax.swing.JButton btnArrowProfil;
     private javax.swing.JPanel btnDashboard;
     private javax.swing.JPanel btnLaporan;
     private javax.swing.JPanel btnMaster;
@@ -706,15 +748,15 @@ public class frameAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel iconLogoAplikasi;
     private javax.swing.JLabel iconMaster;
     private javax.swing.JLabel iconPengaturan;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lUsername;
+    private javax.swing.JPanel pFotoProfil;
+    private javax.swing.JPanel panelContainer;
+    private javax.swing.JPanel panelHeader;
     private javax.swing.JPanel panelMenu;
+    private javax.swing.JPanel panelUser;
     private javax.swing.JLabel txtAbsensi;
     private javax.swing.JLabel txtAkademik;
     private javax.swing.JLabel txtDashboard;
