@@ -10,6 +10,7 @@ import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
 import java.awt.Insets;
 import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,7 +24,7 @@ public class panelGuru extends javax.swing.JPanel {
     public panelGuru() {
         initComponents();
         iconPanel();
-         
+        loadTable();
         
     }
     
@@ -38,7 +39,7 @@ public class panelGuru extends javax.swing.JPanel {
         tCari.putClientProperty("JTextField.placeholderText", "Cari");
         
         pCari.setBackground(Color.WHITE);
-        pCari.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), new Color(0xA0A0A0), 1, 10));
+        pCari.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), new Color(0xA0A0A0), 1, 20));
         
         FlatSVGIcon iconTambah = new FlatSVGIcon("iconPanel/icon_tambah.svg", 20, 20);
         iconTambah.setColorFilter(new FlatSVGIcon.ColorFilter(warnaAsli -> Color.WHITE));
@@ -46,7 +47,22 @@ public class panelGuru extends javax.swing.JPanel {
         btnTambah.setIconTextGap(8);
         btnTambah.setBackground(new Color(0x1E7BEB));
         btnTambah.setForeground(Color.WHITE);
-        btnTambah.putClientProperty("FlatLaf.style","arc: 10");
+        
+        cStatus.setForeground(new Color(0x6B7280));
+    }
+    
+    private void loadTable(){
+        DefaultTableModel tabel = new DefaultTableModel();
+        tabel.addColumn("No");
+        tabel.addColumn("Foto");
+        tabel.addColumn("NIP");
+        tabel.addColumn("Nama Guru");
+        tabel.addColumn("Jenis Kelamin");
+        tabel.addColumn("No Telepon");
+        tabel.addColumn("Status");
+        tabel.addColumn("");
+        
+        tGuru.setModel(tabel);
     }
 
     /**
@@ -71,12 +87,12 @@ public class panelGuru extends javax.swing.JPanel {
         tCari = new javax.swing.JTextField();
         btnTambah = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cStatus = new javax.swing.JComboBox<>();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tGuru = new javax.swing.JTable();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -189,20 +205,21 @@ public class panelGuru extends javax.swing.JPanel {
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setPreferredSize(new java.awt.Dimension(370, 49));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(72, 49));
+        cStatus.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        cStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aktif", "Tidak Aktif", "Cuti", " " }));
+        cStatus.setPreferredSize(new java.awt.Dimension(72, 49));
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 243, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(cStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pHeader.add(jPanel10, java.awt.BorderLayout.CENTER);
@@ -271,7 +288,7 @@ public class panelGuru extends javax.swing.JPanel {
 
         jPanel6.add(jPanel9, java.awt.BorderLayout.LINE_START);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tGuru.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -282,7 +299,7 @@ public class panelGuru extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tGuru);
 
         jPanel6.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -292,7 +309,7 @@ public class panelGuru extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTambah;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cStatus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -306,9 +323,9 @@ public class panelGuru extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel pCari;
     private javax.swing.JPanel pHeader;
     private javax.swing.JTextField tCari;
+    private javax.swing.JTable tGuru;
     // End of variables declaration//GEN-END:variables
 }
