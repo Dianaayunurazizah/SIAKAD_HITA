@@ -4,10 +4,12 @@
  */
 package panelMasterAdmin;
 
+import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
 import java.awt.Insets;
+import javax.swing.JButton;
 
 /**
  *
@@ -29,16 +31,22 @@ public class panelGuru extends javax.swing.JPanel {
         jLabel2.setText("");
         jLabel2.setIcon(new FlatSVGIcon("iconPanel/icon_cari.svg", 28,28));
         
-        tCari.putClientProperty("JTextField.placeholderText", "Cari");
 //        tCari.putClientProperty("FlatLaf.style","arc: 10");
-        tCari.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 15));
+        tCari.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 10));
         tCari.setBackground(Color.WHITE);
-        tCari.putClientProperty("FlatLaf.style", "focusWidth: 0; innerFocusWidth: 0");
-
-        btnTambah.setIcon(new FlatSVGIcon("iconPanel/icon_tambah.svg", 32, 32));
+        tCari.setOpaque(false);
+        tCari.putClientProperty("JTextField.placeholderText", "Cari");
         
         pCari.setBackground(Color.WHITE);
-        pCari.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), new Color(0xA0A0A0), 1, 15));
+        pCari.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), new Color(0xA0A0A0), 1, 10));
+        
+        FlatSVGIcon iconTambah = new FlatSVGIcon("iconPanel/icon_tambah.svg", 20, 20);
+        iconTambah.setColorFilter(new FlatSVGIcon.ColorFilter(warnaAsli -> Color.WHITE));
+        btnTambah.setIcon(iconTambah);
+        btnTambah.setIconTextGap(8);
+        btnTambah.setBackground(new Color(0x1E7BEB));
+        btnTambah.setForeground(Color.WHITE);
+        btnTambah.putClientProperty("FlatLaf.style","arc: 10");
     }
 
     /**
@@ -179,6 +187,7 @@ public class panelGuru extends javax.swing.JPanel {
         pHeader.add(btnTambah, java.awt.BorderLayout.EAST);
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel10.setPreferredSize(new java.awt.Dimension(370, 49));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.setPreferredSize(new java.awt.Dimension(72, 49));
