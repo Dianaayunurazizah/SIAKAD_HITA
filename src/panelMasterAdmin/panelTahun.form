@@ -276,7 +276,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Tambah Data Guru"/>
+                    <Property name="text" type="java.lang.String" value="Tambah Tahun Ajaran"/>
                     <Property name="iconTextGap" type="int" value="8"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[216, 49]"/>

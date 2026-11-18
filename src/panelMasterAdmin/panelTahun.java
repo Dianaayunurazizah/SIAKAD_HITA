@@ -189,7 +189,7 @@ public class panelTahun extends javax.swing.JPanel {
         btnTambah.setBackground(new java.awt.Color(35, 127, 234));
         btnTambah.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
         btnTambah.setForeground(new java.awt.Color(255, 255, 255));
-        btnTambah.setText("Tambah Data Guru");
+        btnTambah.setText("Tambah Tahun Ajaran");
         btnTambah.setIconTextGap(8);
         btnTambah.setMaximumSize(new java.awt.Dimension(216, 49));
         btnTambah.setMinimumSize(new java.awt.Dimension(216, 49));
