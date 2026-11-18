@@ -209,7 +209,6 @@ public class panelTahun extends javax.swing.JPanel {
         cStatus.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
         cStatus.setForeground(new java.awt.Color(141, 143, 155));
         cStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aktif", "Tidak Aktif", " " }));
-        cStatus.setMinimumSize(new java.awt.Dimension(124, 31));
         cStatus.setPreferredSize(new java.awt.Dimension(130, 40));
         jPanel10.add(cStatus);
 
