@@ -4,6 +4,12 @@
  */
 package panelMasterAdmin;
 
+import com.formdev.flatlaf.extras.FlatSVGIcon;
+import com.formdev.flatlaf.ui.FlatLineBorder;
+import java.awt.Color;
+import java.awt.Insets;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ASUS
@@ -15,7 +21,42 @@ public class panelMapel extends javax.swing.JPanel {
      */
     public panelMapel() {
         initComponents();
+        iconPanel();
+        loadTable();
+        radiusPanel();
+        
     }
+    
+        public void iconPanel() {
+        iconCari.setIcon(new FlatSVGIcon("iconPanel/icon_cari.svg", 28,28));
+        
+        tCari.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 10));
+        tCari.setOpaque(false);
+        tCari.putClientProperty("JTextField.placeholderText", "Cari");
+        
+        pCari.setBackground(Color.WHITE);
+        pCari.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), new Color(0xA0A0A0), 1, 20));
+        
+        btnTambah.setIcon(new FlatSVGIcon("iconPanel/icon_tambah.svg", 20, 20));
+        
+    }
+    
+    public void radiusPanel(){
+        panelUtama.putClientProperty("FlatLaf.style", "arc: 20");
+    }
+    
+    private void loadTable(){
+        DefaultTableModel tabel = new DefaultTableModel();
+        tabel.addColumn("No");
+        tabel.addColumn("ID Mata Pelajaran");
+        tabel.addColumn("Nama Mata Pelajaran");
+        tabel.addColumn("Status");
+        tabel.addColumn("Aksi");
+        tabel.addColumn("");
+        
+        tGuru.setModel(tabel);
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,7 +102,7 @@ public class panelMapel extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(509, Short.MAX_VALUE))
+                .addContainerGap(800, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,7 +120,7 @@ public class panelMapel extends javax.swing.JPanel {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 840, Short.MAX_VALUE)
+            .addGap(0, 1131, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,7 +139,7 @@ public class panelMapel extends javax.swing.JPanel {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 445, Short.MAX_VALUE)
+            .addGap(0, 597, Short.MAX_VALUE)
         );
 
         add(jPanel4, java.awt.BorderLayout.LINE_END);
@@ -113,7 +154,7 @@ public class panelMapel extends javax.swing.JPanel {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 445, Short.MAX_VALUE)
+            .addGap(0, 597, Short.MAX_VALUE)
         );
 
         add(jPanel5, java.awt.BorderLayout.LINE_START);
@@ -186,7 +227,7 @@ public class panelMapel extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pHeader, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 744, Short.MAX_VALUE)
+            .addComponent(pHeader, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
