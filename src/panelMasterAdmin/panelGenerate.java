@@ -4,6 +4,8 @@
  */
 package panelMasterAdmin;
 
+import com.formdev.flatlaf.extras.FlatSVGIcon;
+
 /**
  *
  * @author ASUS
@@ -15,8 +17,22 @@ public class panelGenerate extends javax.swing.JPanel {
      */
     public panelGenerate() {
         initComponents();
+        
+        iconPanel();
+        radiusPanel();
     }
 
+    public void iconPanel() {
+        iconCari.setIcon(new FlatSVGIcon("iconPanel/icon_cari.svg", 28, 28));
+        tCari.putClientProperty("JTextField.placeholderText", "Cari");
+        btnTambah.setIcon(new FlatSVGIcon("iconPanel/icon_tambah.svg", 20, 20));
+    }
+    
+    public void radiusPanel() {
+        pCari.putClientProperty("FlatLaf.style", "arc: 10");
+        panelUtama.putClientProperty("FlatLaf.style", "arc: 15");
+        panelHeader.putClientProperty("FlatLaf.style", "arc: 15");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,19 +42,147 @@ public class panelGenerate extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1083, Short.MAX_VALUE)
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        panelHeader = new javax.swing.JPanel();
+        pCari = new javax.swing.JPanel();
+        iconCari = new javax.swing.JLabel();
+        tCari = new javax.swing.JTextField();
+        btnTambah = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        cFilter = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
+        panelUtama = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        containerQR = new javax.swing.JPanel();
+
+        setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
+        setLayout(new java.awt.BorderLayout());
+
+        jPanel2.setPreferredSize(new java.awt.Dimension(1083, 72));
+
+        jLabel1.setFont(new java.awt.Font("Poppins SemiBold", 0, 32)); // NOI18N
+        jLabel1.setText("Generate QR Code");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(0, 781, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 693, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 21, Short.MAX_VALUE))
         );
+
+        add(jPanel2, java.awt.BorderLayout.PAGE_START);
+
+        jPanel3.setLayout(new java.awt.BorderLayout());
+
+        panelHeader.setBackground(new java.awt.Color(255, 255, 255));
+        panelHeader.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 24, 20, 24));
+        panelHeader.setPreferredSize(new java.awt.Dimension(1035, 89));
+        panelHeader.setLayout(new java.awt.BorderLayout(16, 0));
+
+        pCari.setPreferredSize(new java.awt.Dimension(353, 49));
+        pCari.setLayout(new java.awt.BorderLayout());
+
+        iconCari.setPreferredSize(new java.awt.Dimension(44, 44));
+        pCari.add(iconCari, java.awt.BorderLayout.LINE_START);
+
+        tCari.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        tCari.setBorder(null);
+        tCari.setOpaque(true);
+        tCari.addActionListener(this::tCariActionPerformed);
+        pCari.add(tCari, java.awt.BorderLayout.CENTER);
+
+        panelHeader.add(pCari, java.awt.BorderLayout.LINE_START);
+
+        btnTambah.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        btnTambah.setText("Download Semua");
+        btnTambah.setPreferredSize(new java.awt.Dimension(216, 49));
+        btnTambah.addActionListener(this::btnTambahActionPerformed);
+        panelHeader.add(btnTambah, java.awt.BorderLayout.LINE_END);
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+
+        cFilter.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        cFilter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addComponent(cFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 252, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(cFilter, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+        );
+
+        panelHeader.add(jPanel7, java.awt.BorderLayout.CENTER);
+
+        jPanel3.add(panelHeader, java.awt.BorderLayout.PAGE_START);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 1, 1, 1));
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        panelUtama.setBackground(new java.awt.Color(255, 255, 255));
+        panelUtama.setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
+        panelUtama.setLayout(new java.awt.BorderLayout());
+
+        javax.swing.GroupLayout containerQRLayout = new javax.swing.GroupLayout(containerQR);
+        containerQR.setLayout(containerQRLayout);
+        containerQRLayout.setHorizontalGroup(
+            containerQRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1031, Short.MAX_VALUE)
+        );
+        containerQRLayout.setVerticalGroup(
+            containerQRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 392, Short.MAX_VALUE)
+        );
+
+        jScrollPane1.setViewportView(containerQR);
+
+        panelUtama.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        jPanel1.add(panelUtama, java.awt.BorderLayout.CENTER);
+
+        jPanel3.add(jPanel1, java.awt.BorderLayout.CENTER);
+
+        add(jPanel3, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tCariActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tCariActionPerformed
+
+    private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTambahActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnTambah;
+    private javax.swing.JComboBox<String> cFilter;
+    private javax.swing.JPanel containerQR;
+    private javax.swing.JLabel iconCari;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel pCari;
+    private javax.swing.JPanel panelHeader;
+    private javax.swing.JPanel panelUtama;
+    private javax.swing.JTextField tCari;
     // End of variables declaration//GEN-END:variables
 }

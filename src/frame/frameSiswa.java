@@ -11,6 +11,7 @@ import java.awt.CardLayout;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import java.awt.CardLayout;
+import java.awt.Color;
 import panelMasterAdmin.panelGuru;
 
 
@@ -256,6 +257,10 @@ public class frameSiswa extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
+            UIManager.put("Button.arc", 20);
+            UIManager.put("Component.arc", 20);
+            UIManager.put("Component.borderwidht", 1);
+            UIManager.put("Component.borderColor", new Color(0xA0A0A0));
             UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (UnsupportedLookAndFeelException e) {
         }
