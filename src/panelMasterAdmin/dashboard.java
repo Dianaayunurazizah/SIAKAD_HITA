@@ -4,17 +4,80 @@
  */
 package panelMasterAdmin;
 
+import com.formdev.flatlaf.extras.FlatSVGIcon;
+import javax.swing.Box;
+
 /**
  *
  * @author ASUS
  */
 public class dashboard extends javax.swing.JPanel {
 
+    private static final int min_kalender = 300;
+    private int tinggiInfo;
+    
     /**
      * Creates new form dashboard
      */
     public dashboard() {
         initComponents();
+        
+        radiusPanel();
+        
+        iconDashboard();
+        
+        setupPanelKanan();
+        
+        panelInfo.add(Box.createVerticalStrut(16), 1);
+    }
+    
+    private void iconDashboard(){
+        iconGuru.setIcon(new FlatSVGIcon("iconPanel/iconDashboardGuru.svg", 52, 52));
+        iconKelas.setIcon(new FlatSVGIcon("iconPanel/iconDashboardKelas.svg", 52, 52));
+        iconSiswa.setIcon(new FlatSVGIcon("iconPanel/iconDashboardSiswa.svg", 52, 52));
+        iconMapel.setIcon(new FlatSVGIcon("iconPanel/iconDashboardMapel.svg", 52, 52));
+        
+        btnArrow.setIcon(new FlatSVGIcon("iconPanel/arrowDashboard.svg", 32, 32));
+        btnArrow1.setIcon(new FlatSVGIcon("iconPanel/arrowDashboard.svg", 32, 32));
+        btnArrow2.setIcon(new FlatSVGIcon("iconPanel/arrowDashboard.svg", 32, 32));
+        btnArrow3.setIcon(new FlatSVGIcon("iconPanel/arrowDashboard.svg", 32, 32));
+        
+        iconAktivitas.setIcon(new FlatSVGIcon("iconPanel/iconAktivitas.svg", 32, 32));
+        iconProfilSekolah.setIcon(new FlatSVGIcon("iconPanel/iconAktivitas.svg", 32, 32));
+        iconTahunAjaran.setIcon(new FlatSVGIcon("iconPanel/iconAktivitas.svg", 32, 32));
+    }
+    
+    private void radiusPanel() {
+        pTotalSiswa.putClientProperty("FlatLaf.style", "arc: 15");
+        pTotalGuru.putClientProperty("FlatLaf.style", "arc: 15");
+        pTotalKelas.putClientProperty("FlatLaf.style", "arc: 15");
+        pTotalMapel.putClientProperty("FlatLaf.style", "arc: 15");
+        pGrafik.putClientProperty("FlatLaf.style", "arc: 15");
+        pAktivitas.putClientProperty("FlatLaf.style", "arc: 15");
+        pSekolah.putClientProperty("FlatLaf.style", "arc: 15");
+        pSemester.putClientProperty("FlatLaf.style", "arc: 15");
+    }
+    
+    private void setupPanelKanan(){
+        tinggiInfo = panelInfo.getPreferredSize().height + 16;
+        
+        panelKanan.addComponentListener(new java.awt.event.ComponentAdapter(){
+            @Override
+            public void componentResized(java.awt.event.ComponentEvent e){
+                aturInfo();
+            }
+        });
+        aturInfo();
+    }
+    
+    private void aturInfo(){
+        boolean cukup = panelKanan.getHeight() >= min_kalender + tinggiInfo;
+        
+        if (panelInfo.isVisible() != cukup){
+            panelInfo.setVisible(cukup);
+            panelKanan.revalidate();
+            panelKanan.repaint();
+        }
     }
 
     /**
@@ -26,19 +89,552 @@ public class dashboard extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1083, Short.MAX_VALUE)
+        jPanel2 = new javax.swing.JPanel();
+        lSelamatNama = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        pTotalSiswa = new javax.swing.JPanel();
+        iconSiswa = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        btnArrow = new javax.swing.JButton();
+        pTotalGuru = new javax.swing.JPanel();
+        iconGuru = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        btnArrow1 = new javax.swing.JButton();
+        pTotalKelas = new javax.swing.JPanel();
+        iconKelas = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        btnArrow2 = new javax.swing.JButton();
+        pTotalMapel = new javax.swing.JPanel();
+        iconMapel = new javax.swing.JLabel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        btnArrow3 = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        panelKanan = new javax.swing.JPanel();
+        panelInfo = new javax.swing.JPanel();
+        pSekolah = new javax.swing.JPanel();
+        pProfilSekolah = new javax.swing.JPanel();
+        lLogoSekolah = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        lNamaSekolah = new javax.swing.JLabel();
+        lEmailSekolah = new javax.swing.JLabel();
+        lAlamatSekolah = new javax.swing.JLabel();
+        jPanel18 = new javax.swing.JPanel();
+        btnArrow4 = new javax.swing.JButton();
+        iconProfilSekolah = new javax.swing.JLabel();
+        pSemester = new javax.swing.JPanel();
+        jPanel19 = new javax.swing.JPanel();
+        btnArrow5 = new javax.swing.JButton();
+        iconTahunAjaran = new javax.swing.JLabel();
+        jPanel20 = new javax.swing.JPanel();
+        lTahun = new javax.swing.JLabel();
+        lSemester = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        pGrafik = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel15 = new javax.swing.JPanel();
+        jPanel16 = new javax.swing.JPanel();
+        jPanel17 = new javax.swing.JPanel();
+        jProgressBar1 = new javax.swing.JProgressBar();
+        jProgressBar2 = new javax.swing.JProgressBar();
+        jProgressBar3 = new javax.swing.JProgressBar();
+        jProgressBar4 = new javax.swing.JProgressBar();
+        pAktivitas = new javax.swing.JPanel();
+        jPanel13 = new javax.swing.JPanel();
+        iconAktivitas = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel14 = new javax.swing.JPanel();
+
+        setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
+        setLayout(new java.awt.BorderLayout());
+
+        jPanel2.setPreferredSize(new java.awt.Dimension(1083, 89));
+
+        lSelamatNama.setFont(new java.awt.Font("Poppins SemiBold", 0, 28)); // NOI18N
+        lSelamatNama.setText("Selamat Pagi, nama yang login");
+
+        jLabel3.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(106, 109, 127));
+        jLabel3.setText("Di Sistem Informasi Akademik(HITA)");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lSelamatNama, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(706, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 693, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addComponent(lSelamatNama, javax.swing.GroupLayout.PREFERRED_SIZE, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addGap(30, 30, 30))
         );
+
+        add(jPanel2, java.awt.BorderLayout.PAGE_START);
+
+        jPanel6.setLayout(new java.awt.BorderLayout());
+
+        jPanel1.setMinimumSize(new java.awt.Dimension(1035, 106));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1035, 106));
+        jPanel1.setLayout(new java.awt.GridLayout(1, 4, 16, 0));
+
+        pTotalSiswa.setBackground(new java.awt.Color(255, 255, 255));
+        pTotalSiswa.setBorder(javax.swing.BorderFactory.createEmptyBorder(16, 16, 16, 16));
+        pTotalSiswa.setLayout(new java.awt.BorderLayout(8, 0));
+
+        iconSiswa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconSiswa.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        iconSiswa.setPreferredSize(new java.awt.Dimension(64, 64));
+        pTotalSiswa.add(iconSiswa, java.awt.BorderLayout.LINE_START);
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setLayout(new java.awt.BorderLayout());
+
+        jLabel4.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        jLabel4.setText("Total Siswa");
+        jPanel5.add(jLabel4, java.awt.BorderLayout.PAGE_START);
+
+        jLabel5.setFont(new java.awt.Font("Poppins SemiBold", 0, 24)); // NOI18N
+        jLabel5.setText("1000");
+        jPanel5.add(jLabel5, java.awt.BorderLayout.CENTER);
+
+        pTotalSiswa.add(jPanel5, java.awt.BorderLayout.CENTER);
+
+        btnArrow.setBorder(null);
+        btnArrow.setContentAreaFilled(false);
+        btnArrow.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnArrow.setMaximumSize(new java.awt.Dimension(36, 36));
+        btnArrow.setMinimumSize(new java.awt.Dimension(36, 36));
+        btnArrow.setPreferredSize(new java.awt.Dimension(36, 36));
+        btnArrow.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btnArrow.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        pTotalSiswa.add(btnArrow, java.awt.BorderLayout.LINE_END);
+
+        jPanel1.add(pTotalSiswa);
+
+        pTotalGuru.setBackground(new java.awt.Color(255, 255, 255));
+        pTotalGuru.setBorder(javax.swing.BorderFactory.createEmptyBorder(16, 16, 16, 16));
+        pTotalGuru.setLayout(new java.awt.BorderLayout(8, 0));
+
+        iconGuru.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconGuru.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        iconGuru.setPreferredSize(new java.awt.Dimension(64, 64));
+        pTotalGuru.add(iconGuru, java.awt.BorderLayout.LINE_START);
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.setLayout(new java.awt.BorderLayout());
+
+        jLabel8.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        jLabel8.setText("Total Guru");
+        jPanel7.add(jLabel8, java.awt.BorderLayout.PAGE_START);
+
+        jLabel9.setFont(new java.awt.Font("Poppins SemiBold", 0, 24)); // NOI18N
+        jLabel9.setText("1000");
+        jPanel7.add(jLabel9, java.awt.BorderLayout.CENTER);
+
+        pTotalGuru.add(jPanel7, java.awt.BorderLayout.CENTER);
+
+        btnArrow1.setBorder(null);
+        btnArrow1.setContentAreaFilled(false);
+        btnArrow1.setMaximumSize(new java.awt.Dimension(36, 36));
+        btnArrow1.setMinimumSize(new java.awt.Dimension(36, 36));
+        btnArrow1.setPreferredSize(new java.awt.Dimension(36, 36));
+        btnArrow1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btnArrow1.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        pTotalGuru.add(btnArrow1, java.awt.BorderLayout.LINE_END);
+
+        jPanel1.add(pTotalGuru);
+
+        pTotalKelas.setBackground(new java.awt.Color(255, 255, 255));
+        pTotalKelas.setBorder(javax.swing.BorderFactory.createEmptyBorder(16, 16, 16, 16));
+        pTotalKelas.setLayout(new java.awt.BorderLayout(8, 0));
+
+        iconKelas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconKelas.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        iconKelas.setPreferredSize(new java.awt.Dimension(64, 64));
+        pTotalKelas.add(iconKelas, java.awt.BorderLayout.LINE_START);
+
+        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel11.setLayout(new java.awt.BorderLayout());
+
+        jLabel11.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        jLabel11.setText("Total Kelas");
+        jPanel11.add(jLabel11, java.awt.BorderLayout.PAGE_START);
+
+        jLabel12.setFont(new java.awt.Font("Poppins SemiBold", 0, 24)); // NOI18N
+        jLabel12.setText("1000");
+        jPanel11.add(jLabel12, java.awt.BorderLayout.CENTER);
+
+        pTotalKelas.add(jPanel11, java.awt.BorderLayout.CENTER);
+
+        btnArrow2.setBorder(null);
+        btnArrow2.setContentAreaFilled(false);
+        btnArrow2.setMaximumSize(new java.awt.Dimension(36, 36));
+        btnArrow2.setMinimumSize(new java.awt.Dimension(36, 36));
+        btnArrow2.setPreferredSize(new java.awt.Dimension(36, 36));
+        btnArrow2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btnArrow2.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        pTotalKelas.add(btnArrow2, java.awt.BorderLayout.LINE_END);
+
+        jPanel1.add(pTotalKelas);
+
+        pTotalMapel.setBackground(new java.awt.Color(255, 255, 255));
+        pTotalMapel.setBorder(javax.swing.BorderFactory.createEmptyBorder(16, 16, 16, 16));
+        pTotalMapel.setLayout(new java.awt.BorderLayout(8, 0));
+
+        iconMapel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconMapel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        iconMapel.setPreferredSize(new java.awt.Dimension(64, 64));
+        pTotalMapel.add(iconMapel, java.awt.BorderLayout.LINE_START);
+
+        jPanel12.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel12.setLayout(new java.awt.BorderLayout());
+
+        jLabel14.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        jLabel14.setText("Mata Pelajaran");
+        jPanel12.add(jLabel14, java.awt.BorderLayout.PAGE_START);
+
+        jLabel15.setFont(new java.awt.Font("Poppins SemiBold", 0, 24)); // NOI18N
+        jLabel15.setText("1000");
+        jPanel12.add(jLabel15, java.awt.BorderLayout.CENTER);
+
+        pTotalMapel.add(jPanel12, java.awt.BorderLayout.CENTER);
+
+        btnArrow3.setBorder(null);
+        btnArrow3.setContentAreaFilled(false);
+        btnArrow3.setMaximumSize(new java.awt.Dimension(36, 36));
+        btnArrow3.setMinimumSize(new java.awt.Dimension(36, 36));
+        btnArrow3.setPreferredSize(new java.awt.Dimension(36, 36));
+        btnArrow3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btnArrow3.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        pTotalMapel.add(btnArrow3, java.awt.BorderLayout.LINE_END);
+
+        jPanel1.add(pTotalMapel);
+
+        jPanel6.add(jPanel1, java.awt.BorderLayout.NORTH);
+
+        jPanel8.setBorder(javax.swing.BorderFactory.createEmptyBorder(16, 1, 1, 1));
+        jPanel8.setLayout(new java.awt.BorderLayout());
+
+        panelKanan.setLayout(new java.awt.BorderLayout(0, 16));
+
+        panelInfo.setPreferredSize(new java.awt.Dimension(556, 320));
+        panelInfo.setLayout(new javax.swing.BoxLayout(panelInfo, javax.swing.BoxLayout.Y_AXIS));
+
+        pSekolah.setBackground(new java.awt.Color(255, 255, 255));
+        pSekolah.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 8, 8, 8));
+        pSekolah.setMaximumSize(new java.awt.Dimension(556, 152));
+        pSekolah.setMinimumSize(new java.awt.Dimension(556, 152));
+        pSekolah.setPreferredSize(new java.awt.Dimension(556, 152));
+        pSekolah.setLayout(new java.awt.BorderLayout());
+
+        pProfilSekolah.setBackground(new java.awt.Color(243, 246, 251));
+        pProfilSekolah.setLayout(new java.awt.BorderLayout(8, 0));
+
+        lLogoSekolah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lLogoSekolah.setMaximumSize(new java.awt.Dimension(105, 105));
+        lLogoSekolah.setMinimumSize(new java.awt.Dimension(105, 105));
+        lLogoSekolah.setPreferredSize(new java.awt.Dimension(105, 105));
+        pProfilSekolah.add(lLogoSekolah, java.awt.BorderLayout.WEST);
+
+        jPanel3.setBackground(new java.awt.Color(243, 246, 251));
+        jPanel3.setLayout(new java.awt.BorderLayout(8, 0));
+
+        lNamaSekolah.setFont(new java.awt.Font("Poppins SemiBold", 0, 18)); // NOI18N
+        lNamaSekolah.setText("Nama Sekolah");
+        lNamaSekolah.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        lNamaSekolah.setMaximumSize(new java.awt.Dimension(37, 37));
+        lNamaSekolah.setMinimumSize(new java.awt.Dimension(37, 37));
+        lNamaSekolah.setPreferredSize(new java.awt.Dimension(37, 37));
+        jPanel3.add(lNamaSekolah, java.awt.BorderLayout.PAGE_START);
+
+        lEmailSekolah.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        lEmailSekolah.setForeground(new java.awt.Color(130, 130, 130));
+        lEmailSekolah.setText("sosmet sekolah");
+        lEmailSekolah.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lEmailSekolah.setPreferredSize(new java.awt.Dimension(37, 34));
+        jPanel3.add(lEmailSekolah, java.awt.BorderLayout.PAGE_END);
+
+        lAlamatSekolah.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        lAlamatSekolah.setForeground(new java.awt.Color(130, 130, 130));
+        lAlamatSekolah.setText("alamat sekolah");
+        jPanel3.add(lAlamatSekolah, java.awt.BorderLayout.CENTER);
+
+        pProfilSekolah.add(jPanel3, java.awt.BorderLayout.CENTER);
+
+        pSekolah.add(pProfilSekolah, java.awt.BorderLayout.CENTER);
+
+        jPanel18.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel18.setMaximumSize(new java.awt.Dimension(540, 31));
+        jPanel18.setMinimumSize(new java.awt.Dimension(540, 31));
+        jPanel18.setPreferredSize(new java.awt.Dimension(540, 31));
+        jPanel18.setLayout(new java.awt.BorderLayout());
+
+        btnArrow4.setBorder(null);
+        btnArrow4.setContentAreaFilled(false);
+        btnArrow4.setMaximumSize(new java.awt.Dimension(36, 36));
+        btnArrow4.setMinimumSize(new java.awt.Dimension(36, 36));
+        btnArrow4.setPreferredSize(new java.awt.Dimension(36, 36));
+        btnArrow4.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btnArrow4.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel18.add(btnArrow4, java.awt.BorderLayout.LINE_END);
+
+        iconProfilSekolah.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        iconProfilSekolah.setText("Informasi Sekolah");
+        iconProfilSekolah.setIconTextGap(8);
+        iconProfilSekolah.setMaximumSize(new java.awt.Dimension(37, 31));
+        iconProfilSekolah.setMinimumSize(new java.awt.Dimension(37, 31));
+        iconProfilSekolah.setPreferredSize(new java.awt.Dimension(37, 31));
+        jPanel18.add(iconProfilSekolah, java.awt.BorderLayout.CENTER);
+
+        pSekolah.add(jPanel18, java.awt.BorderLayout.PAGE_START);
+
+        panelInfo.add(pSekolah);
+
+        pSemester.setBackground(new java.awt.Color(255, 255, 255));
+        pSemester.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 8, 8, 8));
+        pSemester.setMaximumSize(new java.awt.Dimension(556, 152));
+        pSemester.setMinimumSize(new java.awt.Dimension(556, 152));
+        pSemester.setLayout(new java.awt.BorderLayout());
+
+        jPanel19.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel19.setMaximumSize(new java.awt.Dimension(540, 31));
+        jPanel19.setMinimumSize(new java.awt.Dimension(540, 31));
+        jPanel19.setPreferredSize(new java.awt.Dimension(540, 31));
+        jPanel19.setLayout(new java.awt.BorderLayout());
+
+        btnArrow5.setBorder(null);
+        btnArrow5.setContentAreaFilled(false);
+        btnArrow5.setMaximumSize(new java.awt.Dimension(36, 36));
+        btnArrow5.setMinimumSize(new java.awt.Dimension(36, 36));
+        btnArrow5.setPreferredSize(new java.awt.Dimension(36, 36));
+        btnArrow5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btnArrow5.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel19.add(btnArrow5, java.awt.BorderLayout.LINE_END);
+
+        iconTahunAjaran.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        iconTahunAjaran.setText("Tahun Ajaran Aktif");
+        iconTahunAjaran.setIconTextGap(8);
+        iconTahunAjaran.setMaximumSize(new java.awt.Dimension(37, 31));
+        iconTahunAjaran.setMinimumSize(new java.awt.Dimension(37, 31));
+        iconTahunAjaran.setPreferredSize(new java.awt.Dimension(37, 31));
+        jPanel19.add(iconTahunAjaran, java.awt.BorderLayout.CENTER);
+
+        pSemester.add(jPanel19, java.awt.BorderLayout.PAGE_START);
+
+        jPanel20.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel20.setBorder(javax.swing.BorderFactory.createEmptyBorder(14, 47, 18, 47));
+        jPanel20.setLayout(new java.awt.BorderLayout());
+
+        lTahun.setFont(new java.awt.Font("Poppins SemiBold", 0, 26)); // NOI18N
+        lTahun.setText("Tahun Ajaran");
+        lTahun.setMaximumSize(new java.awt.Dimension(43, 24));
+        lTahun.setMinimumSize(new java.awt.Dimension(43, 24));
+        lTahun.setPreferredSize(new java.awt.Dimension(43, 24));
+        jPanel20.add(lTahun, java.awt.BorderLayout.CENTER);
+
+        lSemester.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        lSemester.setText("Semester");
+        jPanel20.add(lSemester, java.awt.BorderLayout.PAGE_END);
+
+        pSemester.add(jPanel20, java.awt.BorderLayout.CENTER);
+
+        panelInfo.add(pSemester);
+
+        panelKanan.add(panelInfo, java.awt.BorderLayout.PAGE_END);
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 16, 1));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 554, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 78, Short.MAX_VALUE)
+        );
+
+        panelKanan.add(jPanel4, java.awt.BorderLayout.CENTER);
+
+        jPanel8.add(panelKanan, java.awt.BorderLayout.LINE_END);
+
+        jPanel10.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 16));
+        jPanel10.setLayout(new java.awt.GridLayout(2, 1, 0, 16));
+
+        pGrafik.setBackground(new java.awt.Color(255, 255, 255));
+        pGrafik.setBorder(javax.swing.BorderFactory.createEmptyBorder(16, 16, 16, 16));
+        pGrafik.setLayout(new java.awt.BorderLayout());
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        jLabel1.setText("Rekap Kehadiran Mingguan");
+        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel1.setPreferredSize(new java.awt.Dimension(37, 25));
+        pGrafik.add(jLabel1, java.awt.BorderLayout.PAGE_START);
+
+        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel15.setPreferredSize(new java.awt.Dimension(476, 18));
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 616, Short.MAX_VALUE)
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 18, Short.MAX_VALUE)
+        );
+
+        pGrafik.add(jPanel15, java.awt.BorderLayout.PAGE_END);
+
+        jPanel16.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel16.setLayout(new java.awt.GridLayout(1, 6));
+
+        jPanel17.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel17.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 16, 0, 16));
+        jPanel17.setLayout(new java.awt.GridLayout(1, 4));
+        jPanel17.add(jProgressBar1);
+        jPanel17.add(jProgressBar2);
+        jPanel17.add(jProgressBar3);
+        jPanel17.add(jProgressBar4);
+
+        jPanel16.add(jPanel17);
+
+        pGrafik.add(jPanel16, java.awt.BorderLayout.CENTER);
+
+        jPanel10.add(pGrafik);
+
+        pAktivitas.setBackground(new java.awt.Color(255, 255, 255));
+        pAktivitas.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 8, 8, 8));
+        pAktivitas.setLayout(new java.awt.BorderLayout());
+
+        jPanel13.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel13.setPreferredSize(new java.awt.Dimension(492, 40));
+
+        iconAktivitas.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        iconAktivitas.setText("Aktivitas Terbaru");
+        iconAktivitas.setIconTextGap(8);
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(iconAktivitas, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(420, Short.MAX_VALUE))
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(iconAktivitas)
+                .addContainerGap(9, Short.MAX_VALUE))
+        );
+
+        pAktivitas.add(jPanel13, java.awt.BorderLayout.PAGE_START);
+
+        jPanel14.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel14.setLayout(new javax.swing.BoxLayout(jPanel14, javax.swing.BoxLayout.LINE_AXIS));
+        jScrollPane1.setViewportView(jPanel14);
+
+        pAktivitas.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        jPanel10.add(pAktivitas);
+
+        jPanel8.add(jPanel10, java.awt.BorderLayout.CENTER);
+
+        jPanel6.add(jPanel8, java.awt.BorderLayout.CENTER);
+
+        add(jPanel6, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnArrow;
+    private javax.swing.JButton btnArrow1;
+    private javax.swing.JButton btnArrow2;
+    private javax.swing.JButton btnArrow3;
+    private javax.swing.JButton btnArrow4;
+    private javax.swing.JButton btnArrow5;
+    private javax.swing.JLabel iconAktivitas;
+    private javax.swing.JLabel iconGuru;
+    private javax.swing.JLabel iconKelas;
+    private javax.swing.JLabel iconMapel;
+    private javax.swing.JLabel iconProfilSekolah;
+    private javax.swing.JLabel iconSiswa;
+    private javax.swing.JLabel iconTahunAjaran;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JProgressBar jProgressBar2;
+    private javax.swing.JProgressBar jProgressBar3;
+    private javax.swing.JProgressBar jProgressBar4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lAlamatSekolah;
+    private javax.swing.JLabel lEmailSekolah;
+    private javax.swing.JLabel lLogoSekolah;
+    private javax.swing.JLabel lNamaSekolah;
+    private javax.swing.JLabel lSelamatNama;
+    private javax.swing.JLabel lSemester;
+    private javax.swing.JLabel lTahun;
+    private javax.swing.JPanel pAktivitas;
+    private javax.swing.JPanel pGrafik;
+    private javax.swing.JPanel pProfilSekolah;
+    private javax.swing.JPanel pSekolah;
+    private javax.swing.JPanel pSemester;
+    private javax.swing.JPanel pTotalGuru;
+    private javax.swing.JPanel pTotalKelas;
+    private javax.swing.JPanel pTotalMapel;
+    private javax.swing.JPanel pTotalSiswa;
+    private javax.swing.JPanel panelInfo;
+    private javax.swing.JPanel panelKanan;
     // End of variables declaration//GEN-END:variables
 }

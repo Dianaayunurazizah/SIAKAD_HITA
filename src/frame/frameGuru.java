@@ -7,6 +7,10 @@ package frame;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import custom.PanelCustom;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.Box;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -22,6 +26,13 @@ public class frameGuru extends javax.swing.JFrame {
     private PanelCustom dashboard, jadwalMengajar, absensiSaya, absensiMapel, pergantianGuru;
     private PanelCustom[] semuaMenu;
     
+    private boolean sidebarMelebar = true;
+    private boolean animasiJalan = false;
+    private int lebarSekarang = 264;
+
+    private static final int lebarBuka = 264;
+    private static final int lebarKecil = 73;
+    
     /**
      * Creates new form frameGuru
      */
@@ -29,7 +40,7 @@ public class frameGuru extends javax.swing.JFrame {
         initComponents();
         
         panelSidebar();
-        
+        setupGarisSidebar();    
         radiusPanel();
         
         panelUser.add(Box.createHorizontalStrut(12), 1);
@@ -94,6 +105,90 @@ public class frameGuru extends javax.swing.JFrame {
         btnPergantianGuru.putClientProperty("FlatLaf.style", "arc: 25");
     }
     
+    private void setupGarisSidebar() {
+        // lepas semua kunci ukuran dari desainer
+        panelMenu.setMinimumSize(null);
+        panelMenu.setMaximumSize(null);
+
+        scrollSidebar.setBorder(null);
+        scrollSidebar.setHorizontalScrollBarPolicy(
+                javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollSidebar.getViewport().setBackground(Color.WHITE);   // area di bawah menu tetap putih
+
+        iconGaris.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                toggleSidebar();
+            }
+        });
+
+        ukurSidebar(lebarBuka);
+    }
+
+    private void ukurSidebar(int w) {
+        lebarSekarang = w;
+
+        jPanel3.setPreferredSize(new Dimension(w, jPanel3.getPreferredSize().height));   // header kiri
+        scrollSidebar.setPreferredSize(new Dimension(w, 100));
+
+        // hitung ulang tinggi menu (berubah saat submenu buka/tutup), lalu kunci lebarnya
+        panelMenu.setPreferredSize(null);
+        int tinggi = panelMenu.getPreferredSize().height;
+        panelMenu.setPreferredSize(new Dimension(w, tinggi));
+
+        getContentPane().revalidate();
+        getContentPane().repaint();
+    }
+
+    private void tampilkanTeksMenu(boolean tampil) {
+        javax.swing.JLabel[] teks = {
+            txtDashboard, txtJadwal, txtAbsensiSaya, txtAbsensiMapel, txtPergantian
+        };
+
+        for (javax.swing.JLabel l : teks) {
+            l.setVisible(tampil);
+        }
+    }
+
+    private void toggleSidebar() {
+        if (animasiJalan) {
+            return;
+        }
+        final boolean akanMelebar = !sidebarMelebar;
+
+        if (!akanMelebar) {            // mengecil: sembunyikan teks DULU
+            tampilkanTeksMenu(false);
+        }
+
+        final int target = akanMelebar ? lebarBuka : lebarKecil;
+        final int langkah = akanMelebar ? 24 : -24;
+        animasiJalan = true;
+
+        final javax.swing.Timer t = new javax.swing.Timer(10, null);
+        t.addActionListener(e -> {
+            int w = lebarSekarang + langkah;
+            boolean selesai = (langkah > 0 && w >= target) || (langkah < 0 && w <= target);
+            if (selesai) {
+                w = target;
+            }
+
+            ukurSidebar(w);
+
+            if (selesai) {
+                t.stop();
+                animasiJalan = false;
+                sidebarMelebar = akanMelebar;
+                if (akanMelebar) {
+                    tampilkanTeksMenu(true);   // melebar: teks muncul SETELAH selesai
+                }
+                ukurSidebar(lebarSekarang);
+                panelMenu.revalidate();
+                panelMenu.repaint();
+            }
+        });
+        t.start();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -103,7 +198,7 @@ public class frameGuru extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
+        scrollSidebar = new javax.swing.JScrollPane();
         panelMenu = new javax.swing.JPanel();
         btnDashboard = new javax.swing.JPanel();
         iconDashboard = new javax.swing.JLabel();
@@ -133,10 +228,10 @@ public class frameGuru extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jScrollPane2.setInheritsPopupMenu(true);
-        jScrollPane2.setMaximumSize(new java.awt.Dimension(256, 32767));
-        jScrollPane2.setMinimumSize(new java.awt.Dimension(260, 16));
-        jScrollPane2.setPreferredSize(new java.awt.Dimension(264, 100));
+        scrollSidebar.setInheritsPopupMenu(true);
+        scrollSidebar.setMaximumSize(new java.awt.Dimension(256, 32767));
+        scrollSidebar.setMinimumSize(new java.awt.Dimension(260, 16));
+        scrollSidebar.setPreferredSize(new java.awt.Dimension(264, 100));
 
         panelMenu.setBackground(new java.awt.Color(255, 255, 255));
         panelMenu.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -270,9 +365,9 @@ public class frameGuru extends javax.swing.JFrame {
 
         panelMenu.add(btnPergantianGuru);
 
-        jScrollPane2.setViewportView(panelMenu);
+        scrollSidebar.setViewportView(panelMenu);
 
-        getContentPane().add(jScrollPane2, java.awt.BorderLayout.LINE_START);
+        getContentPane().add(scrollSidebar, java.awt.BorderLayout.LINE_START);
 
         panelHeader.setBackground(new java.awt.Color(255, 255, 255));
         panelHeader.setMaximumSize(new java.awt.Dimension(2147483647, 72));
@@ -294,9 +389,6 @@ public class frameGuru extends javax.swing.JFrame {
 
         panelUser.setBackground(new java.awt.Color(255, 255, 255));
         panelUser.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 8, 4, 8));
-        panelUser.setMaximumSize(null);
-        panelUser.setMinimumSize(null);
-        panelUser.setPreferredSize(null);
         panelUser.setLayout(new javax.swing.BoxLayout(panelUser, javax.swing.BoxLayout.X_AXIS));
 
         pFotoProfil.setMaximumSize(new java.awt.Dimension(56, 56));
@@ -397,12 +489,12 @@ public class frameGuru extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lUsername;
     private javax.swing.JPanel pFotoProfil;
     private javax.swing.JPanel panelHeader;
     private javax.swing.JPanel panelMenu;
     private javax.swing.JPanel panelUser;
+    private javax.swing.JScrollPane scrollSidebar;
     private javax.swing.JLabel txtAbsensiMapel;
     private javax.swing.JLabel txtAbsensiSaya;
     private javax.swing.JLabel txtDashboard;

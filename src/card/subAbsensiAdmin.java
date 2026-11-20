@@ -6,8 +6,10 @@ package card;
 
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import custom.PanelCustom;
+import java.awt.CardLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import panelMasterAdmin.dashboard;
 
 /**
  *
@@ -16,6 +18,7 @@ import javax.swing.JPanel;
 public class subAbsensiAdmin extends javax.swing.JPanel {
 
     private PanelCustom absensiGuru, absensiQR, absensiMapel, pergantianGuru;
+    private CardLayout cardlayout;
 
     /**
      * Creates new form subAbsensiAdmin
@@ -74,6 +77,7 @@ public class subAbsensiAdmin extends javax.swing.JPanel {
         btnAbsensiMapel.putClientProperty("FlatLaf.style", "arc: 25");
         btnPergantianGuru.putClientProperty("FlatLaf.style", "arc: 25");
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
