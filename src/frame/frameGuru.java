@@ -50,6 +50,7 @@ public class frameGuru extends javax.swing.JFrame {
         panelSidebar();
         setupGarisSidebar();    
         radiusPanel();
+        setupMenuUser();
         
         panelUser.add(Box.createHorizontalStrut(12), 1);
         panelUser.add(Box.createHorizontalStrut(8), 3);
@@ -506,6 +507,7 @@ public class frameGuru extends javax.swing.JFrame {
 
     private void btnArrowProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArrowProfilActionPerformed
         // TODO add your handling code here:
+        tampilMenuUser();
     }//GEN-LAST:event_btnArrowProfilActionPerformed
 
     /**
@@ -518,6 +520,12 @@ public class frameGuru extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
+            UIManager.put("Button.arc", 20);
+            UIManager.put("Component.arc", 20);
+            UIManager.put("Component.borderwidht", 1);
+            UIManager.put("Component.borderColor", new Color(0xA0A0A0));
+            UIManager.put("PopupMenu.borderCornerRadius", 50); 
+            UIManager.put("PopupMenu.background", Color.WHITE);
             UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (UnsupportedLookAndFeelException e) {
         }
