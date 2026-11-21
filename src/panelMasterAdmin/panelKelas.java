@@ -43,7 +43,7 @@ public class panelKelas extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lSelamatNama = new javax.swing.JLabel();
         panelUtama = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         pHeader = new javax.swing.JPanel();
@@ -58,24 +58,24 @@ public class panelKelas extends javax.swing.JPanel {
         setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
         setLayout(new java.awt.BorderLayout());
 
-        jPanel2.setPreferredSize(new java.awt.Dimension(1083, 72));
+        jPanel2.setPreferredSize(new java.awt.Dimension(1083, 89));
 
-        jLabel1.setFont(new java.awt.Font("Poppins SemiBold", 0, 32)); // NOI18N
-        jLabel1.setText("Data Kelas");
+        lSelamatNama.setFont(new java.awt.Font("Poppins SemiBold", 0, 28)); // NOI18N
+        lSelamatNama.setText("Data Kelas");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 800, Short.MAX_VALUE))
+                .addComponent(lSelamatNama)
+                .addGap(0, 929, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 21, Short.MAX_VALUE))
+                .addComponent(lSelamatNama)
+                .addGap(0, 46, Short.MAX_VALUE))
         );
 
         add(jPanel2, java.awt.BorderLayout.PAGE_START);
@@ -86,7 +86,7 @@ public class panelKelas extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 24, 1, 24));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1035, 122));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1035, 98));
 
         pHeader.setBackground(new java.awt.Color(255, 255, 255));
         pHeader.setLayout(new java.awt.BorderLayout(16, 0));
@@ -115,9 +115,9 @@ public class panelKelas extends javax.swing.JPanel {
         btnTambah.setForeground(new java.awt.Color(255, 255, 255));
         btnTambah.setText("Tambah Data Kelas");
         btnTambah.setIconTextGap(8);
-        btnTambah.setMaximumSize(new java.awt.Dimension(216, 49));
-        btnTambah.setMinimumSize(new java.awt.Dimension(216, 49));
-        btnTambah.setPreferredSize(new java.awt.Dimension(216, 49));
+        btnTambah.setMaximumSize(new java.awt.Dimension(232, 56));
+        btnTambah.setMinimumSize(new java.awt.Dimension(232, 56));
+        btnTambah.setPreferredSize(new java.awt.Dimension(232, 56));
         btnTambah.addActionListener(this::btnTambahActionPerformed);
         pHeader.add(btnTambah, java.awt.BorderLayout.EAST);
 
@@ -128,7 +128,7 @@ public class panelKelas extends javax.swing.JPanel {
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 338, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,12 +141,12 @@ public class panelKelas extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pHeader, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 939, Short.MAX_VALUE)
+            .addComponent(pHeader, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(pHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -179,11 +179,11 @@ public class panelKelas extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTambah;
     private javax.swing.JLabel iconCari;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lSelamatNama;
     private javax.swing.JPanel pCari;
     private javax.swing.JPanel pHeader;
     private javax.swing.JPanel panelUtama;

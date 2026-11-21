@@ -43,7 +43,7 @@ public class panelGenerate extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lSelamatNama = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         panelHeader = new javax.swing.JPanel();
         pCari = new javax.swing.JPanel();
@@ -60,24 +60,24 @@ public class panelGenerate extends javax.swing.JPanel {
         setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
         setLayout(new java.awt.BorderLayout());
 
-        jPanel2.setPreferredSize(new java.awt.Dimension(1083, 72));
+        jPanel2.setPreferredSize(new java.awt.Dimension(1083, 89));
 
-        jLabel1.setFont(new java.awt.Font("Poppins SemiBold", 0, 32)); // NOI18N
-        jLabel1.setText("Generate QR Code");
+        lSelamatNama.setFont(new java.awt.Font("Poppins SemiBold", 0, 28)); // NOI18N
+        lSelamatNama.setText("Generate QR Code");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 781, Short.MAX_VALUE))
+                .addComponent(lSelamatNama)
+                .addGap(0, 820, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 21, Short.MAX_VALUE))
+                .addComponent(lSelamatNama)
+                .addGap(0, 46, Short.MAX_VALUE))
         );
 
         add(jPanel2, java.awt.BorderLayout.PAGE_START);
@@ -89,6 +89,7 @@ public class panelGenerate extends javax.swing.JPanel {
         panelHeader.setPreferredSize(new java.awt.Dimension(1035, 89));
         panelHeader.setLayout(new java.awt.BorderLayout(16, 0));
 
+        pCari.setBackground(new java.awt.Color(255, 255, 255));
         pCari.setPreferredSize(new java.awt.Dimension(353, 49));
         pCari.setLayout(new java.awt.BorderLayout());
 
@@ -103,7 +104,9 @@ public class panelGenerate extends javax.swing.JPanel {
 
         panelHeader.add(pCari, java.awt.BorderLayout.LINE_START);
 
+        btnTambah.setBackground(new java.awt.Color(35, 127, 234));
         btnTambah.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        btnTambah.setForeground(new java.awt.Color(255, 255, 255));
         btnTambah.setText("Download Semua");
         btnTambah.setPreferredSize(new java.awt.Dimension(216, 49));
         btnTambah.addActionListener(this::btnTambahActionPerformed);
@@ -138,6 +141,8 @@ public class panelGenerate extends javax.swing.JPanel {
         panelUtama.setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
         panelUtama.setLayout(new java.awt.BorderLayout());
 
+        containerQR.setBackground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout containerQRLayout = new javax.swing.GroupLayout(containerQR);
         containerQR.setLayout(containerQRLayout);
         containerQRLayout.setHorizontalGroup(
@@ -146,7 +151,7 @@ public class panelGenerate extends javax.swing.JPanel {
         );
         containerQRLayout.setVerticalGroup(
             containerQRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 392, Short.MAX_VALUE)
+            .addGap(0, 420, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(containerQR);
@@ -174,12 +179,12 @@ public class panelGenerate extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cFilter;
     private javax.swing.JPanel containerQR;
     private javax.swing.JLabel iconCari;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lSelamatNama;
     private javax.swing.JPanel pCari;
     private javax.swing.JPanel panelHeader;
     private javax.swing.JPanel panelUtama;

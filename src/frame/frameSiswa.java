@@ -4,6 +4,7 @@
  */
 package frame;
 
+import card.cardPenggunaHeader;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import custom.PanelCustom;
@@ -12,39 +13,62 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import java.awt.CardLayout;
 import java.awt.Color;
-import panelMasterAdmin.panelGuru;
-
+import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.Box;
+import javax.swing.JPopupMenu;
 
 /**
  *
  * @author ASUS
  */
 public class frameSiswa extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(frameSiswa.class.getName());
-    
+
     private CardLayout cardLayout;
 
     private PanelCustom dashboard, jadwal, absensiSaya;
     private PanelCustom[] semuaMenu;
-    
+
+    private boolean sidebarMelebar = true;
+    private boolean animasiJalan = false;
+    private int lebarSekarang = 264;
+
+    private static final int lebarBuka = 264;
+    private static final int lebarKecil = 73;
+
+    private JPopupMenu menuUser;
+    private long terakhirTutup = 0;
+    private static final int LEBAR_MENU_USER = 413;
+    private static final int TINGGI_MENU_USER = 307;
+    private static final int GESER_KIRI = 16;
+
     /**
      * Creates new form frameSiswa
      */
     public frameSiswa() {
         initComponents();
-        
+
         panelSidebar();
-        
+        setupGarisSidebar();
         radiusPanel();
-        
+
         inisiasiPanel();
+        setupMenuUser();
+
+        panelUser.add(Box.createHorizontalStrut(12), 1);
+        panelUser.add(Box.createHorizontalStrut(8), 3);
     }
-    
+
     private void panelSidebar() {
-        
+
         iconLogoAplikasi.setIcon(new FlatSVGIcon("iconSidebar/logoaplikasi_sidebar.svg", 185, 34));
         iconGaris.setIcon(new FlatSVGIcon("iconSidebar/garis3.svg", 32, 32));
+
+        btnArrowProfil.setIcon(new FlatSVGIcon("iconSidebar/panahPengguna_normal.svg", 24, 24));
+        btnArrowProfil.setSelectedIcon(new FlatSVGIcon("iconSidebar/panahPengguna_aktif.svg", 24, 24));
 
         dashboard = new PanelCustom(iconDashboard, txtDashboard, btnDashboard);
         dashboard.setIconNormal(new FlatSVGIcon("iconSidebar/dashboard_normal.svg", 24, 24));
@@ -61,7 +85,7 @@ public class frameSiswa extends javax.swing.JFrame {
         semuaMenu = new PanelCustom[]{
             dashboard, jadwal, absensiSaya
         };
-        
+
         aktifkanMenu(dashboard);
     }
 
@@ -72,17 +96,149 @@ public class frameSiswa extends javax.swing.JFrame {
         }
     }
 
-    private void radiusPanel(){
-        
-        
+    private void radiusPanel() {
+
         btnDashboard.putClientProperty("FlatLaf.style", "arc: 25");
         btnJadwal.putClientProperty("FlatLaf.style", "arc: 25");
         btnAbsensiSaya.putClientProperty("FlatLaf.style", "arc: 25");
+        
+        pFotoProfil.putClientProperty("FlatLaf.style", "arc: 100");
     }
-    
-    void inisiasiPanel(){
-        cardLayout = (CardLayout)panelContainer.getLayout();
-        panelContainer.add(new panelMasterAdmin.panelGuru(),"guru");
+
+    private void setupMenuUser() {
+        menuUser = new javax.swing.JPopupMenu();
+        menuUser.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(0xE5E7EB)));
+
+        cardPenggunaHeader isi = new cardPenggunaHeader();
+        isi.putClientProperty("FlatLaf.style", "arc: 50");
+        Dimension ukuran = new Dimension(LEBAR_MENU_USER - 2, TINGGI_MENU_USER - 2);   // dikurangi border 1px kiri-kanan dan atas-bawah
+        isi.setPreferredSize(ukuran);
+        isi.setMinimumSize(ukuran);
+        isi.setMaximumSize(ukuran);
+        menuUser.add(isi);
+
+        // panah ikut berganti icon saat dropdown terbuka/tertutup
+        menuUser.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            @Override
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent e) {
+                btnArrowProfil.setSelected(true);
+            }
+
+            @Override
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent e) {
+                btnArrowProfil.setSelected(false);
+                terakhirTutup = System.currentTimeMillis();
+            }
+
+            @Override
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent e) {
+            }
+        });
+
+        // seluruh kartu pengguna bisa diklik, bukan hanya panahnya
+        panelUser.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                tampilMenuUser();
+            }
+        });
+    }
+
+    private void tampilMenuUser() {
+        if (System.currentTimeMillis() - terakhirTutup < 200) {
+            return;                                   // klik saat terbuka = menutup
+        }
+        int x = panelUser.getWidth() - LEBAR_MENU_USER - GESER_KIRI;   // rata kanan
+        menuUser.show(panelUser, x, panelUser.getHeight() + 8);
+    }
+
+    private void setupGarisSidebar() {
+        // lepas semua kunci ukuran dari desainer
+        panelMenu.setMinimumSize(null);
+        panelMenu.setMaximumSize(null);
+
+        scrollSidebar.setBorder(null);
+        scrollSidebar.setHorizontalScrollBarPolicy(
+                javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollSidebar.getViewport().setBackground(Color.WHITE);   // area di bawah menu tetap putih
+
+        iconGaris.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                toggleSidebar();
+            }
+        });
+
+        ukurSidebar(lebarBuka);
+    }
+
+    private void ukurSidebar(int w) {
+        lebarSekarang = w;
+
+        jPanel3.setPreferredSize(new Dimension(w, jPanel3.getPreferredSize().height));   // header kiri
+        scrollSidebar.setPreferredSize(new Dimension(w, 100));
+
+        // hitung ulang tinggi menu (berubah saat submenu buka/tutup), lalu kunci lebarnya
+        panelMenu.setPreferredSize(null);
+        int tinggi = panelMenu.getPreferredSize().height;
+        panelMenu.setPreferredSize(new Dimension(w, tinggi));
+
+        getContentPane().revalidate();
+        getContentPane().repaint();
+    }
+
+    private void tampilkanTeksMenu(boolean tampil) {
+        javax.swing.JLabel[] teks = {
+            txtDashboard, txtJadwal, txtAbsensiSaya
+        };
+
+        for (javax.swing.JLabel l : teks) {
+            l.setVisible(tampil);
+        }
+    }
+
+    private void toggleSidebar() {
+        if (animasiJalan) {
+            return;
+        }
+        final boolean akanMelebar = !sidebarMelebar;
+
+        if (!akanMelebar) {            // mengecil: sembunyikan teks DULU
+            tampilkanTeksMenu(false);
+        }
+
+        final int target = akanMelebar ? lebarBuka : lebarKecil;
+        final int langkah = akanMelebar ? 24 : -24;
+        animasiJalan = true;
+
+        final javax.swing.Timer t = new javax.swing.Timer(10, null);
+        t.addActionListener(e -> {
+            int w = lebarSekarang + langkah;
+            boolean selesai = (langkah > 0 && w >= target) || (langkah < 0 && w <= target);
+            if (selesai) {
+                w = target;
+            }
+
+            ukurSidebar(w);
+
+            if (selesai) {
+                t.stop();
+                animasiJalan = false;
+                sidebarMelebar = akanMelebar;
+                if (akanMelebar) {
+                    tampilkanTeksMenu(true);   // melebar: teks muncul SETELAH selesai
+                }
+                ukurSidebar(lebarSekarang);
+                panelMenu.revalidate();
+                panelMenu.repaint();
+            }
+        });
+        t.start();
+    }
+
+    void inisiasiPanel() {
+        cardLayout = (CardLayout) panelContainer.getLayout();
+        panelContainer.add(new panelMasterAdmin.panelGuru(), "guru");
     }
 
     /**
@@ -94,11 +250,7 @@ public class frameSiswa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel4 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        iconLogoAplikasi = new javax.swing.JLabel();
-        iconGaris = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        scrollSidebar = new javax.swing.JScrollPane();
         panelMenu = new javax.swing.JPanel();
         btnDashboard = new javax.swing.JPanel();
         iconDashboard = new javax.swing.JLabel();
@@ -109,36 +261,25 @@ public class frameSiswa extends javax.swing.JFrame {
         btnAbsensiSaya = new javax.swing.JPanel();
         iconAbsensiSaya = new javax.swing.JLabel();
         txtAbsensiSaya = new javax.swing.JLabel();
+        panelHeader = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        iconLogoAplikasi = new javax.swing.JLabel();
+        iconGaris = new javax.swing.JLabel();
+        panelUser = new javax.swing.JPanel();
+        pFotoProfil = new javax.swing.JPanel();
+        lUsername = new javax.swing.JLabel();
+        btnArrowProfil = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         panelContainer = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1488, 765));
-        setPreferredSize(new java.awt.Dimension(1488, 765));
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setMaximumSize(new java.awt.Dimension(2147483647, 72));
-        jPanel4.setMinimumSize(new java.awt.Dimension(1488, 72));
-        jPanel4.setPreferredSize(new java.awt.Dimension(1488, 72));
-        jPanel4.setLayout(new java.awt.BorderLayout());
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(16, 16, 16, 16));
-        jPanel3.setPreferredSize(new java.awt.Dimension(264, 97));
-        jPanel3.setLayout(new java.awt.BorderLayout(16, 0));
-        jPanel3.add(iconLogoAplikasi, java.awt.BorderLayout.CENTER);
-
-        iconGaris.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        iconGaris.setPreferredSize(new java.awt.Dimension(36, 36));
-        jPanel3.add(iconGaris, java.awt.BorderLayout.WEST);
-
-        jPanel4.add(jPanel3, java.awt.BorderLayout.LINE_START);
-
-        getContentPane().add(jPanel4, java.awt.BorderLayout.PAGE_START);
-
-        jScrollPane2.setInheritsPopupMenu(true);
-        jScrollPane2.setMaximumSize(new java.awt.Dimension(256, 32767));
-        jScrollPane2.setMinimumSize(new java.awt.Dimension(260, 16));
-        jScrollPane2.setPreferredSize(new java.awt.Dimension(264, 100));
+        scrollSidebar.setBorder(null);
+        scrollSidebar.setInheritsPopupMenu(true);
+        scrollSidebar.setMaximumSize(new java.awt.Dimension(256, 32767));
+        scrollSidebar.setMinimumSize(new java.awt.Dimension(260, 16));
+        scrollSidebar.setPreferredSize(new java.awt.Dimension(264, 100));
 
         panelMenu.setBackground(new java.awt.Color(255, 255, 255));
         panelMenu.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -222,9 +363,59 @@ public class frameSiswa extends javax.swing.JFrame {
 
         panelMenu.add(btnAbsensiSaya);
 
-        jScrollPane2.setViewportView(panelMenu);
+        scrollSidebar.setViewportView(panelMenu);
 
-        getContentPane().add(jScrollPane2, java.awt.BorderLayout.LINE_START);
+        getContentPane().add(scrollSidebar, java.awt.BorderLayout.WEST);
+
+        panelHeader.setBackground(new java.awt.Color(255, 255, 255));
+        panelHeader.setMaximumSize(new java.awt.Dimension(2147483647, 72));
+        panelHeader.setMinimumSize(new java.awt.Dimension(1488, 72));
+        panelHeader.setPreferredSize(new java.awt.Dimension(1488, 72));
+        panelHeader.setLayout(new java.awt.BorderLayout());
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(16, 16, 16, 16));
+        jPanel3.setPreferredSize(new java.awt.Dimension(264, 97));
+        jPanel3.setLayout(new java.awt.BorderLayout(16, 0));
+        jPanel3.add(iconLogoAplikasi, java.awt.BorderLayout.CENTER);
+
+        iconGaris.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconGaris.setPreferredSize(new java.awt.Dimension(36, 36));
+        jPanel3.add(iconGaris, java.awt.BorderLayout.WEST);
+
+        panelHeader.add(jPanel3, java.awt.BorderLayout.LINE_START);
+
+        panelUser.setBackground(new java.awt.Color(255, 255, 255));
+        panelUser.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 8, 4, 8));
+        panelUser.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelUser.setLayout(new javax.swing.BoxLayout(panelUser, javax.swing.BoxLayout.X_AXIS));
+
+        pFotoProfil.setMaximumSize(new java.awt.Dimension(56, 56));
+        pFotoProfil.setMinimumSize(new java.awt.Dimension(56, 56));
+        pFotoProfil.setPreferredSize(new java.awt.Dimension(56, 56));
+        panelUser.add(pFotoProfil);
+
+        lUsername.setFont(new java.awt.Font("Poppins Medium", 0, 18)); // NOI18N
+        lUsername.setText("nama yang login");
+        lUsername.setMaximumSize(new java.awt.Dimension(400, 30));
+        lUsername.setMinimumSize(null);
+        lUsername.setPreferredSize(null);
+        panelUser.add(lUsername);
+
+        btnArrowProfil.setBorder(null);
+        btnArrowProfil.setContentAreaFilled(false);
+        btnArrowProfil.setMaximumSize(new java.awt.Dimension(34, 56));
+        btnArrowProfil.setMinimumSize(new java.awt.Dimension(34, 56));
+        btnArrowProfil.setPreferredSize(new java.awt.Dimension(34, 56));
+        btnArrowProfil.addActionListener(this::btnArrowProfilActionPerformed);
+        panelUser.add(btnArrowProfil);
+
+        panelHeader.add(panelUser, java.awt.BorderLayout.EAST);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        panelHeader.add(jPanel2, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(panelHeader, java.awt.BorderLayout.PAGE_START);
 
         panelContainer.setLayout(new java.awt.CardLayout());
         getContentPane().add(panelContainer, java.awt.BorderLayout.CENTER);
@@ -247,6 +438,11 @@ public class frameSiswa extends javax.swing.JFrame {
         aktifkanMenu(absensiSaya);
     }//GEN-LAST:event_btnAbsensiSayaMouseClicked
 
+    private void btnArrowProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArrowProfilActionPerformed
+        // TODO add your handling code here:
+        tampilMenuUser();
+    }//GEN-LAST:event_btnArrowProfilActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -261,6 +457,8 @@ public class frameSiswa extends javax.swing.JFrame {
             UIManager.put("Component.arc", 20);
             UIManager.put("Component.borderwidht", 1);
             UIManager.put("Component.borderColor", new Color(0xA0A0A0));
+            UIManager.put("PopupMenu.borderCornerRadius", 50); 
+            UIManager.put("PopupMenu.background", Color.WHITE);
             UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (UnsupportedLookAndFeelException e) {
         }
@@ -272,6 +470,7 @@ public class frameSiswa extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnAbsensiSaya;
+    private javax.swing.JButton btnArrowProfil;
     private javax.swing.JPanel btnDashboard;
     private javax.swing.JPanel btnJadwal;
     private javax.swing.JLabel iconAbsensiSaya;
@@ -279,11 +478,15 @@ public class frameSiswa extends javax.swing.JFrame {
     private javax.swing.JLabel iconGaris;
     private javax.swing.JLabel iconJadwal;
     private javax.swing.JLabel iconLogoAplikasi;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lUsername;
+    private javax.swing.JPanel pFotoProfil;
     private javax.swing.JPanel panelContainer;
+    private javax.swing.JPanel panelHeader;
     private javax.swing.JPanel panelMenu;
+    private javax.swing.JPanel panelUser;
+    private javax.swing.JScrollPane scrollSidebar;
     private javax.swing.JLabel txtAbsensiSaya;
     private javax.swing.JLabel txtDashboard;
     private javax.swing.JLabel txtJadwal;

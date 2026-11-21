@@ -4,6 +4,7 @@
  */
 package frame;
 
+import card.cardPenggunaHeader;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import custom.PanelCustom;
@@ -28,6 +29,7 @@ import panelMasterAdmin.panelTahun;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import javax.swing.JPopupMenu;
 
 /**
  *
@@ -68,6 +70,12 @@ public class frameAdmin extends javax.swing.JFrame {
 
     private static final int lebarBuka = 264;
     private static final int lebarKecil = 73;
+    
+    private JPopupMenu menuUser;
+    private long terakhirTutup = 0;
+    private static final int LEBAR_MENU_USER = 413;
+    private static final int TINGGI_MENU_USER = 307;
+    private static final int GESER_KIRI = 16;
 
     /**
      * Creates new form frameAdmin
@@ -86,7 +94,7 @@ public class frameAdmin extends javax.swing.JFrame {
 
     private void radiusPanel() {
         pFotoProfil.putClientProperty("FlatLaf.style", "arc: 100");
-//        tCari.putClientProperty("FlatLaf.style","arc: 10");
+        
         btnDashboard.putClientProperty("FlatLaf.style", "arc: 25");
         btnMaster.putClientProperty("FlatLaf.style", "arc: 25");
         btnGuru.putClientProperty("FlatLaf.style", "arc: 25");
@@ -336,6 +344,53 @@ public class frameAdmin extends javax.swing.JFrame {
         }
         tutupSemuaSub();
         refreshSidebar();
+    }
+    
+    private void setupMenuUser() {
+        menuUser = new javax.swing.JPopupMenu();
+        menuUser.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(0xE5E7EB)));
+
+        cardPenggunaHeader isi = new cardPenggunaHeader();
+        isi.putClientProperty("FlatLaf.style", "arc: 50");
+        Dimension ukuran = new Dimension(LEBAR_MENU_USER - 2, TINGGI_MENU_USER - 2);   // dikurangi border 1px kiri-kanan dan atas-bawah
+        isi.setPreferredSize(ukuran);
+        isi.setMinimumSize(ukuran);
+        isi.setMaximumSize(ukuran);
+        menuUser.add(isi);
+
+        // panah ikut berganti icon saat dropdown terbuka/tertutup
+        menuUser.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            @Override
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent e) {
+                btnArrowProfil.setSelected(true);
+            }
+
+            @Override
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent e) {
+                btnArrowProfil.setSelected(false);
+                terakhirTutup = System.currentTimeMillis();
+            }
+
+            @Override
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent e) {
+            }
+        });
+
+        // seluruh kartu pengguna bisa diklik, bukan hanya panahnya
+        panelUser.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                tampilMenuUser();
+            }
+        });
+    }
+
+    private void tampilMenuUser() {
+        if (System.currentTimeMillis() - terakhirTutup < 200) {
+            return;                                   // klik saat terbuka = menutup
+        }
+        int x = panelUser.getWidth() - LEBAR_MENU_USER - GESER_KIRI;   // rata kanan
+        menuUser.show(panelUser, x, panelUser.getHeight() + 8);
     }
 
     private void setupGarisSidebar() {
@@ -623,9 +678,9 @@ public class frameAdmin extends javax.swing.JFrame {
 
         getContentPane().add(panelHeader, java.awt.BorderLayout.PAGE_START);
 
+        scrollSidebar.setBorder(null);
         scrollSidebar.setInheritsPopupMenu(true);
         scrollSidebar.setMaximumSize(null);
-        scrollSidebar.setMinimumSize(null);
         scrollSidebar.setPreferredSize(new java.awt.Dimension(264, 100));
 
         panelMenu.setBackground(new java.awt.Color(255, 255, 255));
@@ -1392,21 +1447,25 @@ public class frameAdmin extends javax.swing.JFrame {
     private void btnMasterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMasterMouseClicked
         // TODO add your handling code here:
         toggleSub(pMaster, master, "guru");
+        cardLayout.show(panelContainer, "guru");
     }//GEN-LAST:event_btnMasterMouseClicked
 
     private void btnAkademikMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAkademikMouseClicked
         // TODO add your handling code here:
         toggleSub(pAkademik, akademik, "wali");
+        cardLayout.show(panelContainer, "wali kelas");
     }//GEN-LAST:event_btnAkademikMouseClicked
 
     private void btnAbsensiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAbsensiMouseClicked
         // TODO add your handling code here:
         toggleSub(pAbsensi, absensi, "absensi guru");
+        cardLayout.show(panelContainer, "absensi guru");
     }//GEN-LAST:event_btnAbsensiMouseClicked
 
     private void btnLaporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLaporanMouseClicked
         // TODO add your handling code here:
         toggleSub(pLaporan, laporan, "laporan guru");
+        cardLayout.show(panelContainer, "laporan guru");
     }//GEN-LAST:event_btnLaporanMouseClicked
 
     private void btnPengaturanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPengaturanMouseClicked

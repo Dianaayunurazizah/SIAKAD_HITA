@@ -43,8 +43,8 @@ public class dashboard extends javax.swing.JPanel {
         btnArrow3.setIcon(new FlatSVGIcon("iconPanel/arrowDashboard.svg", 32, 32));
         
         iconAktivitas.setIcon(new FlatSVGIcon("iconPanel/iconAktivitas.svg", 32, 32));
-        iconProfilSekolah.setIcon(new FlatSVGIcon("iconPanel/iconAktivitas.svg", 32, 32));
-        iconTahunAjaran.setIcon(new FlatSVGIcon("iconPanel/iconAktivitas.svg", 32, 32));
+        iconProfilSekolah.setIcon(new FlatSVGIcon("iconPanel/dashboardInfoSekolah.svg", 32, 32));
+        iconTahunAjaran.setIcon(new FlatSVGIcon("iconPanel/tahunAjaran.svg", 32, 32));
     }
     
     private void radiusPanel() {

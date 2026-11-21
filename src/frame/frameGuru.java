@@ -4,6 +4,7 @@
  */
 package frame;
 
+import card.cardPenggunaHeader;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import custom.PanelCustom;
@@ -12,6 +13,7 @@ import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.Box;
+import javax.swing.JPopupMenu;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -32,6 +34,12 @@ public class frameGuru extends javax.swing.JFrame {
 
     private static final int lebarBuka = 264;
     private static final int lebarKecil = 73;
+    
+    private JPopupMenu menuUser;
+    private long terakhirTutup = 0;
+    private static final int LEBAR_MENU_USER = 413;
+    private static final int TINGGI_MENU_USER = 307;
+    private static final int GESER_KIRI = 16;
     
     /**
      * Creates new form frameGuru
@@ -103,6 +111,53 @@ public class frameGuru extends javax.swing.JFrame {
         btnAbsensiSaya.putClientProperty("FlatLaf.style", "arc: 25");
         btnAbsensiMapel.putClientProperty("FlatLaf.style", "arc: 25");
         btnPergantianGuru.putClientProperty("FlatLaf.style", "arc: 25");
+    }
+    
+    private void setupMenuUser() {
+        menuUser = new javax.swing.JPopupMenu();
+        menuUser.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(0xE5E7EB)));
+
+        cardPenggunaHeader isi = new cardPenggunaHeader();
+        isi.putClientProperty("FlatLaf.style", "arc: 50");
+        Dimension ukuran = new Dimension(LEBAR_MENU_USER - 2, TINGGI_MENU_USER - 2);   // dikurangi border 1px kiri-kanan dan atas-bawah
+        isi.setPreferredSize(ukuran);
+        isi.setMinimumSize(ukuran);
+        isi.setMaximumSize(ukuran);
+        menuUser.add(isi);
+
+        // panah ikut berganti icon saat dropdown terbuka/tertutup
+        menuUser.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            @Override
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent e) {
+                btnArrowProfil.setSelected(true);
+            }
+
+            @Override
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent e) {
+                btnArrowProfil.setSelected(false);
+                terakhirTutup = System.currentTimeMillis();
+            }
+
+            @Override
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent e) {
+            }
+        });
+
+        // seluruh kartu pengguna bisa diklik, bukan hanya panahnya
+        panelUser.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                tampilMenuUser();
+            }
+        });
+    }
+
+    private void tampilMenuUser() {
+        if (System.currentTimeMillis() - terakhirTutup < 200) {
+            return;                                   // klik saat terbuka = menutup
+        }
+        int x = panelUser.getWidth() - LEBAR_MENU_USER - GESER_KIRI;   // rata kanan
+        menuUser.show(panelUser, x, panelUser.getHeight() + 8);
     }
     
     private void setupGarisSidebar() {

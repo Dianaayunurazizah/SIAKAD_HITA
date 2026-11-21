@@ -67,11 +67,8 @@ public class panelTahun extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel3 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        lSelamatNama = new javax.swing.JLabel();
         panelUtama = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         pHeader = new javax.swing.JPanel();
@@ -85,76 +82,30 @@ public class panelTahun extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tSiswa = new javax.swing.JTable();
 
+        setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
         setLayout(new java.awt.BorderLayout());
 
-        jPanel3.setPreferredSize(new java.awt.Dimension(1083, 24));
+        jPanel2.setPreferredSize(new java.awt.Dimension(1083, 89));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1131, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 24, Short.MAX_VALUE)
-        );
-
-        add(jPanel3, java.awt.BorderLayout.PAGE_END);
-
-        jPanel5.setPreferredSize(new java.awt.Dimension(24, 493));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 24, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 597, Short.MAX_VALUE)
-        );
-
-        add(jPanel5, java.awt.BorderLayout.LINE_START);
-
-        jPanel2.setPreferredSize(new java.awt.Dimension(1083, 100));
-
-        jLabel1.setFont(new java.awt.Font("Poppins SemiBold", 0, 32)); // NOI18N
-        jLabel1.setText("Data Tahun Ajaran");
+        lSelamatNama.setFont(new java.awt.Font("Poppins SemiBold", 0, 28)); // NOI18N
+        lSelamatNama.setText("Data Tahun Ajaran");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(781, Short.MAX_VALUE))
+                .addComponent(lSelamatNama)
+                .addGap(0, 812, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(lSelamatNama)
+                .addGap(0, 46, Short.MAX_VALUE))
         );
 
         add(jPanel2, java.awt.BorderLayout.PAGE_START);
-
-        jPanel4.setPreferredSize(new java.awt.Dimension(24, 493));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 24, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 597, Short.MAX_VALUE)
-        );
-
-        add(jPanel4, java.awt.BorderLayout.LINE_END);
 
         panelUtama.setBackground(new java.awt.Color(255, 255, 255));
         panelUtama.setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
@@ -162,7 +113,7 @@ public class panelTahun extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 24, 1, 24));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1035, 122));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1035, 98));
 
         pHeader.setBackground(new java.awt.Color(255, 255, 255));
         pHeader.setLayout(new java.awt.BorderLayout(16, 0));
@@ -191,9 +142,9 @@ public class panelTahun extends javax.swing.JPanel {
         btnTambah.setForeground(new java.awt.Color(255, 255, 255));
         btnTambah.setText("Tambah Tahun Ajaran");
         btnTambah.setIconTextGap(8);
-        btnTambah.setMaximumSize(new java.awt.Dimension(216, 49));
-        btnTambah.setMinimumSize(new java.awt.Dimension(216, 49));
-        btnTambah.setPreferredSize(new java.awt.Dimension(216, 49));
+        btnTambah.setMaximumSize(new java.awt.Dimension(240, 56));
+        btnTambah.setMinimumSize(new java.awt.Dimension(240, 56));
+        btnTambah.setPreferredSize(new java.awt.Dimension(240, 56));
         pHeader.add(btnTambah, java.awt.BorderLayout.EAST);
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
@@ -223,7 +174,7 @@ public class panelTahun extends javax.swing.JPanel {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(pHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -254,14 +205,11 @@ public class panelTahun extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cKelas;
     private javax.swing.JComboBox<String> cStatus;
     private javax.swing.JLabel iconCari;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lSelamatNama;
     private javax.swing.JPanel pCari;
     private javax.swing.JPanel pHeader;
     private javax.swing.JPanel panelUtama;

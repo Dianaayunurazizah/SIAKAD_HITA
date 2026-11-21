@@ -31,18 +31,15 @@ public class panelGuru extends javax.swing.JPanel {
     public void iconPanel() {
         iconCari.setIcon(new FlatSVGIcon("iconPanel/icon_cari.svg", 28,28));
         
-        tCari.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 10));
         tCari.setOpaque(false);
         tCari.putClientProperty("JTextField.placeholderText", "Cari");
-        
-        pCari.setBackground(Color.WHITE);
-        pCari.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), new Color(0xA0A0A0), 1, 20));
         
         btnTambah.setIcon(new FlatSVGIcon("iconPanel/icon_tambah.svg", 20, 20));
         
     }
     
     public void radiusPanel(){
+        pCari.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), new Color(0xA0A0A0), 1, 15));
         panelUtama.putClientProperty("FlatLaf.style", "arc: 20");
     }
     
@@ -70,10 +67,7 @@ public class panelGuru extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
+        lSelamatNama = new javax.swing.JLabel();
         panelUtama = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         pHeader = new javax.swing.JPanel();
@@ -86,76 +80,31 @@ public class panelGuru extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tGuru = new javax.swing.JTable();
 
+        setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
         setLayout(new java.awt.BorderLayout());
 
-        jPanel2.setPreferredSize(new java.awt.Dimension(1083, 100));
+        jPanel2.setOpaque(false);
+        jPanel2.setPreferredSize(new java.awt.Dimension(1083, 89));
 
-        jLabel1.setFont(new java.awt.Font("Poppins SemiBold", 0, 32)); // NOI18N
-        jLabel1.setText("Data Guru");
+        lSelamatNama.setFont(new java.awt.Font("Poppins SemiBold", 0, 28)); // NOI18N
+        lSelamatNama.setText("Data Guru");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(822, Short.MAX_VALUE))
+                .addComponent(lSelamatNama)
+                .addGap(0, 936, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(lSelamatNama)
+                .addGap(0, 46, Short.MAX_VALUE))
         );
 
         add(jPanel2, java.awt.BorderLayout.PAGE_START);
-
-        jPanel3.setPreferredSize(new java.awt.Dimension(1083, 24));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1083, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 24, Short.MAX_VALUE)
-        );
-
-        add(jPanel3, java.awt.BorderLayout.PAGE_END);
-
-        jPanel4.setPreferredSize(new java.awt.Dimension(24, 493));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 24, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 533, Short.MAX_VALUE)
-        );
-
-        add(jPanel4, java.awt.BorderLayout.LINE_END);
-
-        jPanel5.setPreferredSize(new java.awt.Dimension(24, 493));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 24, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 533, Short.MAX_VALUE)
-        );
-
-        add(jPanel5, java.awt.BorderLayout.LINE_START);
 
         panelUtama.setBackground(new java.awt.Color(255, 255, 255));
         panelUtama.setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
@@ -163,7 +112,7 @@ public class panelGuru extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 24, 1, 24));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1035, 122));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1035, 98));
 
         pHeader.setBackground(new java.awt.Color(255, 255, 255));
         pHeader.setLayout(new java.awt.BorderLayout(16, 0));
@@ -182,6 +131,7 @@ public class panelGuru extends javax.swing.JPanel {
 
         tCari.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
         tCari.setBorder(null);
+        tCari.setOpaque(true);
         tCari.setPreferredSize(new java.awt.Dimension(385, 49));
         pCari.add(tCari, java.awt.BorderLayout.CENTER);
 
@@ -211,7 +161,7 @@ public class panelGuru extends javax.swing.JPanel {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addComponent(cStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 195, Short.MAX_VALUE))
+                .addGap(0, 243, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,12 +174,12 @@ public class panelGuru extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pHeader, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 939, Short.MAX_VALUE)
+            .addComponent(pHeader, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(pHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -259,14 +209,11 @@ public class panelGuru extends javax.swing.JPanel {
     private javax.swing.JButton btnTambah;
     private javax.swing.JComboBox<String> cStatus;
     private javax.swing.JLabel iconCari;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lSelamatNama;
     private javax.swing.JPanel pCari;
     private javax.swing.JPanel pHeader;
     private javax.swing.JPanel panelUtama;
