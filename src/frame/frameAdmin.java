@@ -30,6 +30,9 @@ import panelMasterAdmin.panelTahun;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JPopupMenu;
+import panelAbsensi.panelAbsensiQR;
+import panelAbsensi.panelPergantian;
+import panelAkademikAdmin.panelJadwal;
 
 /**
  *
@@ -504,13 +507,13 @@ public class frameAdmin extends javax.swing.JFrame {
         
         panelContainer.add(new dashboard(), "wali kelas");
         panelContainer.add(new dashboard(), "penugasan guru");
-        panelContainer.add(new dashboard(), "jadwal");
+        panelContainer.add(new panelJadwal(), "jadwal");
         panelContainer.add(new dashboard(), "kenaikan kelas");
         
         panelContainer.add(new dashboard(), "absensi guru");
-        panelContainer.add(new dashboard(), "absensi qr");
+        panelContainer.add(new panelAbsensiQR(), "absensi qr");
         panelContainer.add(new dashboard(), "absensi mapel");
-        panelContainer.add(new dashboard(), "pergantian guru");
+        panelContainer.add(new panelPergantian(), "pergantian guru");
         
         panelContainer.add(new dashboard(), "laporan guru");
         panelContainer.add(new dashboard(), "laporan siswa");
@@ -1571,7 +1574,7 @@ public class frameAdmin extends javax.swing.JFrame {
         try {
             UIManager.put("Button.arc", 20);
             UIManager.put("Component.arc", 20);
-            UIManager.put("Component.borderwidht", 1);
+            UIManager.put("Component.borderwidth", 1);
             UIManager.put("Component.borderColor", new Color(0xA0A0A0));
             UIManager.put("PopupMenu.borderCornerRadius", 50); 
             UIManager.put("PopupMenu.background", Color.WHITE);

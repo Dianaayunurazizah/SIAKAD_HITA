@@ -5,6 +5,9 @@
 package panelMasterAdmin;
 
 import com.formdev.flatlaf.extras.FlatSVGIcon;
+import com.formdev.flatlaf.ui.FlatLineBorder;
+import java.awt.Color;
+import java.awt.Insets;
 
 /**
  *
@@ -23,6 +26,7 @@ public class panelGenerate extends javax.swing.JPanel {
     }
 
     public void iconPanel() {
+        tCari.setOpaque(false);
         iconCari.setIcon(new FlatSVGIcon("iconPanel/icon_cari.svg", 28, 28));
         tCari.putClientProperty("JTextField.placeholderText", "Cari");
         btnTambah.setIcon(new FlatSVGIcon("iconPanel/icon_tambah.svg", 20, 20));
@@ -30,6 +34,7 @@ public class panelGenerate extends javax.swing.JPanel {
     
     public void radiusPanel() {
         pCari.putClientProperty("FlatLaf.style", "arc: 10");
+        pCari.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), new Color(0xA0A0A0), 1, 15));
         panelUtama.putClientProperty("FlatLaf.style", "arc: 15");
         panelHeader.putClientProperty("FlatLaf.style", "arc: 15");
     }
