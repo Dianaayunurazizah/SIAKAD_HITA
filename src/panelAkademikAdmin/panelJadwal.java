@@ -40,7 +40,7 @@ public class panelJadwal extends javax.swing.JPanel {
         cStatus = new javax.swing.JComboBox<>();
         cStatus1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tGuru = new javax.swing.JTable();
+        tJadwal = new javax.swing.JTable();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -158,7 +158,8 @@ public class panelJadwal extends javax.swing.JPanel {
 
         panelUtama.add(jPanel3, java.awt.BorderLayout.NORTH);
 
-        tGuru.setModel(new javax.swing.table.DefaultTableModel(
+        tJadwal.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        tJadwal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -169,7 +170,13 @@ public class panelJadwal extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tGuru);
+        tJadwal.setFillsViewportHeight(true);
+        tJadwal.setFocusable(false);
+        tJadwal.setGridColor(new java.awt.Color(245, 247, 250));
+        tJadwal.setIntercellSpacing(new java.awt.Dimension(0, 1));
+        tJadwal.setRowHeight(52);
+        tJadwal.setShowHorizontalLines(true);
+        jScrollPane1.setViewportView(tJadwal);
 
         panelUtama.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -198,6 +205,6 @@ public class panelJadwal extends javax.swing.JPanel {
     private javax.swing.JPanel pHeader;
     private javax.swing.JPanel panelUtama;
     private javax.swing.JTextField tCari;
-    private javax.swing.JTable tGuru;
+    private javax.swing.JTable tJadwal;
     // End of variables declaration//GEN-END:variables
 }
