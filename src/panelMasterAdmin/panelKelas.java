@@ -7,7 +7,13 @@ package panelMasterAdmin;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Insets;
+import javax.swing.table.TableColumnModel;
+import renderer.aksiRenderer;
+import renderer.headerRenderer;
+import renderer.statusRenderer;
+import renderer.teksRenderer;
 
 /**
  *
@@ -23,6 +29,7 @@ public class panelKelas extends javax.swing.JPanel {
         
         iconPanel();
         radiusPanel();
+        setupTabel();
     }
     
     public void iconPanel() {
@@ -36,6 +43,19 @@ public class panelKelas extends javax.swing.JPanel {
     public void radiusPanel() {
         pCari.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), new Color(0xA0A0A0), 1, 15));
         panelUtama.putClientProperty("FlatLaf.style", "arc: 15");      
+    }
+    
+    
+    private void setupTabel(){
+        TableColumnModel kolom = tKelas.getColumnModel();
+        
+        teksRenderer teks = new teksRenderer();
+        for (int i : new int[]{0,1,2,3})
+            kolom.getColumn(i).setCellRenderer(teks);
+        aksiRenderer aksi = new aksiRenderer(FlowLayout.LEFT,"iconPanel/icon_Pensil.svg", "iconPanel/icon_hapus.svg");
+        kolom.getColumn(4).setCellRenderer(aksi);
+        
+        tKelas.getTableHeader().setDefaultRenderer(new headerRenderer(-1));
     }
 
     /**
@@ -158,18 +178,48 @@ public class panelKelas extends javax.swing.JPanel {
 
         panelUtama.add(jPanel1, java.awt.BorderLayout.NORTH);
 
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+
         tKelas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "No", "ID Kelas", "Tingkat", "Nama Kelas", "Aksi"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tKelas.setColumnSelectionAllowed(true);
+        tKelas.setFillsViewportHeight(true);
+        tKelas.setGridColor(new java.awt.Color(245, 247, 250));
+        tKelas.setIntercellSpacing(new java.awt.Dimension(0, 1));
+        tKelas.setRowHeight(52);
+        tKelas.setShowHorizontalLines(true);
+        tKelas.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tKelas);
+        tKelas.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (tKelas.getColumnModel().getColumnCount() > 0) {
+            tKelas.getColumnModel().getColumn(0).setResizable(false);
+            tKelas.getColumnModel().getColumn(0).setPreferredWidth(50);
+            tKelas.getColumnModel().getColumn(1).setResizable(false);
+            tKelas.getColumnModel().getColumn(1).setPreferredWidth(250);
+            tKelas.getColumnModel().getColumn(2).setResizable(false);
+            tKelas.getColumnModel().getColumn(2).setPreferredWidth(150);
+            tKelas.getColumnModel().getColumn(3).setResizable(false);
+            tKelas.getColumnModel().getColumn(3).setPreferredWidth(250);
+            tKelas.getColumnModel().getColumn(4).setResizable(false);
+            tKelas.getColumnModel().getColumn(4).setPreferredWidth(60);
+        }
 
         panelUtama.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 

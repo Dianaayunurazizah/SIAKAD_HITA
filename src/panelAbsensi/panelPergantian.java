@@ -4,6 +4,12 @@
  */
 package panelAbsensi;
 
+import com.formdev.flatlaf.extras.FlatSVGIcon;
+import com.formdev.flatlaf.ui.FlatLineBorder;
+import java.awt.Color;
+import java.awt.Insets;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ASUS
@@ -15,7 +21,51 @@ public class panelPergantian extends javax.swing.JPanel {
      */
     public panelPergantian() {
         initComponents();
+        iconPanel();
+        radiusPanel();
+        loadTable();
+        aturTanggal();
     }
+    
+    public void iconPanel() {
+        iconCari.setIcon(new FlatSVGIcon("iconPanel/icon_cari.svg", 28, 28));
+
+        tCari.setOpaque(false);
+        tCari.putClientProperty("JTextField.placeholderText", "Cari");
+
+        btnTambah.setIcon(new FlatSVGIcon("iconPanel/icon_tambah.svg", 20, 20));
+        tTanggal.setIcon(new FlatSVGIcon("iconPanel/icon_Tanggal.svg", 18, 18));
+    }
+
+    public void radiusPanel() {
+        pCari.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), new Color(0xA0A0A0), 1, 20));
+        panelUtama.putClientProperty("FlatLaf.style", "arc: 20");
+    }
+
+    private void loadTable() {
+        DefaultTableModel tabel = new DefaultTableModel();
+        tabel.addColumn("No");
+        tabel.addColumn("ID Pergantian");
+        tabel.addColumn("Tanggal");
+        tabel.addColumn("Jadwal");
+        tabel.addColumn("Guru Asli");
+        tabel.addColumn("Guru Pengganti");
+        tabel.addColumn("Keterangan");
+        tabel.addColumn("Aksi");
+
+        tSiswa.setModel(tabel);
+    }
+     private void aturTanggal() {
+         tTanggal.setBorder(new FlatLineBorder(
+                  new java.awt.Insets(0, 12, 0, 8),
+                  new java.awt.Color(0xA0A0A0), 1, 20));
+         javax.swing.JComponent editor = (javax.swing.JComponent)tTanggal.getDateEditor().getUiComponent();
+         editor.setOpaque(false);
+         editor.setBorder(null);
+         tTanggal.getCalendarButton().setBorder(null);
+         tTanggal.getCalendarButton().setContentAreaFilled(false);
+         tTanggal.getCalendarButton().setOpaque(false);
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,19 +76,152 @@ public class panelPergantian extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1083, Short.MAX_VALUE)
+        jPanel2 = new javax.swing.JPanel();
+        lSelamatNama = new javax.swing.JLabel();
+        panelUtama = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        pHeader = new javax.swing.JPanel();
+        pCari = new javax.swing.JPanel();
+        iconCari = new javax.swing.JLabel();
+        tCari = new javax.swing.JTextField();
+        btnTambah = new javax.swing.JButton();
+        jPanel10 = new javax.swing.JPanel();
+        tTanggal = new com.toedter.calendar.JDateChooser();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tSiswa = new javax.swing.JTable();
+
+        setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
+        setLayout(new java.awt.BorderLayout());
+
+        jPanel2.setPreferredSize(new java.awt.Dimension(1083, 89));
+
+        lSelamatNama.setFont(new java.awt.Font("Poppins SemiBold", 0, 28)); // NOI18N
+        lSelamatNama.setText("Pergantian Guru");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(lSelamatNama)
+                .addGap(0, 832, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 693, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(lSelamatNama)
+                .addGap(0, 46, Short.MAX_VALUE))
         );
+
+        add(jPanel2, java.awt.BorderLayout.PAGE_START);
+
+        panelUtama.setBackground(new java.awt.Color(255, 255, 255));
+        panelUtama.setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
+        panelUtama.setLayout(new java.awt.BorderLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 24, 1, 24));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1035, 98));
+
+        pHeader.setBackground(new java.awt.Color(255, 255, 255));
+        pHeader.setLayout(new java.awt.BorderLayout());
+
+        pCari.setBackground(new java.awt.Color(255, 255, 255));
+        pCari.setMaximumSize(new java.awt.Dimension(353, 100));
+        pCari.setMinimumSize(new java.awt.Dimension(353, 100));
+        pCari.setPreferredSize(new java.awt.Dimension(353, 100));
+        pCari.setLayout(new java.awt.BorderLayout());
+
+        iconCari.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconCari.setMaximumSize(new java.awt.Dimension(44, 37));
+        iconCari.setMinimumSize(new java.awt.Dimension(37, 37));
+        iconCari.setPreferredSize(new java.awt.Dimension(44, 37));
+        pCari.add(iconCari, java.awt.BorderLayout.LINE_START);
+
+        tCari.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        tCari.setBorder(null);
+        tCari.setPreferredSize(new java.awt.Dimension(385, 49));
+        pCari.add(tCari, java.awt.BorderLayout.CENTER);
+
+        pHeader.add(pCari, java.awt.BorderLayout.WEST);
+
+        btnTambah.setBackground(new java.awt.Color(35, 127, 234));
+        btnTambah.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        btnTambah.setForeground(new java.awt.Color(255, 255, 255));
+        btnTambah.setText("Tambah Pergantian");
+        btnTambah.setIconTextGap(8);
+        btnTambah.setMaximumSize(new java.awt.Dimension(232, 56));
+        btnTambah.setMinimumSize(new java.awt.Dimension(232, 56));
+        btnTambah.setPreferredSize(new java.awt.Dimension(232, 56));
+        btnTambah.addActionListener(this::btnTambahActionPerformed);
+        pHeader.add(btnTambah, java.awt.BorderLayout.EAST);
+
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel10.setPreferredSize(new java.awt.Dimension(370, 49));
+        jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 16, 0));
+
+        tTanggal.setBackground(new java.awt.Color(255, 255, 255));
+        tTanggal.setForeground(new java.awt.Color(141, 143, 155));
+        tTanggal.setDateFormatString("dd/MM/yyyy");
+        tTanggal.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        tTanggal.setOpaque(false);
+        tTanggal.setPreferredSize(new java.awt.Dimension(230, 49));
+        jPanel10.add(tTanggal);
+
+        pHeader.add(jPanel10, java.awt.BorderLayout.CENTER);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pHeader, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 973, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addComponent(pHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
+        );
+
+        panelUtama.add(jPanel1, java.awt.BorderLayout.NORTH);
+
+        tSiswa.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "No", "Foto", "NISN", "Nama", "Gender", "No telepon", "Status"
+            }
+        ));
+        jScrollPane1.setViewportView(tSiswa);
+
+        panelUtama.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        add(panelUtama, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTambahActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnTambah;
+    private javax.swing.JLabel iconCari;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lSelamatNama;
+    private javax.swing.JPanel pCari;
+    private javax.swing.JPanel pHeader;
+    private javax.swing.JPanel panelUtama;
+    private javax.swing.JTextField tCari;
+    private javax.swing.JTable tSiswa;
+    private com.toedter.calendar.JDateChooser tTanggal;
     // End of variables declaration//GEN-END:variables
 }
