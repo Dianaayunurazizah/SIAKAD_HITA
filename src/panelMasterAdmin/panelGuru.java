@@ -8,9 +8,12 @@ import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
+import renderer.*;
+import javax.swing.table.*;
 
 /**
  *
@@ -24,7 +27,7 @@ public class panelGuru extends javax.swing.JPanel {
     public panelGuru() {
         initComponents();
         iconPanel();
-        loadTable();
+        setupTabel();
         radiusPanel();
     }
     
@@ -43,19 +46,28 @@ public class panelGuru extends javax.swing.JPanel {
         panelUtama.putClientProperty("FlatLaf.style", "arc: 20");
     }
     
-    private void loadTable(){
-        DefaultTableModel tabel = new DefaultTableModel();
-        tabel.addColumn("No");
-        tabel.addColumn("Foto");
-        tabel.addColumn("NIP");
-        tabel.addColumn("Nama Guru");
-        tabel.addColumn("Jenis Kelamin");
-        tabel.addColumn("No Telepon");
-        tabel.addColumn("Status");
-        tabel.addColumn("");
+    private void setupTabel(){
+        TableColumnModel kolom = tGuru.getColumnModel();
         
-        tGuru.setModel(tabel);
+        teksRenderer teks = new teksRenderer();
+        for (int i : new int[]{0,2,3,4,5})
+            kolom.getColumn(i).setCellRenderer(teks);
+        kolom.getColumn(1).setCellRenderer(new fotoRenderer());
+        kolom.getColumn(6).setCellRenderer(new statusRenderer());
+        aksiRenderer aksi = new aksiRenderer(FlowLayout.CENTER,"iconPanel/icon_titikTiga.svg");
+        kolom.getColumn(7).setCellRenderer(aksi);
+        
+        tGuru.getTableHeader().setDefaultRenderer(new headerRenderer(6));
     }
+    
+//    private void isiDataContoh() {
+//        DefaultTableModel model = (DefaultTableModel) tGuru.getModel();
+//        model.setRowCount(0);
+//        String foto = "/iconPanel/foto_guru.png";   // atau "" untuk lingkaran abu-abu
+//        model.addRow(new Object[]{1, foto, "199710012017081001", "M. Abdul Rohman Hamid, S.Pd.", "Laki - Laki", "085617281726", "Aktif", ""});
+//        model.addRow(new Object[]{2, foto, "200608182025082007", "Eka Futkiyana Sari, S.Pd.", "Perempuan", "085617281726", "Aktif", ""});
+//        model.addRow(new Object[]{3, foto, "200603232024082008", "Diana Ayu Nur Azizah, S.Pd.", "Perempuan", "085617281726", "Aktif", ""});
+//    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -186,18 +198,60 @@ public class panelGuru extends javax.swing.JPanel {
 
         panelUtama.add(jPanel1, java.awt.BorderLayout.NORTH);
 
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+
         tGuru.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "No", "Foto", "NIP", "Nama Guru", "Jenis Kelamin", "No Telepon", "Status", ""
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tGuru.setColumnSelectionAllowed(true);
+        tGuru.setFillsViewportHeight(true);
+        tGuru.setFocusable(false);
+        tGuru.setGridColor(new java.awt.Color(245, 247, 250));
+        tGuru.setIntercellSpacing(new java.awt.Dimension(0, 1));
+        tGuru.setRowHeight(52);
+        tGuru.setSelectionBackground(new java.awt.Color(234, 242, 254));
+        tGuru.setShowHorizontalLines(true);
+        tGuru.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tGuru);
+        tGuru.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (tGuru.getColumnModel().getColumnCount() > 0) {
+            tGuru.getColumnModel().getColumn(0).setResizable(false);
+            tGuru.getColumnModel().getColumn(0).setPreferredWidth(50);
+            tGuru.getColumnModel().getColumn(1).setResizable(false);
+            tGuru.getColumnModel().getColumn(1).setPreferredWidth(70);
+            tGuru.getColumnModel().getColumn(2).setResizable(false);
+            tGuru.getColumnModel().getColumn(2).setPreferredWidth(180);
+            tGuru.getColumnModel().getColumn(3).setResizable(false);
+            tGuru.getColumnModel().getColumn(3).setPreferredWidth(260);
+            tGuru.getColumnModel().getColumn(4).setResizable(false);
+            tGuru.getColumnModel().getColumn(4).setPreferredWidth(140);
+            tGuru.getColumnModel().getColumn(5).setResizable(false);
+            tGuru.getColumnModel().getColumn(5).setPreferredWidth(150);
+            tGuru.getColumnModel().getColumn(6).setResizable(false);
+            tGuru.getColumnModel().getColumn(6).setPreferredWidth(140);
+            tGuru.getColumnModel().getColumn(7).setResizable(false);
+            tGuru.getColumnModel().getColumn(7).setPreferredWidth(40);
+        }
 
         panelUtama.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
