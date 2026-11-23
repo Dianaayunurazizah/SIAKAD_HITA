@@ -84,14 +84,14 @@ public class panelPergantian extends javax.swing.JPanel {
         tPergantian.setFont(new Font("Poppins", Font.PLAIN, 14));
 
         // lebar kolom
-        int[] lebar = {50, 120, 80, 100, 250, 250, 100, 80};
+        int[] lebar = {50, 180, 100, 100, 250, 250, 100, 80};
         for (int i = 0; i < lebar.length; i++) {
             kolom.getColumn(i).setPreferredWidth(lebar[i]);
             kolom.getColumn(i).setResizable(false);
         }
 
         // kolom kecil dikunci supaya tidak ikut melebar
-        for (int i : new int[]{0, 1, 7}) {
+        for (int i : new int[]{0,3, 7}) {
             kolom.getColumn(i).setMinWidth(lebar[i]);
             kolom.getColumn(i).setMaxWidth(lebar[i]);
         }

@@ -4,6 +4,19 @@
  */
 package panelAkademikAdmin;
 
+import com.formdev.flatlaf.extras.FlatSVGIcon;
+import com.formdev.flatlaf.ui.FlatLineBorder;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Insets;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+import renderer.aksiRenderer;
+import renderer.headerRenderer;
+import renderer.statusRenderer;
+import renderer.teksRenderer;
+
 /**
  *
  * @author ASUS
@@ -15,6 +28,72 @@ public class panelJadwal extends javax.swing.JPanel {
      */
     public panelJadwal() {
         initComponents();
+        iconPanel();
+        loadTabel();
+        radiusPanel();
+    }
+    
+    public void iconPanel() {
+        iconCari.setIcon(new FlatSVGIcon("iconPanel/icon_cari.svg", 28, 28));
+
+        tCari.setOpaque(false);
+        tCari.putClientProperty("JTextField.placeholderText", "Cari");
+
+        btnTambah.setIcon(new FlatSVGIcon("iconPanel/icon_tambah.svg", 20, 20));
+    }
+    
+    public void radiusPanel(){
+        pCari.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), new Color(0xA0A0A0), 1, 20));
+        panelUtama.putClientProperty("FlatLaf.style", "arc: 20");
+    }
+    
+    public void loadTabel() { //LETAK MANGGIL SQL DATA DAN NAMA HEADER TABLE
+        DefaultTableModel tabel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int r, int c) {
+                return false;
+            }
+        };
+        tabel.addColumn("No");
+        tabel.addColumn("ID Jam");
+        tabel.addColumn("Hari");
+        tabel.addColumn("Jam");
+        tabel.addColumn("Kelas");
+        tabel.addColumn("Mata Pelajaran");
+        tabel.addColumn("Guru");
+        tabel.addColumn("Aksi");
+        
+        tJadwal.setModel(tabel);
+        setupTabel();
+    }
+
+    private void setupTabel() { //LETAK ATUR LEBAR KOLMOM DAN MANGGIL RENDERER
+        TableColumnModel kolom = tJadwal.getColumnModel();
+
+        // font isi baris disamakan dengan header
+        tJadwal.setFont(new Font("Poppins", Font.PLAIN, 14));
+
+        // lebar kolom
+        int[] lebar = {50,120, 90, 180, 90, 180, 260, 100};
+        for (int i = 0; i < lebar.length; i++) {
+            kolom.getColumn(i).setPreferredWidth(lebar[i]);
+            kolom.getColumn(i).setResizable(false);
+        }
+
+        // mengunci kolom ukuran kecil
+        for (int i : new int[]{0, 2,3, 4, 7}) {
+            kolom.getColumn(i).setMinWidth(lebar[i]);
+            kolom.getColumn(i).setMaxWidth(lebar[i]);
+        }
+
+        teksRenderer teks = new teksRenderer();
+        for (int i : new int[]{0,1,2,3,4,5,6}) {
+            kolom.getColumn(i).setCellRenderer(teks);
+        }
+        aksiRenderer aksi = new aksiRenderer(FlowLayout.LEFT, "iconPanel/icon_Pensil.svg", "iconPanel/icon_hapus.svg");
+        kolom.getColumn(7).setCellRenderer(aksi);
+
+        tJadwal.getTableHeader().setDefaultRenderer(new headerRenderer(-1));
     }
 
     /**
@@ -58,7 +137,7 @@ public class panelJadwal extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(lSelamatNama)
-                .addGap(0, 932, Short.MAX_VALUE))
+                .addGap(0, 902, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,7 +210,7 @@ public class panelJadwal extends javax.swing.JPanel {
                 .addComponent(cStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addComponent(cStatus1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 56, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,6 +236,8 @@ public class panelJadwal extends javax.swing.JPanel {
         );
 
         panelUtama.add(jPanel3, java.awt.BorderLayout.NORTH);
+
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
         tJadwal.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         tJadwal.setModel(new javax.swing.table.DefaultTableModel(

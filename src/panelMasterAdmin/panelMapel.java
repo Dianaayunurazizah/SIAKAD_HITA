@@ -7,8 +7,15 @@ package panelMasterAdmin;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+import renderer.aksiRenderer;
+import renderer.headerRenderer;
+import renderer.statusRenderer;
+import renderer.teksRenderer;
 
 /**
  *
@@ -22,19 +29,18 @@ public class panelMapel extends javax.swing.JPanel {
     public panelMapel() {
         initComponents();
         iconPanel();
-        loadTable();
+        loadTabel();
         radiusPanel();
         
     }
     
-        public void iconPanel() {
-        iconCari.setIcon(new FlatSVGIcon("iconPanel/icon_cari.svg", 28,28));
-        
+    public void iconPanel() {
+        iconCari.setIcon(new FlatSVGIcon("iconPanel/icon_cari.svg", 28, 28));
+
         tCari.setOpaque(false);
         tCari.putClientProperty("JTextField.placeholderText", "Cari");
-        
+
         btnTambah.setIcon(new FlatSVGIcon("iconPanel/icon_tambah.svg", 20, 20));
-        
     }
     
     public void radiusPanel(){
@@ -42,16 +48,51 @@ public class panelMapel extends javax.swing.JPanel {
         panelUtama.putClientProperty("FlatLaf.style", "arc: 20");
     }
     
-    private void loadTable(){
-        DefaultTableModel tabel = new DefaultTableModel();
+    public void loadTabel() { //LETAK MANGGIL SQL DATA DAN NAMA HEADER TABLE
+        DefaultTableModel tabel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int r, int c) {
+                return false;
+            }
+        };
         tabel.addColumn("No");
         tabel.addColumn("ID Mata Pelajaran");
         tabel.addColumn("Nama Mata Pelajaran");
         tabel.addColumn("Status");
         tabel.addColumn("Aksi");
-        tabel.addColumn("");
         
-        tGuru.setModel(tabel);
+        tMapel.setModel(tabel);
+        setupTabel();
+    }
+
+    private void setupTabel() { //LETAK ATUR LEBAR KOLMOM DAN MANGGIL RENDERER
+        TableColumnModel kolom = tMapel.getColumnModel();
+
+        // font isi baris disamakan dengan header
+        tMapel.setFont(new Font("Poppins", Font.PLAIN, 14));
+
+        // lebar kolom
+        int[] lebar = {50, 230, 250, 230, 120};
+        for (int i = 0; i < lebar.length; i++) {
+            kolom.getColumn(i).setPreferredWidth(lebar[i]);
+            kolom.getColumn(i).setResizable(false);
+        }
+
+        // mengunci kolom ukuran kecil
+        for (int i : new int[]{0, 4}) {
+            kolom.getColumn(i).setMinWidth(lebar[i]);
+            kolom.getColumn(i).setMaxWidth(lebar[i]);
+        }
+
+        teksRenderer teks = new teksRenderer();
+        for (int i : new int[]{0, 1, 2}) {
+            kolom.getColumn(i).setCellRenderer(teks);
+        }
+        kolom.getColumn(3).setCellRenderer(new statusRenderer());
+        aksiRenderer aksi = new aksiRenderer(FlowLayout.LEFT, "iconPanel/icon_Pensil.svg", "iconPanel/icon_hapus.svg");
+        kolom.getColumn(4).setCellRenderer(aksi);
+
+        tMapel.getTableHeader().setDefaultRenderer(new headerRenderer(-1));
     }
     
 
@@ -77,7 +118,7 @@ public class panelMapel extends javax.swing.JPanel {
         jPanel10 = new javax.swing.JPanel();
         cStatus = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tGuru = new javax.swing.JTable();
+        tMapel = new javax.swing.JTable();
 
         jLabel2.setText("jLabel2");
 
@@ -188,7 +229,7 @@ public class panelMapel extends javax.swing.JPanel {
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
-        tGuru.setModel(new javax.swing.table.DefaultTableModel(
+        tMapel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -199,13 +240,13 @@ public class panelMapel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tGuru.setFillsViewportHeight(true);
-        tGuru.setFocusable(false);
-        tGuru.setGridColor(new java.awt.Color(245, 247, 250));
-        tGuru.setIntercellSpacing(new java.awt.Dimension(0, 1));
-        tGuru.setRowHeight(52);
-        tGuru.setShowHorizontalLines(true);
-        jScrollPane1.setViewportView(tGuru);
+        tMapel.setFillsViewportHeight(true);
+        tMapel.setFocusable(false);
+        tMapel.setGridColor(new java.awt.Color(245, 247, 250));
+        tMapel.setIntercellSpacing(new java.awt.Dimension(0, 1));
+        tMapel.setRowHeight(52);
+        tMapel.setShowHorizontalLines(true);
+        jScrollPane1.setViewportView(tMapel);
 
         panelUtama.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -231,6 +272,6 @@ public class panelMapel extends javax.swing.JPanel {
     private javax.swing.JPanel pHeader;
     private javax.swing.JPanel panelUtama;
     private javax.swing.JTextField tCari;
-    private javax.swing.JTable tGuru;
+    private javax.swing.JTable tMapel;
     // End of variables declaration//GEN-END:variables
 }

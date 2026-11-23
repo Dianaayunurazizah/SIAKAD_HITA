@@ -7,8 +7,14 @@ package panelAkademikAdmin;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+import renderer.aksiRenderer;
+import renderer.headerRenderer;
+import renderer.teksRenderer;
 
 /**
  *
@@ -22,7 +28,7 @@ public class panelPenugasan extends javax.swing.JPanel {
     public panelPenugasan() {
         initComponents();
         iconPanel();
-        loadTable();
+        loadTabel();
         radiusPanel();
     }
     
@@ -44,8 +50,13 @@ public class panelPenugasan extends javax.swing.JPanel {
         panelUtama.putClientProperty("FlatLaf.style", "arc: 20");
     }
 
-    private void loadTable() {
-        DefaultTableModel tabel = new DefaultTableModel();
+    public void loadTabel() { //LETAK MANGGIL SQL DATA DAN NAMA HEADER TABLE
+        DefaultTableModel tabel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int r, int c) {
+                return false;
+            }
+        };
         tabel.addColumn("No");
         tabel.addColumn("ID Penugasan");
         tabel.addColumn("Guru");
@@ -53,9 +64,38 @@ public class panelPenugasan extends javax.swing.JPanel {
         tabel.addColumn("Kelas");
         tabel.addColumn("Tahun Ajaran");
         tabel.addColumn("Aksi");
-        tabel.addColumn("");
+        
+        tPenugasan.setModel(tabel);
+        setupTabel();
+    }
 
-        tSiswa.setModel(tabel);
+    private void setupTabel() { //LETAK ATUR LEBAR KOLMOM DAN MANGGIL RENDERER
+        TableColumnModel kolom = tPenugasan.getColumnModel();
+
+        // font isi baris disamakan dengan header
+        tPenugasan.setFont(new Font("Poppins", Font.PLAIN, 14));
+
+        // lebar kolom
+        int[] lebar = {50,180,260,180,100,140,110};
+        for (int i = 0; i < lebar.length; i++) {
+            kolom.getColumn(i).setPreferredWidth(lebar[i]);
+            kolom.getColumn(i).setResizable(false);
+        }
+
+        // mengunci kolom ukuran kecil
+        for (int i : new int[]{0,4,6}) {
+            kolom.getColumn(i).setMinWidth(lebar[i]);
+            kolom.getColumn(i).setMaxWidth(lebar[i]);
+        }
+
+        teksRenderer teks = new teksRenderer();
+        for (int i : new int[]{0, 1, 2, 3,4,5}) {
+            kolom.getColumn(i).setCellRenderer(teks);
+        }
+        aksiRenderer aksi = new aksiRenderer(FlowLayout.LEFT, "iconPanel/icon_Pensil.svg", "iconPanel/icon_hapus.svg");
+        kolom.getColumn(6).setCellRenderer(aksi);
+
+        tPenugasan.getTableHeader().setDefaultRenderer(new headerRenderer(-1));
     }
 
     /**
@@ -80,7 +120,7 @@ public class panelPenugasan extends javax.swing.JPanel {
         cKelas = new javax.swing.JComboBox<>();
         cStatus = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tSiswa = new javax.swing.JTable();
+        tPenugasan = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -193,7 +233,9 @@ public class panelPenugasan extends javax.swing.JPanel {
 
         panelUtama.add(jPanel1, java.awt.BorderLayout.NORTH);
 
-        tSiswa.setModel(new javax.swing.table.DefaultTableModel(
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+
+        tPenugasan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -204,7 +246,11 @@ public class panelPenugasan extends javax.swing.JPanel {
                 "No", "Foto", "NISN", "Nama", "Gender", "No telepon", "Status"
             }
         ));
-        jScrollPane1.setViewportView(tSiswa);
+        tPenugasan.setFillsViewportHeight(true);
+        tPenugasan.setGridColor(new java.awt.Color(245, 247, 250));
+        tPenugasan.setIntercellSpacing(new java.awt.Dimension(0, 1));
+        tPenugasan.setRowHeight(52);
+        jScrollPane1.setViewportView(tPenugasan);
 
         panelUtama.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -272,6 +318,6 @@ public class panelPenugasan extends javax.swing.JPanel {
     private javax.swing.JPanel pHeader;
     private javax.swing.JPanel panelUtama;
     private javax.swing.JTextField tCari;
-    private javax.swing.JTable tSiswa;
+    private javax.swing.JTable tPenugasan;
     // End of variables declaration//GEN-END:variables
 }

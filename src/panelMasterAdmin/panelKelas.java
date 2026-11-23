@@ -8,7 +8,9 @@ import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Insets;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import renderer.aksiRenderer;
 import renderer.headerRenderer;
@@ -44,17 +46,50 @@ public class panelKelas extends javax.swing.JPanel {
         pCari.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), new Color(0xA0A0A0), 1, 15));
         panelUtama.putClientProperty("FlatLaf.style", "arc: 15");      
     }
-    
-    
-    private void setupTabel(){
+
+    public void loadTabel() { //LETAK MANGGIL SQL DATA DAN NAMA HEADER TABLE
+        DefaultTableModel tabel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int r, int c) {
+                return false;
+            }
+        };
+        tabel.addColumn("No");
+        tabel.addColumn("ID Kelas");
+        tabel.addColumn("Tingkat");
+        tabel.addColumn("Nama Kelas");
+        tabel.addColumn("Aksi");
+        
+        tKelas.setModel(tabel);
+        setupTabel();
+    }
+
+    private void setupTabel() { //LETAK ATUR LEBAR KOLMOM DAN MANGGIL RENDERER
         TableColumnModel kolom = tKelas.getColumnModel();
-        
+
+        // font isi baris disamakan dengan header
+        tKelas.setFont(new Font("Poppins", Font.PLAIN, 14));
+
+        // lebar kolom
+        int[] lebar = {50, 230, 250, 230, 120};
+        for (int i = 0; i < lebar.length; i++) {
+            kolom.getColumn(i).setPreferredWidth(lebar[i]);
+            kolom.getColumn(i).setResizable(false);
+        }
+
+        // mengunci kolom ukuran kecil
+        for (int i : new int[]{0, 4}) {
+            kolom.getColumn(i).setMinWidth(lebar[i]);
+            kolom.getColumn(i).setMaxWidth(lebar[i]);
+        }
+
         teksRenderer teks = new teksRenderer();
-        for (int i : new int[]{0,1,2,3})
+        for (int i : new int[]{0, 1, 2, 3}) {
             kolom.getColumn(i).setCellRenderer(teks);
-        aksiRenderer aksi = new aksiRenderer(FlowLayout.LEFT,"iconPanel/icon_Pensil.svg", "iconPanel/icon_hapus.svg");
+        }
+        aksiRenderer aksi = new aksiRenderer(FlowLayout.LEFT, "iconPanel/icon_Pensil.svg", "iconPanel/icon_hapus.svg");
         kolom.getColumn(4).setCellRenderer(aksi);
-        
+
         tKelas.getTableHeader().setDefaultRenderer(new headerRenderer(-1));
     }
 

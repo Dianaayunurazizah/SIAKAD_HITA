@@ -7,8 +7,15 @@ package panelMasterAdmin;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+import renderer.aksiRenderer;
+import renderer.headerRenderer;
+import renderer.statusRenderer;
+import renderer.teksRenderer;
 
 /**
  *
@@ -22,7 +29,7 @@ public class panelTahun extends javax.swing.JPanel {
     public panelTahun() {
         initComponents();
         iconPanel();
-        loadTable();
+        loadTabel();
         radiusPanel();
     }
     
@@ -44,17 +51,52 @@ public class panelTahun extends javax.swing.JPanel {
         panelUtama.putClientProperty("FlatLaf.style", "arc: 20");
     }
 
-    private void loadTable() {
-        DefaultTableModel tabel = new DefaultTableModel();
+    public void loadTabel() { //LETAK MANGGIL SQL DATA DAN NAMA HEADER TABLE
+        DefaultTableModel tabel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int r, int c) {
+                return false;
+            }
+        };
         tabel.addColumn("No");
         tabel.addColumn("ID Tahun Ajaran");
         tabel.addColumn("Nama Mata Pelajaran");
         tabel.addColumn("Semester");
         tabel.addColumn("Status");
         tabel.addColumn("Aksi");
-        tabel.addColumn("");
+        
+        tTahun.setModel(tabel);
+        setupTabel();
+    }
 
-        tSiswa.setModel(tabel);
+    private void setupTabel() { //LETAK ATUR LEBAR KOLMOM DAN MANGGIL RENDERER
+        TableColumnModel kolom = tTahun.getColumnModel();
+
+        // font isi baris disamakan dengan header
+        tTahun.setFont(new Font("Poppins", Font.PLAIN, 14));
+
+        // lebar kolom
+        int[] lebar = {50, 140, 250 , 200, 150, 120};
+        for (int i = 0; i < lebar.length; i++) {
+            kolom.getColumn(i).setPreferredWidth(lebar[i]);
+            kolom.getColumn(i).setResizable(false);
+        }
+
+        // mengunci kolom ukuran kecil
+        for (int i : new int[]{0, 5}) {
+            kolom.getColumn(i).setMinWidth(lebar[i]);
+            kolom.getColumn(i).setMaxWidth(lebar[i]);
+        }
+
+        teksRenderer teks = new teksRenderer();
+        for (int i : new int[]{0, 1, 2, 3}) {
+            kolom.getColumn(i).setCellRenderer(teks);
+        }
+        kolom.getColumn(4).setCellRenderer(new statusRenderer());
+        aksiRenderer aksi = new aksiRenderer(FlowLayout.LEFT, "iconPanel/icon_Pensil.svg", "iconPanel/icon_hapus.svg");
+        kolom.getColumn(4).setCellRenderer(aksi);
+
+        tTahun.getTableHeader().setDefaultRenderer(new headerRenderer(-1));
     }
 
 
@@ -80,7 +122,7 @@ public class panelTahun extends javax.swing.JPanel {
         cKelas = new javax.swing.JComboBox<>();
         cStatus = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tSiswa = new javax.swing.JTable();
+        tTahun = new javax.swing.JTable();
 
         setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
         setLayout(new java.awt.BorderLayout());
@@ -181,7 +223,9 @@ public class panelTahun extends javax.swing.JPanel {
 
         panelUtama.add(jPanel1, java.awt.BorderLayout.NORTH);
 
-        tSiswa.setModel(new javax.swing.table.DefaultTableModel(
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+
+        tTahun.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -192,7 +236,12 @@ public class panelTahun extends javax.swing.JPanel {
                 "No", "Foto", "NISN", "Nama", "Gender", "No telepon", "Status"
             }
         ));
-        jScrollPane1.setViewportView(tSiswa);
+        tTahun.setFillsViewportHeight(true);
+        tTahun.setGridColor(new java.awt.Color(245, 247, 250));
+        tTahun.setIntercellSpacing(new java.awt.Dimension(0, 1));
+        tTahun.setRowHeight(52);
+        tTahun.setShowHorizontalLines(true);
+        jScrollPane1.setViewportView(tTahun);
 
         panelUtama.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -214,6 +263,6 @@ public class panelTahun extends javax.swing.JPanel {
     private javax.swing.JPanel pHeader;
     private javax.swing.JPanel panelUtama;
     private javax.swing.JTextField tCari;
-    private javax.swing.JTable tSiswa;
+    private javax.swing.JTable tTahun;
     // End of variables declaration//GEN-END:variables
 }

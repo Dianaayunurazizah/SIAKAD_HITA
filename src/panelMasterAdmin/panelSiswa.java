@@ -7,8 +7,16 @@ package panelMasterAdmin;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+import renderer.aksiRenderer;
+import renderer.fotoRenderer;
+import renderer.headerRenderer;
+import renderer.statusRenderer;
+import renderer.teksRenderer;
 
 /**
  *
@@ -23,7 +31,7 @@ public class panelSiswa extends javax.swing.JPanel {
         initComponents();
         
         iconPanel();
-        loadTable();
+        loadTabel();
         radiusPanel();
     }
 
@@ -42,18 +50,54 @@ public class panelSiswa extends javax.swing.JPanel {
         panelUtama.putClientProperty("FlatLaf.style", "arc: 20");
     }
 
-    private void loadTable() {
-        DefaultTableModel tabel = new DefaultTableModel();
+    public void loadTabel() {
+        DefaultTableModel tabel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int r, int c) {
+                return false;
+            }
+        };
         tabel.addColumn("No");
         tabel.addColumn("Foto");
-        tabel.addColumn("NIP");
-        tabel.addColumn("Nama Guru");
+        tabel.addColumn("NISN");
+        tabel.addColumn("Nama");
         tabel.addColumn("Jenis Kelamin");
         tabel.addColumn("No Telepon");
         tabel.addColumn("Status");
         tabel.addColumn("");
 
         tSiswa.setModel(tabel);
+        setupTabel();   // pasang lagi lebar kolom dan renderer, karena setModel menghapusnya
+    }
+    
+    private void setupTabel(){
+        TableColumnModel kolom = tSiswa.getColumnModel();
+        
+        // font isi baris disamakan dengan header
+        tSiswa.setFont(new Font("Poppins", Font.PLAIN, 14));
+
+        // lebar kolom
+        int[] lebar = {50, 70, 130, 280, 140, 150, 120, 50};
+        for (int i = 0; i < lebar.length; i++) {
+            kolom.getColumn(i).setPreferredWidth(lebar[i]);
+            kolom.getColumn(i).setResizable(false);
+        }
+
+        // kolom kecil dikunci supaya tidak ikut melebar
+        for (int i : new int[]{0, 1, 7}) {
+            kolom.getColumn(i).setMinWidth(lebar[i]);
+            kolom.getColumn(i).setMaxWidth(lebar[i]);
+        }
+        
+        teksRenderer teks = new teksRenderer();
+        for (int i : new int[]{0,2,3,4,5})
+            kolom.getColumn(i).setCellRenderer(teks);
+        kolom.getColumn(1).setCellRenderer(new fotoRenderer());
+        kolom.getColumn(6).setCellRenderer(new statusRenderer());
+        aksiRenderer aksi = new aksiRenderer(FlowLayout.CENTER,"iconPanel/icon_titikTiga.svg");
+        kolom.getColumn(7).setCellRenderer(aksi);
+        
+        tSiswa.getTableHeader().setDefaultRenderer(new headerRenderer(6));
     }
 
     /**
@@ -179,6 +223,8 @@ public class panelSiswa extends javax.swing.JPanel {
 
         panelUtama.add(jPanel1, java.awt.BorderLayout.NORTH);
 
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+
         tSiswa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -190,6 +236,11 @@ public class panelSiswa extends javax.swing.JPanel {
                 "No", "Foto", "NISN", "Nama", "Gender", "No telepon", "Status"
             }
         ));
+        tSiswa.setFillsViewportHeight(true);
+        tSiswa.setGridColor(new java.awt.Color(245, 247, 250));
+        tSiswa.setIntercellSpacing(new java.awt.Dimension(0, 1));
+        tSiswa.setRowHeight(52);
+        tSiswa.setShowHorizontalLines(true);
         jScrollPane1.setViewportView(tSiswa);
 
         panelUtama.add(jScrollPane1, java.awt.BorderLayout.CENTER);
