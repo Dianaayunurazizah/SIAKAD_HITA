@@ -100,7 +100,7 @@ public class panelPergantian extends javax.swing.JPanel {
         for (int i : new int[]{0,1,2,3,4,5})
             kolom.getColumn(i).setCellRenderer(teks);
         kolom.getColumn(6).setCellRenderer(new statusRenderer());
-        aksiRenderer aksi = new aksiRenderer(FlowLayout.CENTER,"iconPanel/icon_Pensil.svg","iconPanel/icon_hapus.svg" );
+        aksiRenderer aksi = new aksiRenderer(FlowLayout.LEFT,"iconPanel/icon_Pensil.svg","iconPanel/icon_hapus.svg" );
         kolom.getColumn(7).setCellRenderer(aksi);
         
         tPergantian.getTableHeader().setDefaultRenderer(new headerRenderer(6));

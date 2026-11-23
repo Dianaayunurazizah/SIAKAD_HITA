@@ -24,6 +24,9 @@ public class panelPengguna extends javax.swing.JPanel {
      */
     public panelPengguna() {
         initComponents();
+        iconPanel();
+        radiusPanel();
+        loadTabel();
     }
     public void iconPanel() {
         iconCari.setIcon(new FlatSVGIcon("iconPanel/icon_cari.svg", 28,28));
@@ -40,7 +43,7 @@ public class panelPengguna extends javax.swing.JPanel {
         panelUtama.putClientProperty("FlatLaf.style", "arc: 20");
     }
     
-    public void loadTabel() {
+    public void loadTabel() { //LETAK MANGGIL SQL DATA DAN NAMA HEADER TABLE
         DefaultTableModel tabel = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int r, int c) {
@@ -48,42 +51,44 @@ public class panelPengguna extends javax.swing.JPanel {
             }
         };
         tabel.addColumn("No");
-        tabel.addColumn("Foto");
-        tabel.addColumn("NIP");
-        tabel.addColumn("Nama Guru");
-        tabel.addColumn("Jenis Kelamin");
-        tabel.addColumn("No Telepon");
+        tabel.addColumn("ID Pengguna");
+        tabel.addColumn("Nama Pengguna");
+        tabel.addColumn("Email");
+        tabel.addColumn("Role");
         tabel.addColumn("Status");
-        tabel.addColumn("");
+        tabel.addColumn("Aksi");
 
+        tabel.addRow(new Object[]{1, "PGN2026001", "M. Abdul Rohman Hamit, S.Pd.", "hamid123@gmail.com", "Guru", "Aktif", ""});
+tabel.addRow(new Object[]{2, "PGN2026002", "Eka Futkiyana Sari, S.Pd.", "eka123@gmail.com", "Admin", "Aktif", ""});
+tabel.addRow(new Object[]{3, "PGN2026003", "Diana Ayu Nur Azizah, S.Pd.", "ana123@gmail.com", "Kepala Sekolah", "Aktif", ""});
         tPengguna.setModel(tabel);
-        setupTabel();   // pasang lagi lebar kolom dan renderer, karena setModel menghapusnya
+        setupTabel();   
     }
     
-        private void setupTabel(){
+        private void setupTabel(){ //LETAK ATUR LEBAR KOLMOM DAN MANGGIL RENDERER
         TableColumnModel kolom = tPengguna.getColumnModel();
         
         // font isi baris disamakan dengan header
         tPengguna.setFont(new Font("Poppins", Font.PLAIN, 14));
 
         // lebar kolom
-        int[] lebar = {50, 100, 260, 200, 100, 100, 100, 100};
+        int[] lebar = {50, 130, 250, 230, 100, 100, 100};
         for (int i = 0; i < lebar.length; i++) {
             kolom.getColumn(i).setPreferredWidth(lebar[i]);
             kolom.getColumn(i).setResizable(false);
         }
 
-        // kolom kecil dikunci supaya tidak ikut melebar
-        for (int i : new int[]{0, 1, 7}) {
+        // mengunci kolom ukuran kecil
+        for (int i : new int[]{0, 1, 6}) {
             kolom.getColumn(i).setMinWidth(lebar[i]);
             kolom.getColumn(i).setMaxWidth(lebar[i]);
         }
         
         teksRenderer teks = new teksRenderer();
-        for (int i : new int[]{0,1,2,3,4})
+        for (int i : new int[]{0,1,2,3,4,5})
             kolom.getColumn(i).setCellRenderer(teks);
         kolom.getColumn(5).setCellRenderer(new statusRenderer());
-        aksiRenderer aksi = new aksiRenderer(FlowLayout.CENTER,"iconPanel/icon_Pensil.svg","iconPanel/icon_hapus.svg");
+        aksiRenderer aksi = new aksiRenderer(FlowLayout.LEFT,"iconPanel/icon_Pensil.svg","iconPanel/icon_hapus.svg");
         kolom.getColumn(6).setCellRenderer(aksi);
         
         tPengguna.getTableHeader().setDefaultRenderer(new headerRenderer(5));
@@ -212,6 +217,8 @@ public class panelPengguna extends javax.swing.JPanel {
 
         panelUtama.add(jPanel1, java.awt.BorderLayout.NORTH);
 
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+
         tPengguna.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -223,6 +230,12 @@ public class panelPengguna extends javax.swing.JPanel {
                 "No", "Foto", "NISN", "Nama", "Gender", "No telepon", "Status"
             }
         ));
+        tPengguna.setFillsViewportHeight(true);
+        tPengguna.setGridColor(new java.awt.Color(245, 247, 250));
+        tPengguna.setIntercellSpacing(new java.awt.Dimension(0, 1));
+        tPengguna.setRowHeight(52);
+        tPengguna.setSelectionBackground(new java.awt.Color(234, 242, 254));
+        tPengguna.setShowHorizontalLines(true);
         jScrollPane1.setViewportView(tPengguna);
 
         panelUtama.add(jScrollPane1, java.awt.BorderLayout.CENTER);
