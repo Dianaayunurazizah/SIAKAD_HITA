@@ -60,10 +60,6 @@ public class panelGuru extends javax.swing.JPanel {
     tabel.addColumn("Status");
     tabel.addColumn("");
 
-//    int no = 1;
-//    // nanti diganti: while (rs.next()) { tabel.addRow(new Object[]{no++, ...}); }
-//    tabel.addRow(new Object[]{no++, "", "199710012017081001", "M. Abdul Rohman Hamid, S.Pd.",
-//            "Laki - Laki", "085617281726", "Aktif", ""});
 
     tGuru.setModel(tabel);
     setupTabel();   // pasang lagi lebar kolom dan renderer, karena setModel menghapusnya
@@ -98,16 +94,7 @@ public class panelGuru extends javax.swing.JPanel {
         
         tGuru.getTableHeader().setDefaultRenderer(new headerRenderer(6));
     }
-    
-//    private void isiDataContoh() {
-//        DefaultTableModel model = (DefaultTableModel) tGuru.getModel();
-//        model.setRowCount(0);
-//        String foto = "/iconPanel/foto_guru.png";   // atau "" untuk lingkaran abu-abu
-//        model.addRow(new Object[]{1, foto, "199710012017081001", "M. Abdul Rohman Hamid, S.Pd.", "Laki - Laki", "085617281726", "Aktif", ""});
-//        model.addRow(new Object[]{2, foto, "200608182025082007", "Eka Futkiyana Sari, S.Pd.", "Perempuan", "085617281726", "Aktif", ""});
-//        model.addRow(new Object[]{3, foto, "200603232024082008", "Diana Ayu Nur Azizah, S.Pd.", "Perempuan", "085617281726", "Aktif", ""});
-//    }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -267,7 +254,6 @@ public class panelGuru extends javax.swing.JPanel {
         tGuru.setFocusable(false);
         tGuru.setGridColor(new java.awt.Color(245, 247, 250));
         tGuru.setIntercellSpacing(new java.awt.Dimension(0, 1));
-        tGuru.setRowHeight(52);
         tGuru.setSelectionBackground(new java.awt.Color(234, 242, 254));
         tGuru.setShowHorizontalLines(true);
         tGuru.getTableHeader().setReorderingAllowed(false);

@@ -121,6 +121,7 @@ public class panelGenerate extends javax.swing.JPanel {
 
         cFilter.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
         cFilter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cFilter.setPreferredSize(new java.awt.Dimension(93, 49));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -132,7 +133,7 @@ public class panelGenerate extends javax.swing.JPanel {
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(cFilter, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+            .addComponent(cFilter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         panelHeader.add(jPanel7, java.awt.BorderLayout.CENTER);

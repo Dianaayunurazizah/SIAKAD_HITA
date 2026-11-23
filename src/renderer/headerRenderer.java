@@ -24,10 +24,10 @@ public class headerRenderer extends DefaultTableCellRenderer {
         super.getTableCellRendererComponent(t, v, false, false, r, c);
         setBackground(new Color(0xF4F6FA));
         setForeground(new Color(0x111827));
-        setFont(new Font("Poppins", Font.PLAIN, 16));
+        setFont(new Font("Poppins", Font.PLAIN, 18));
         setHorizontalAlignment(c == kolomTengah ? CENTER : LEFT);
         setBorder(BorderFactory.createEmptyBorder(0, 8, 0, 0));
-        setPreferredSize(new Dimension(getPreferredSize().width, 44));
+        setPreferredSize(new Dimension(getPreferredSize().width, 60));
         return this;
     }
 }

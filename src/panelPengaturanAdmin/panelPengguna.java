@@ -58,9 +58,6 @@ public class panelPengguna extends javax.swing.JPanel {
         tabel.addColumn("Status");
         tabel.addColumn("Aksi");
 
-        tabel.addRow(new Object[]{1, "PGN2026001", "M. Abdul Rohman Hamit, S.Pd.", "hamid123@gmail.com", "Guru", "Aktif", ""});
-tabel.addRow(new Object[]{2, "PGN2026002", "Eka Futkiyana Sari, S.Pd.", "eka123@gmail.com", "Admin", "Aktif", ""});
-tabel.addRow(new Object[]{3, "PGN2026003", "Diana Ayu Nur Azizah, S.Pd.", "ana123@gmail.com", "Kepala Sekolah", "Aktif", ""});
         tPengguna.setModel(tabel);
         setupTabel();   
     }

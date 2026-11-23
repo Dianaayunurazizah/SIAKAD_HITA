@@ -195,7 +195,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="cFilter" alignment="0" pref="49" max="32767" attributes="0"/>
+                      <Component id="cFilter" alignment="0" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -212,6 +212,9 @@
                         <StringItem index="2" value="Item 3"/>
                         <StringItem index="3" value="Item 4"/>
                       </StringArray>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[93, 49]"/>
                     </Property>
                   </Properties>
                   <AuxValues>
