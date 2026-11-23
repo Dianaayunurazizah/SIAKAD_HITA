@@ -166,7 +166,7 @@ public class panelPenugasan extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(1035, 122));
 
         pHeader.setBackground(new java.awt.Color(255, 255, 255));
-        pHeader.setLayout(new java.awt.BorderLayout(16, 0));
+        pHeader.setLayout(new java.awt.BorderLayout());
 
         pCari.setBackground(new java.awt.Color(255, 255, 255));
         pCari.setMaximumSize(new java.awt.Dimension(353, 100));
@@ -200,19 +200,19 @@ public class panelPenugasan extends javax.swing.JPanel {
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setPreferredSize(new java.awt.Dimension(370, 49));
-        jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 16, 0));
 
         cKelas.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
         cKelas.setForeground(new java.awt.Color(141, 143, 155));
         cKelas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ganjil ", "Genap", " " }));
-        cKelas.setPreferredSize(new java.awt.Dimension(180, 40));
+        cKelas.setPreferredSize(new java.awt.Dimension(180, 49));
         jPanel10.add(cKelas);
 
         cStatus.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
         cStatus.setForeground(new java.awt.Color(141, 143, 155));
         cStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua Kelas", "VII-A", "VII-B", "VII-C", "VIII-A", "VIII-B", "VIIII-C", "IX-A", "IX-B", "IX-C" }));
         cStatus.setMinimumSize(new java.awt.Dimension(124, 31));
-        cStatus.setPreferredSize(new java.awt.Dimension(130, 40));
+        cStatus.setPreferredSize(new java.awt.Dimension(130, 49));
         jPanel10.add(cStatus);
 
         pHeader.add(jPanel10, java.awt.BorderLayout.CENTER);

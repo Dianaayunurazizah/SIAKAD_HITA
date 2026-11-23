@@ -142,9 +142,7 @@
                     </Property>
                   </Properties>
 
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout">
-                    <Property name="horizontalGap" type="int" value="16"/>
-                  </Layout>
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
                   <SubComponents>
                     <Container class="javax.swing.JPanel" name="pCari">
                       <Properties>
@@ -255,25 +253,9 @@
                         </Constraint>
                       </Constraints>
 
-                      <Layout>
-                        <DimensionLayout dim="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="cStatus" min="-2" pref="143" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                  <Component id="cStatus1" min="-2" pref="143" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                        </DimensionLayout>
-                        <DimensionLayout dim="1">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="cStatus" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cStatus1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                        </DimensionLayout>
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
+                        <Property name="horizontalGap" type="int" value="16"/>
+                        <Property name="verticalGap" type="int" value="0"/>
                       </Layout>
                       <SubComponents>
                         <Component class="javax.swing.JComboBox" name="cStatus">
@@ -293,7 +275,7 @@
                               </StringArray>
                             </Property>
                             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[72, 49]"/>
+                              <Dimension value="[145, 49]"/>
                             </Property>
                           </Properties>
                           <AuxValues>
@@ -314,7 +296,7 @@
                               </StringArray>
                             </Property>
                             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[72, 49]"/>
+                              <Dimension value="[160, 49]"/>
                             </Property>
                           </Properties>
                           <AuxValues>

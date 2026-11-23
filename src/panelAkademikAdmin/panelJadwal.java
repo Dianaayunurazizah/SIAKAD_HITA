@@ -157,7 +157,7 @@ public class panelJadwal extends javax.swing.JPanel {
         jPanel3.setPreferredSize(new java.awt.Dimension(1035, 98));
 
         pHeader.setBackground(new java.awt.Color(255, 255, 255));
-        pHeader.setLayout(new java.awt.BorderLayout(16, 0));
+        pHeader.setLayout(new java.awt.BorderLayout());
 
         pCari.setBackground(new java.awt.Color(255, 255, 255));
         pCari.setMaximumSize(new java.awt.Dimension(353, 100));
@@ -191,33 +191,19 @@ public class panelJadwal extends javax.swing.JPanel {
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setPreferredSize(new java.awt.Dimension(370, 49));
+        jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 16, 0));
 
         cStatus.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
         cStatus.setForeground(new java.awt.Color(141, 143, 155));
         cStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aktif", "Tidak Aktif", "Cuti", " " }));
-        cStatus.setPreferredSize(new java.awt.Dimension(72, 49));
+        cStatus.setPreferredSize(new java.awt.Dimension(145, 49));
+        jPanel10.add(cStatus);
 
         cStatus1.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
         cStatus1.setForeground(new java.awt.Color(141, 143, 155));
         cStatus1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua kelas" }));
-        cStatus1.setPreferredSize(new java.awt.Dimension(72, 49));
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addComponent(cStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(cStatus1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(cStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(cStatus1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        cStatus1.setPreferredSize(new java.awt.Dimension(160, 49));
+        jPanel10.add(cStatus1);
 
         pHeader.add(jPanel10, java.awt.BorderLayout.CENTER);
 
