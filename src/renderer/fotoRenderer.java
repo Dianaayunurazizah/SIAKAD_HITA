@@ -25,8 +25,8 @@ public class fotoRenderer extends DefaultTableCellRenderer{
     public Component getTableCellRendererComponent(JTable t, Object v,
             boolean sel, boolean foc, int r, int c) {
         super.getTableCellRendererComponent(t,"",sel,false,r,c);
-        setHorizontalAlignment(CENTER);
-        setBorder(BorderFactory.createEmptyBorder());
+        setHorizontalAlignment(LEFT);
+        setBorder(BorderFactory.createEmptyBorder(0, 8, 0, 0));
         String path = (v == null) ? "" : v.toString();
         setIcon(cache.computeIfAbsent(path, this::buatIcon));
         return this;    

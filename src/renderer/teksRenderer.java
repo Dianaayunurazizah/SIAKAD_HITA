@@ -19,7 +19,7 @@ public class teksRenderer extends DefaultTableCellRenderer {
     public Component getTableCellRendererComponent(JTable t, Object v,
             boolean sel, boolean foc, int r, int c) {
         super.getTableCellRendererComponent(t, v, sel, false, r, c);
-        setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        setBorder(BorderFactory.createEmptyBorder(0, 8, 0, 0));
         return this;
 
     }
