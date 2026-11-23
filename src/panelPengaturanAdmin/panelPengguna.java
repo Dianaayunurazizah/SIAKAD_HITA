@@ -4,6 +4,15 @@
  */
 package panelPengaturanAdmin;
 
+import com.formdev.flatlaf.extras.FlatSVGIcon;
+import com.formdev.flatlaf.ui.FlatLineBorder;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Insets;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+import renderer.*;
 /**
  *
  * @author ASUS
@@ -15,8 +24,75 @@ public class panelPengguna extends javax.swing.JPanel {
      */
     public panelPengguna() {
         initComponents();
+        iconPanel();
+        radiusPanel();
+        loadTabel();
     }
+    public void iconPanel() {
+        iconCari.setIcon(new FlatSVGIcon("iconPanel/icon_cari.svg", 28,28));
+        
+        tCari.setOpaque(false);
+        tCari.putClientProperty("JTextField.placeholderText", "Cari");
+        
+        btnTambah.setIcon(new FlatSVGIcon("iconPanel/icon_tambah.svg", 20, 20));
+        
+    }
+    
+    public void radiusPanel(){
+        pCari.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), new Color(0xA0A0A0), 1, 15));
+        panelUtama.putClientProperty("FlatLaf.style", "arc: 20");
+    }
+    
+    public void loadTabel() { //LETAK MANGGIL SQL DATA DAN NAMA HEADER TABLE
+        DefaultTableModel tabel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int r, int c) {
+                return false;
+            }
+        };
+        tabel.addColumn("No");
+        tabel.addColumn("ID Pengguna");
+        tabel.addColumn("Nama Pengguna");
+        tabel.addColumn("Email");
+        tabel.addColumn("Role");
+        tabel.addColumn("Status");
+        tabel.addColumn("Aksi");
 
+        tabel.addRow(new Object[]{1, "PGN2026001", "M. Abdul Rohman Hamit, S.Pd.", "hamid123@gmail.com", "Guru", "Aktif", ""});
+tabel.addRow(new Object[]{2, "PGN2026002", "Eka Futkiyana Sari, S.Pd.", "eka123@gmail.com", "Admin", "Aktif", ""});
+tabel.addRow(new Object[]{3, "PGN2026003", "Diana Ayu Nur Azizah, S.Pd.", "ana123@gmail.com", "Kepala Sekolah", "Aktif", ""});
+        tPengguna.setModel(tabel);
+        setupTabel();   
+    }
+    
+        private void setupTabel(){ //LETAK ATUR LEBAR KOLMOM DAN MANGGIL RENDERER
+        TableColumnModel kolom = tPengguna.getColumnModel();
+        
+        // font isi baris disamakan dengan header
+        tPengguna.setFont(new Font("Poppins", Font.PLAIN, 14));
+
+        // lebar kolom
+        int[] lebar = {50, 130, 250, 230, 100, 100, 100};
+        for (int i = 0; i < lebar.length; i++) {
+            kolom.getColumn(i).setPreferredWidth(lebar[i]);
+            kolom.getColumn(i).setResizable(false);
+        }
+
+        // mengunci kolom ukuran kecil
+        for (int i : new int[]{0, 1, 6}) {
+            kolom.getColumn(i).setMinWidth(lebar[i]);
+            kolom.getColumn(i).setMaxWidth(lebar[i]);
+        }
+        
+        teksRenderer teks = new teksRenderer();
+        for (int i : new int[]{0,1,2,3,4,5})
+            kolom.getColumn(i).setCellRenderer(teks);
+        kolom.getColumn(5).setCellRenderer(new statusRenderer());
+        aksiRenderer aksi = new aksiRenderer(FlowLayout.LEFT,"iconPanel/icon_Pensil.svg","iconPanel/icon_hapus.svg");
+        kolom.getColumn(6).setCellRenderer(aksi);
+        
+        tPengguna.getTableHeader().setDefaultRenderer(new headerRenderer(5));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,7 +115,7 @@ public class panelPengguna extends javax.swing.JPanel {
         cKelas = new javax.swing.JComboBox<>();
         cStatus = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tSiswa = new javax.swing.JTable();
+        tPengguna = new javax.swing.JTable();
 
         setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
         setLayout(new java.awt.BorderLayout());
@@ -55,7 +131,7 @@ public class panelPengguna extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(lblNamaPanel)
-                .addGap(0, 811, Short.MAX_VALUE))
+                .addGap(0, 859, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,11 +175,12 @@ public class panelPengguna extends javax.swing.JPanel {
         btnTambah.setBackground(new java.awt.Color(35, 127, 234));
         btnTambah.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
         btnTambah.setForeground(new java.awt.Color(255, 255, 255));
-        btnTambah.setText("Tambah Tahun Ajaran");
+        btnTambah.setText("Tambah Pengguna");
         btnTambah.setIconTextGap(8);
         btnTambah.setMaximumSize(new java.awt.Dimension(240, 56));
         btnTambah.setMinimumSize(new java.awt.Dimension(240, 56));
         btnTambah.setPreferredSize(new java.awt.Dimension(240, 56));
+        btnTambah.addActionListener(this::btnTambahActionPerformed);
         pHeader.add(btnTambah, java.awt.BorderLayout.EAST);
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
@@ -112,7 +189,7 @@ public class panelPengguna extends javax.swing.JPanel {
 
         cKelas.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
         cKelas.setForeground(new java.awt.Color(141, 143, 155));
-        cKelas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Guru", "Siswa", " " }));
+        cKelas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua role", "Admin", "Guru", "Siswa", " " }));
         cKelas.setPreferredSize(new java.awt.Dimension(180, 49));
         jPanel10.add(cKelas);
 
@@ -128,7 +205,7 @@ public class panelPengguna extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pHeader, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 939, Short.MAX_VALUE)
+            .addComponent(pHeader, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,7 +217,9 @@ public class panelPengguna extends javax.swing.JPanel {
 
         panelUtama.add(jPanel1, java.awt.BorderLayout.NORTH);
 
-        tSiswa.setModel(new javax.swing.table.DefaultTableModel(
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+
+        tPengguna.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -151,12 +230,22 @@ public class panelPengguna extends javax.swing.JPanel {
                 "No", "Foto", "NISN", "Nama", "Gender", "No telepon", "Status"
             }
         ));
-        jScrollPane1.setViewportView(tSiswa);
+        tPengguna.setFillsViewportHeight(true);
+        tPengguna.setGridColor(new java.awt.Color(245, 247, 250));
+        tPengguna.setIntercellSpacing(new java.awt.Dimension(0, 1));
+        tPengguna.setRowHeight(52);
+        tPengguna.setSelectionBackground(new java.awt.Color(234, 242, 254));
+        tPengguna.setShowHorizontalLines(true);
+        jScrollPane1.setViewportView(tPengguna);
 
         panelUtama.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         add(panelUtama, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTambahActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -173,6 +262,6 @@ public class panelPengguna extends javax.swing.JPanel {
     private javax.swing.JPanel pHeader;
     private javax.swing.JPanel panelUtama;
     private javax.swing.JTextField tCari;
-    private javax.swing.JTable tSiswa;
+    private javax.swing.JTable tPengguna;
     // End of variables declaration//GEN-END:variables
 }

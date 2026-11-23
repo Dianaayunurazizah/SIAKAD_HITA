@@ -4,7 +4,6 @@
  */
 package frame;
 
-import card.cardPenggunaHeader;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import custom.PanelCustom;
@@ -19,20 +18,16 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import panelMasterAdmin.dashboard;
-import panelMasterAdmin.panelGuru;
-import panelMasterAdmin.panelGenerate;
-import panelMasterAdmin.panelKelas;
-import panelMasterAdmin.panelMapel;
-import panelMasterAdmin.panelSiswa;
-import panelMasterAdmin.panelTahun;
+import card.*;
+import panelMasterAdmin.*;
+import panelAbsensi.*;
+import panelAkademikAdmin.*;
+import panelLaporanAdmin.*;
+import panelPengaturanAdmin.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JPopupMenu;
-import panelAbsensi.panelAbsensiQR;
-import panelAbsensi.panelPergantian;
-import panelAkademikAdmin.panelJadwal;
 
 /**
  *
@@ -48,7 +43,8 @@ public class frameAdmin extends javax.swing.JFrame {
             guru, kelas, siswa, mapel, tahun, generate,
             wali, penugasan, jadwal, kenaikan,
             absensiGuru, absensiQR, absensiMapel, pergantianGuru,
-            laporanGuru, laporanSiswa;
+            laporanGuru, laporanSiswa, 
+            profil, kalender, pengguna, log;
     private PanelCustom[] semuaMenu;
 
     private static class SubItem {
@@ -100,17 +96,11 @@ public class frameAdmin extends javax.swing.JFrame {
         pFotoProfil.putClientProperty("FlatLaf.style", "arc: 100");
         
         btnDashboard.putClientProperty("FlatLaf.style", "arc: 25");
-        btnMaster.putClientProperty("FlatLaf.style", "arc: 25");
-        btnGuru.putClientProperty("FlatLaf.style", "arc: 25");
-        btnKelas.putClientProperty("FlatLaf.style", "arc: 25");
-        btnSiswa.putClientProperty("FlatLaf.style", "arc: 25");
-        btnMapel.putClientProperty("FlatLaf.style", "arc: 25");
-        btnTahun.putClientProperty("FlatLaf.style", "arc: 25");
-        btnGenerate.putClientProperty("FlatLaf.style", "arc: 25");
         btnAkademik.putClientProperty("FlatLaf.style", "arc: 25");
         btnAbsensi.putClientProperty("FlatLaf.style", "arc: 25");
         btnLaporan.putClientProperty("FlatLaf.style", "arc: 25");
         btnPengaturan.putClientProperty("FlatLaf.style", "arc: 25");
+        btnLog.putClientProperty("FlatLaf.style", "arc: 25");
     }
 
     private void panelSidebar() {
@@ -228,16 +218,34 @@ public class frameAdmin extends javax.swing.JFrame {
         pengaturan.setArrowAktif(new FlatSVGIcon("iconSidebar/arrow_aktif.svg", 24, 24));
         pengaturan.setWarnaAktif(new Color(224, 231, 255));
         pengaturan.setTeksAktif(new Color(55, 48, 163));
+        
+        profil = new PanelCustom(iconProfil, txtProfil, btnProfil);
+        profil.setIconNormal(new FlatSVGIcon("iconSidebar/profil_normal.svg", 24, 24));
+        profil.setIconAktif(new FlatSVGIcon("iconSidebar/profil_aktif.svg", 24, 24));
+
+        kalender = new PanelCustom(iconKalender, txtKalender, btnKalender);
+        kalender.setIconNormal(new FlatSVGIcon("iconSidebar/kalender_normal.svg", 24, 24));
+        kalender.setIconAktif(new FlatSVGIcon("iconSidebar/kalender_aktif.svg", 24, 24));
+
+        pengguna = new PanelCustom(iconPengguna, txtPengguna, btnPengguna);
+        pengguna.setIconNormal(new FlatSVGIcon("iconSidebar/pengguna_normal.svg", 24, 24));
+        pengguna.setIconAktif(new FlatSVGIcon("iconSidebar/pengguna_aktif.svg", 24, 24));
+        
+        log = new PanelCustom(iconLog, txtLog, btnLog);
+        log.setIconNormal(new FlatSVGIcon("iconSidebar/log_normal.svg", 24, 24));
+        log.setIconAktif(new FlatSVGIcon("iconSidebar/log_aktif.svg", 24, 24));
 
         semuaMenu = new PanelCustom[]{
             dashboard, master, akademik, absensi, laporan, pengaturan,
             guru, kelas, siswa, mapel, tahun, generate,
             wali, penugasan, jadwal, kenaikan,
-            absensiGuru, absensiQR, absensiMapel, pergantianGuru
+            absensiGuru, absensiQR, absensiMapel, pergantianGuru,
+            laporanGuru, laporanSiswa, 
+            profil, kalender, pengguna, log
         };
 
         // daftar grup submenu, lalu sembunyikan semuanya
-        grupSub = new ArrayList<>(Arrays.asList(pMaster, pAkademik, pAbsensi, pLaporan));
+        grupSub = new ArrayList<>(Arrays.asList(pMaster, pAkademik, pAbsensi, pLaporan, pPengaturan));
         for (JPanel g : grupSub) {
             g.setVisible(false);
         }
@@ -261,6 +269,10 @@ public class frameAdmin extends javax.swing.JFrame {
 
         buatSub("laporan guru", laporan, laporanGuru, btnLaporanGuru);
         buatSub("laporan siswa", laporan, laporanSiswa, btnLaporanSiswa);
+        
+        buatSub("profil sekolah", pengaturan, profil, btnProfil);
+        buatSub("kalender", pengaturan, kalender, btnKalender);
+        buatSub("pengguna", pengaturan, pengguna, btnPengguna);
 
         aktifkanMenu(dashboard);
     }
@@ -505,18 +517,24 @@ public class frameAdmin extends javax.swing.JFrame {
         panelContainer.add(new panelTahun(), "tahun ajaran");
         panelContainer.add(new panelGenerate(), "generate");
         
-        panelContainer.add(new dashboard(), "wali kelas");
-        panelContainer.add(new dashboard(), "penugasan guru");
+        panelContainer.add(new panelWaliKelas(), "wali kelas");
+        panelContainer.add(new panelPenugasan(), "penugasan guru");
         panelContainer.add(new panelJadwal(), "jadwal");
-        panelContainer.add(new dashboard(), "kenaikan kelas");
+        panelContainer.add(new panelKenaikan(), "kenaikan kelas");
         
-        panelContainer.add(new dashboard(), "absensi guru");
+        panelContainer.add(new panelAbsensiGuru(), "absensi guru");
         panelContainer.add(new panelAbsensiQR(), "absensi qr");
-        panelContainer.add(new dashboard(), "absensi mapel");
+        panelContainer.add(new panelAbsensiMapel(), "absensi mapel");
         panelContainer.add(new panelPergantian(), "pergantian guru");
         
-        panelContainer.add(new dashboard(), "laporan guru");
-        panelContainer.add(new dashboard(), "laporan siswa");
+        panelContainer.add(new panelLapGuru(), "laporan guru");
+        panelContainer.add(new panelLapSiswa(), "laporan siswa");
+        
+        panelContainer.add(new panelProfilSekolah(), "profil sekolah");
+        panelContainer.add(new panelKalenderAkademik(), "kalender");
+        panelContainer.add(new panelPengguna(), "pengguna");
+        
+        panelContainer.add(new panelPengguna(), "log");
     }
 
     /**
@@ -626,6 +644,23 @@ public class frameAdmin extends javax.swing.JFrame {
         iconPengaturan = new javax.swing.JLabel();
         arrowPengaturan = new javax.swing.JLabel();
         txtPengaturan = new javax.swing.JLabel();
+        pPengaturan = new javax.swing.JPanel();
+        jPanel14 = new javax.swing.JPanel();
+        jPanel18 = new javax.swing.JPanel();
+        jPanel19 = new javax.swing.JPanel();
+        btnProfil = new javax.swing.JPanel();
+        iconProfil = new javax.swing.JLabel();
+        txtProfil = new javax.swing.JLabel();
+        btnKalender = new javax.swing.JPanel();
+        iconKalender = new javax.swing.JLabel();
+        txtKalender = new javax.swing.JLabel();
+        btnPengguna = new javax.swing.JPanel();
+        iconPengguna = new javax.swing.JLabel();
+        txtPengguna = new javax.swing.JLabel();
+        btnLog = new javax.swing.JPanel();
+        iconLog = new javax.swing.JLabel();
+        arrowPengaturan1 = new javax.swing.JLabel();
+        txtLog = new javax.swing.JLabel();
         panelContainer = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1431,6 +1466,150 @@ public class frameAdmin extends javax.swing.JFrame {
 
         panelMenu.add(btnPengaturan);
 
+        pPengaturan.setBackground(new java.awt.Color(255, 255, 255));
+        pPengaturan.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 1, 8, 1));
+        pPengaturan.setMaximumSize(new java.awt.Dimension(250, 181));
+        pPengaturan.setPreferredSize(new java.awt.Dimension(250, 181));
+        pPengaturan.setLayout(new java.awt.BorderLayout());
+
+        jPanel14.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel14.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 24, 1, 14));
+        jPanel14.setPreferredSize(new java.awt.Dimension(40, 330));
+        jPanel14.setLayout(new java.awt.BorderLayout());
+
+        jPanel18.setBackground(new java.awt.Color(204, 204, 204));
+
+        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+        jPanel18.setLayout(jPanel18Layout);
+        jPanel18Layout.setHorizontalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel18Layout.setVerticalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 163, Short.MAX_VALUE)
+        );
+
+        jPanel14.add(jPanel18, java.awt.BorderLayout.CENTER);
+
+        pPengaturan.add(jPanel14, java.awt.BorderLayout.LINE_START);
+
+        jPanel19.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel19.setLayout(new javax.swing.BoxLayout(jPanel19, javax.swing.BoxLayout.Y_AXIS));
+
+        btnProfil.setBackground(new java.awt.Color(255, 255, 255));
+        btnProfil.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 8, 8, 8));
+        btnProfil.setMaximumSize(new java.awt.Dimension(210, 55));
+        btnProfil.setMinimumSize(new java.awt.Dimension(210, 55));
+        btnProfil.setPreferredSize(new java.awt.Dimension(210, 55));
+        btnProfil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnProfilMouseClicked(evt);
+            }
+        });
+        btnProfil.setLayout(new java.awt.BorderLayout(8, 0));
+
+        iconProfil.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconProfil.setInheritsPopupMenu(false);
+        iconProfil.setMaximumSize(new java.awt.Dimension(37, 37));
+        iconProfil.setMinimumSize(new java.awt.Dimension(37, 37));
+        iconProfil.setPreferredSize(new java.awt.Dimension(37, 37));
+        btnProfil.add(iconProfil, java.awt.BorderLayout.LINE_START);
+
+        txtProfil.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        txtProfil.setForeground(new java.awt.Color(124, 126, 137));
+        txtProfil.setText("Profil Sekolah");
+        btnProfil.add(txtProfil, java.awt.BorderLayout.CENTER);
+
+        jPanel19.add(btnProfil);
+
+        btnKalender.setBackground(new java.awt.Color(255, 255, 255));
+        btnKalender.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 8, 8, 8));
+        btnKalender.setMaximumSize(new java.awt.Dimension(210, 55));
+        btnKalender.setMinimumSize(new java.awt.Dimension(210, 55));
+        btnKalender.setPreferredSize(new java.awt.Dimension(210, 55));
+        btnKalender.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnKalenderMouseClicked(evt);
+            }
+        });
+        btnKalender.setLayout(new java.awt.BorderLayout(8, 0));
+
+        iconKalender.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconKalender.setInheritsPopupMenu(false);
+        iconKalender.setMaximumSize(new java.awt.Dimension(37, 37));
+        iconKalender.setMinimumSize(new java.awt.Dimension(37, 37));
+        iconKalender.setPreferredSize(new java.awt.Dimension(37, 37));
+        btnKalender.add(iconKalender, java.awt.BorderLayout.LINE_START);
+
+        txtKalender.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        txtKalender.setForeground(new java.awt.Color(124, 126, 137));
+        txtKalender.setText("Kalender");
+        btnKalender.add(txtKalender, java.awt.BorderLayout.CENTER);
+
+        jPanel19.add(btnKalender);
+
+        btnPengguna.setBackground(new java.awt.Color(255, 255, 255));
+        btnPengguna.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 8, 8, 8));
+        btnPengguna.setMaximumSize(new java.awt.Dimension(210, 55));
+        btnPengguna.setMinimumSize(new java.awt.Dimension(210, 55));
+        btnPengguna.setPreferredSize(new java.awt.Dimension(210, 55));
+        btnPengguna.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPenggunaMouseClicked(evt);
+            }
+        });
+        btnPengguna.setLayout(new java.awt.BorderLayout(8, 0));
+
+        iconPengguna.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconPengguna.setInheritsPopupMenu(false);
+        iconPengguna.setMaximumSize(new java.awt.Dimension(37, 37));
+        iconPengguna.setMinimumSize(new java.awt.Dimension(37, 37));
+        iconPengguna.setPreferredSize(new java.awt.Dimension(37, 37));
+        btnPengguna.add(iconPengguna, java.awt.BorderLayout.LINE_START);
+
+        txtPengguna.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        txtPengguna.setForeground(new java.awt.Color(124, 126, 137));
+        txtPengguna.setText("Pengguna");
+        btnPengguna.add(txtPengguna, java.awt.BorderLayout.CENTER);
+
+        jPanel19.add(btnPengguna);
+
+        pPengaturan.add(jPanel19, java.awt.BorderLayout.CENTER);
+
+        panelMenu.add(pPengaturan);
+
+        btnLog.setBackground(new java.awt.Color(255, 255, 255));
+        btnLog.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 8, 8, 8));
+        btnLog.setMaximumSize(new java.awt.Dimension(32767, 55));
+        btnLog.setMinimumSize(new java.awt.Dimension(100, 55));
+        btnLog.setPreferredSize(new java.awt.Dimension(250, 55));
+        btnLog.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLogMouseClicked(evt);
+            }
+        });
+        btnLog.setLayout(new java.awt.BorderLayout(8, 0));
+
+        iconLog.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconLog.setMaximumSize(new java.awt.Dimension(37, 37));
+        iconLog.setMinimumSize(new java.awt.Dimension(37, 37));
+        iconLog.setPreferredSize(new java.awt.Dimension(37, 37));
+        btnLog.add(iconLog, java.awt.BorderLayout.LINE_START);
+
+        arrowPengaturan1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        arrowPengaturan1.setMaximumSize(new java.awt.Dimension(37, 37));
+        arrowPengaturan1.setMinimumSize(new java.awt.Dimension(37, 37));
+        arrowPengaturan1.setPreferredSize(new java.awt.Dimension(37, 37));
+        btnLog.add(arrowPengaturan1, java.awt.BorderLayout.LINE_END);
+
+        txtLog.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        txtLog.setForeground(new java.awt.Color(124, 126, 137));
+        txtLog.setText("Log Aktivitas");
+        btnLog.add(txtLog, java.awt.BorderLayout.CENTER);
+
+        panelMenu.add(btnLog);
+
         scrollSidebar.setViewportView(panelMenu);
 
         getContentPane().add(scrollSidebar, java.awt.BorderLayout.LINE_START);
@@ -1474,7 +1653,8 @@ public class frameAdmin extends javax.swing.JFrame {
 
     private void btnPengaturanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPengaturanMouseClicked
         // TODO add your handling code here:
-        aktifkanMenu(pengaturan);
+        toggleSub(pPengaturan, pengaturan, "profil sekolah");
+        cardLayout.show(panelContainer, "profil sekolah");
     }//GEN-LAST:event_btnPengaturanMouseClicked
 
     private void btnArrowProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArrowProfilActionPerformed
@@ -1562,6 +1742,27 @@ public class frameAdmin extends javax.swing.JFrame {
         cardLayout.show(panelContainer, "laporan siswa");
     }//GEN-LAST:event_btnLaporanSiswaMouseClicked
 
+    private void btnProfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProfilMouseClicked
+        // TODO add your handling code here:
+        cardLayout.show(panelContainer, "profil sekolah");
+    }//GEN-LAST:event_btnProfilMouseClicked
+
+    private void btnKalenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKalenderMouseClicked
+        // TODO add your handling code here:
+        cardLayout.show(panelContainer, "kalender");
+    }//GEN-LAST:event_btnKalenderMouseClicked
+
+    private void btnPenggunaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPenggunaMouseClicked
+        // TODO add your handling code here:
+        cardLayout.show(panelContainer, "pengguna");
+    }//GEN-LAST:event_btnPenggunaMouseClicked
+
+    private void btnLogMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogMouseClicked
+        // TODO add your handling code here:
+        aktifkanMenu(log);
+        cardLayout.show(panelContainer, "log");
+    }//GEN-LAST:event_btnLogMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1593,6 +1794,7 @@ public class frameAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel arrowLaporan;
     private javax.swing.JLabel arrowMaster;
     private javax.swing.JLabel arrowPengaturan;
+    private javax.swing.JLabel arrowPengaturan1;
     private javax.swing.JPanel btnAbsensi;
     private javax.swing.JPanel btnAbsensiGuru;
     private javax.swing.JPanel btnAbsensiMapel;
@@ -1602,16 +1804,20 @@ public class frameAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel btnGenerate;
     private javax.swing.JPanel btnGuru;
     private javax.swing.JPanel btnJadwal;
+    private javax.swing.JPanel btnKalender;
     private javax.swing.JPanel btnKelas;
     private javax.swing.JPanel btnKenaikan;
     private javax.swing.JPanel btnLaporan;
     private javax.swing.JPanel btnLaporanGuru;
     private javax.swing.JPanel btnLaporanSiswa;
+    private javax.swing.JPanel btnLog;
     private javax.swing.JPanel btnMapel;
     private javax.swing.JPanel btnMaster;
     private javax.swing.JPanel btnPengaturan;
+    private javax.swing.JPanel btnPengguna;
     private javax.swing.JPanel btnPenugasan;
     private javax.swing.JPanel btnPergantianGuru;
+    private javax.swing.JPanel btnProfil;
     private javax.swing.JPanel btnQR;
     private javax.swing.JPanel btnSiswa;
     private javax.swing.JPanel btnTahun;
@@ -1625,17 +1831,21 @@ public class frameAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel iconGenerate;
     private javax.swing.JLabel iconGuru;
     private javax.swing.JLabel iconJadwal;
+    private javax.swing.JLabel iconKalender;
     private javax.swing.JLabel iconKelas;
     private javax.swing.JLabel iconKenaikan;
     private javax.swing.JLabel iconLaporan;
     private javax.swing.JLabel iconLaporanGuru;
     private javax.swing.JLabel iconLaporanSiswa;
+    private javax.swing.JLabel iconLog;
     private javax.swing.JLabel iconLogoAplikasi;
     private javax.swing.JLabel iconMapel;
     private javax.swing.JLabel iconMaster;
     private javax.swing.JLabel iconPengaturan;
+    private javax.swing.JLabel iconPengguna;
     private javax.swing.JLabel iconPenugasan;
     private javax.swing.JLabel iconPergantianGuru;
+    private javax.swing.JLabel iconProfil;
     private javax.swing.JLabel iconQR;
     private javax.swing.JLabel iconSiswa;
     private javax.swing.JLabel iconTahun;
@@ -1643,9 +1853,12 @@ public class frameAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1660,6 +1873,7 @@ public class frameAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel pFotoProfil;
     private javax.swing.JPanel pLaporan;
     private javax.swing.JPanel pMaster;
+    private javax.swing.JPanel pPengaturan;
     private javax.swing.JPanel panelContainer;
     private javax.swing.JPanel panelHeader;
     private javax.swing.JPanel panelMenu;
@@ -1673,16 +1887,20 @@ public class frameAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel txtGenerate;
     private javax.swing.JLabel txtGuru;
     private javax.swing.JLabel txtJadwal;
+    private javax.swing.JLabel txtKalender;
     private javax.swing.JLabel txtKelas;
     private javax.swing.JLabel txtKenaikan;
     private javax.swing.JLabel txtLaporan;
     private javax.swing.JLabel txtLaporanGuru;
     private javax.swing.JLabel txtLaporanSiswa;
+    private javax.swing.JLabel txtLog;
     private javax.swing.JLabel txtMapel;
     private javax.swing.JLabel txtMaster;
     private javax.swing.JLabel txtPengaturan;
+    private javax.swing.JLabel txtPengguna;
     private javax.swing.JLabel txtPenugasan;
     private javax.swing.JLabel txtPergantianGuru;
+    private javax.swing.JLabel txtProfil;
     private javax.swing.JLabel txtQR;
     private javax.swing.JLabel txtSiswa;
     private javax.swing.JLabel txtTahun;

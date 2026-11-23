@@ -7,8 +7,12 @@ package panelAbsensi;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+import renderer.*;
 
 /**
  *
@@ -23,7 +27,7 @@ public class panelPergantian extends javax.swing.JPanel {
         initComponents();
         iconPanel();
         radiusPanel();
-        loadTable();
+        loadTabel();
         aturTanggal();
     }
     
@@ -42,19 +46,26 @@ public class panelPergantian extends javax.swing.JPanel {
         panelUtama.putClientProperty("FlatLaf.style", "arc: 20");
     }
 
-    private void loadTable() {
-        DefaultTableModel tabel = new DefaultTableModel();
+    public void loadTabel() {
+        DefaultTableModel tabel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int r, int c) {
+                return false;
+            }
+        };
         tabel.addColumn("No");
         tabel.addColumn("ID Pergantian");
         tabel.addColumn("Tanggal");
         tabel.addColumn("Jadwal");
         tabel.addColumn("Guru Asli");
         tabel.addColumn("Guru Pengganti");
-        tabel.addColumn("Keterangan");
+        tabel.addColumn("Status");
         tabel.addColumn("Aksi");
-
-        tSiswa.setModel(tabel);
+        
+        tPergantian.setModel(tabel);
+        setupTabel();   // pasang lagi lebar kolom dan renderer, karena setModel menghapusnya
     }
+    
      private void aturTanggal() {
          tTanggal.setBorder(new FlatLineBorder(
                   new java.awt.Insets(0, 12, 0, 8),
@@ -66,7 +77,34 @@ public class panelPergantian extends javax.swing.JPanel {
          tTanggal.getCalendarButton().setContentAreaFilled(false);
          tTanggal.getCalendarButton().setOpaque(false);
      }
+    private void setupTabel(){
+        TableColumnModel kolom = tPergantian.getColumnModel();
+        
+        // font isi baris disamakan dengan header
+        tPergantian.setFont(new Font("Poppins", Font.PLAIN, 14));
 
+        // lebar kolom
+        int[] lebar = {50, 120, 80, 100, 250, 250, 100, 80};
+        for (int i = 0; i < lebar.length; i++) {
+            kolom.getColumn(i).setPreferredWidth(lebar[i]);
+            kolom.getColumn(i).setResizable(false);
+        }
+
+        // kolom kecil dikunci supaya tidak ikut melebar
+        for (int i : new int[]{0, 1, 7}) {
+            kolom.getColumn(i).setMinWidth(lebar[i]);
+            kolom.getColumn(i).setMaxWidth(lebar[i]);
+        }
+        
+        teksRenderer teks = new teksRenderer();
+        for (int i : new int[]{0,1,2,3,4,5})
+            kolom.getColumn(i).setCellRenderer(teks);
+        kolom.getColumn(6).setCellRenderer(new statusRenderer());
+        aksiRenderer aksi = new aksiRenderer(FlowLayout.LEFT,"iconPanel/icon_Pensil.svg","iconPanel/icon_hapus.svg" );
+        kolom.getColumn(7).setCellRenderer(aksi);
+        
+        tPergantian.getTableHeader().setDefaultRenderer(new headerRenderer(6));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -88,7 +126,7 @@ public class panelPergantian extends javax.swing.JPanel {
         jPanel10 = new javax.swing.JPanel();
         tTanggal = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tSiswa = new javax.swing.JTable();
+        tPergantian = new javax.swing.JTable();
 
         setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
         setLayout(new java.awt.BorderLayout());
@@ -186,7 +224,9 @@ public class panelPergantian extends javax.swing.JPanel {
 
         panelUtama.add(jPanel1, java.awt.BorderLayout.NORTH);
 
-        tSiswa.setModel(new javax.swing.table.DefaultTableModel(
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+
+        tPergantian.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -197,7 +237,13 @@ public class panelPergantian extends javax.swing.JPanel {
                 "No", "Foto", "NISN", "Nama", "Gender", "No telepon", "Status"
             }
         ));
-        jScrollPane1.setViewportView(tSiswa);
+        tPergantian.setFillsViewportHeight(true);
+        tPergantian.setGridColor(new java.awt.Color(245, 247, 250));
+        tPergantian.setIntercellSpacing(new java.awt.Dimension(0, 1));
+        tPergantian.setRowHeight(52);
+        tPergantian.setSelectionBackground(new java.awt.Color(234, 242, 254));
+        tPergantian.setShowHorizontalLines(true);
+        jScrollPane1.setViewportView(tPergantian);
 
         panelUtama.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -221,7 +267,7 @@ public class panelPergantian extends javax.swing.JPanel {
     private javax.swing.JPanel pHeader;
     private javax.swing.JPanel panelUtama;
     private javax.swing.JTextField tCari;
-    private javax.swing.JTable tSiswa;
+    private javax.swing.JTable tPergantian;
     private com.toedter.calendar.JDateChooser tTanggal;
     // End of variables declaration//GEN-END:variables
 }

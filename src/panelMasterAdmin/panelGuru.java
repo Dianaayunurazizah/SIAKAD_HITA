@@ -9,6 +9,7 @@ import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
@@ -27,7 +28,7 @@ public class panelGuru extends javax.swing.JPanel {
     public panelGuru() {
         initComponents();
         iconPanel();
-        setupTabel();
+        loadTabel();
         radiusPanel();
     }
     
@@ -46,8 +47,46 @@ public class panelGuru extends javax.swing.JPanel {
         panelUtama.putClientProperty("FlatLaf.style", "arc: 20");
     }
     
+    public void loadTabel(){
+    DefaultTableModel tabel = new DefaultTableModel() {
+        @Override public boolean isCellEditable(int r, int c) { return false; }
+    };
+    tabel.addColumn("No");
+    tabel.addColumn("Foto");
+    tabel.addColumn("NIP");
+    tabel.addColumn("Nama Guru");
+    tabel.addColumn("Jenis Kelamin");
+    tabel.addColumn("No Telepon");
+    tabel.addColumn("Status");
+    tabel.addColumn("");
+
+//    int no = 1;
+//    // nanti diganti: while (rs.next()) { tabel.addRow(new Object[]{no++, ...}); }
+//    tabel.addRow(new Object[]{no++, "", "199710012017081001", "M. Abdul Rohman Hamid, S.Pd.",
+//            "Laki - Laki", "085617281726", "Aktif", ""});
+
+    tGuru.setModel(tabel);
+    setupTabel();   // pasang lagi lebar kolom dan renderer, karena setModel menghapusnya
+    }  
+    
     private void setupTabel(){
         TableColumnModel kolom = tGuru.getColumnModel();
+        
+        // font isi baris disamakan dengan header
+        tGuru.setFont(new Font("Poppins", Font.PLAIN, 14));
+
+        // lebar kolom
+        int[] lebar = {50, 70, 180, 260, 140, 150, 120, 40};
+        for (int i = 0; i < lebar.length; i++) {
+            kolom.getColumn(i).setPreferredWidth(lebar[i]);
+            kolom.getColumn(i).setResizable(false);
+        }
+
+        // kolom kecil dikunci supaya tidak ikut melebar
+        for (int i : new int[]{0, 1, 7}) {
+            kolom.getColumn(i).setMinWidth(lebar[i]);
+            kolom.getColumn(i).setMaxWidth(lebar[i]);
+        }
         
         teksRenderer teks = new teksRenderer();
         for (int i : new int[]{0,2,3,4,5})

@@ -186,6 +186,8 @@ public class panelMapel extends javax.swing.JPanel {
 
         panelUtama.add(jPanel1, java.awt.BorderLayout.NORTH);
 
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+
         tGuru.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -197,6 +199,12 @@ public class panelMapel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tGuru.setFillsViewportHeight(true);
+        tGuru.setFocusable(false);
+        tGuru.setGridColor(new java.awt.Color(245, 247, 250));
+        tGuru.setIntercellSpacing(new java.awt.Dimension(0, 1));
+        tGuru.setRowHeight(52);
+        tGuru.setShowHorizontalLines(true);
         jScrollPane1.setViewportView(tGuru);
 
         panelUtama.add(jScrollPane1, java.awt.BorderLayout.CENTER);
