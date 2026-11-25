@@ -26,19 +26,119 @@ public class panelAbsensiMapel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1083, Short.MAX_VALUE)
+        jPanel2 = new javax.swing.JPanel();
+        lSelamatNama = new javax.swing.JLabel();
+        panelUtama = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        containerQR = new javax.swing.JPanel();
+
+        setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
+        setLayout(new java.awt.BorderLayout());
+
+        jPanel2.setPreferredSize(new java.awt.Dimension(1083, 89));
+
+        lSelamatNama.setFont(new java.awt.Font("Poppins SemiBold", 0, 28)); // NOI18N
+        lSelamatNama.setText("Absensi Mapel");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(lSelamatNama)
+                .addGap(0, 977, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 693, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(lSelamatNama)
+                .addGap(0, 46, Short.MAX_VALUE))
         );
+
+        add(jPanel2, java.awt.BorderLayout.PAGE_START);
+
+        panelUtama.setBackground(new java.awt.Color(255, 255, 255));
+        panelUtama.setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
+        panelUtama.setLayout(new java.awt.BorderLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 24, 1, 24));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1035, 98));
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setPreferredSize(new java.awt.Dimension(470, 42));
+        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 5));
+
+        jButton1.setForeground(new java.awt.Color(141, 143, 155));
+        jButton1.setText("Semua");
+        jButton1.setPreferredSize(new java.awt.Dimension(126, 36));
+        jButton1.setRequestFocusEnabled(false);
+        jPanel6.add(jButton1);
+
+        jButton3.setForeground(new java.awt.Color(141, 143, 155));
+        jButton3.setText("QR Code");
+        jButton3.setPreferredSize(new java.awt.Dimension(126, 36));
+        jPanel6.add(jButton3);
+
+        jButton4.setForeground(new java.awt.Color(141, 143, 155));
+        jButton4.setText("Manual");
+        jButton4.setPreferredSize(new java.awt.Dimension(126, 36));
+        jPanel6.add(jButton4);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 1077, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 46, Short.MAX_VALUE))
+        );
+
+        panelUtama.add(jPanel1, java.awt.BorderLayout.NORTH);
+
+        containerQR.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout containerQRLayout = new javax.swing.GroupLayout(containerQR);
+        containerQR.setLayout(containerQRLayout);
+        containerQRLayout.setHorizontalGroup(
+            containerQRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1125, Short.MAX_VALUE)
+        );
+        containerQRLayout.setVerticalGroup(
+            containerQRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 420, Short.MAX_VALUE)
+        );
+
+        jScrollPane2.setViewportView(containerQR);
+
+        panelUtama.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+
+        add(panelUtama, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel containerQR;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lSelamatNama;
+    private javax.swing.JPanel panelUtama;
     // End of variables declaration//GEN-END:variables
 }

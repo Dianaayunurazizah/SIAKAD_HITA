@@ -191,7 +191,7 @@ public class panelJadwal extends javax.swing.JPanel {
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setPreferredSize(new java.awt.Dimension(370, 49));
-        jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 16, 0));
+        jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 16, 0));
 
         cStatus.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
         cStatus.setForeground(new java.awt.Color(141, 143, 155));
