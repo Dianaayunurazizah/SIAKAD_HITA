@@ -27,70 +27,8 @@ public class panelWaliKelas extends javax.swing.JPanel {
      */
     public panelWaliKelas() {
         initComponents();
-        iconPanel();
-        radiusPanel();
-        loadTabel();
-    }
-    public void iconPanel() {
-        iconCari.setIcon(new FlatSVGIcon("iconPanel/icon_cari.svg", 28, 28));
-
-        tCari.setOpaque(false);
-        tCari.putClientProperty("JTextField.placeholderText", "Cari");
-
-        btnTambah.setIcon(new FlatSVGIcon("iconPanel/icon_tambah.svg", 20, 20));
-    }
-    
-    public void radiusPanel(){
-        pCari.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), new Color(0xA0A0A0), 1, 20));
-        panelUtama.putClientProperty("FlatLaf.style", "arc: 20");
-    }
-    
-    public void loadTabel() { //LETAK MANGGIL SQL DATA DAN NAMA HEADER TABLE
-        DefaultTableModel tabel = new DefaultTableModel() {
-            @Override
-            public boolean isCellEditable(int r, int c) {
-                return false;
-            }
-        };
-        tabel.addColumn("No");
-        tabel.addColumn("ID Wali");
-        tabel.addColumn("Kelas");
-        tabel.addColumn("Wali Kelas");
-        tabel.addColumn("Tahun Ajaran");
-        tabel.addColumn("Akksi");
-        
-        tWali.setModel(tabel);
-        setupTabel();
     }
 
-    private void setupTabel() { //LETAK ATUR LEBAR KOLMOM DAN MANGGIL RENDERER
-        TableColumnModel kolom = tWali.getColumnModel();
-
-        // font isi baris disamakan dengan header
-        tWali.setFont(new Font("Poppins", Font.PLAIN, 16));
-
-        // lebar kolom
-        int[] lebar = {50,200,120,260,200,120};
-        for (int i = 0; i < lebar.length; i++) {
-            kolom.getColumn(i).setPreferredWidth(lebar[i]);
-            kolom.getColumn(i).setResizable(false);
-        }
-
-        // mengunci kolom ukuran kecil
-        for (int i : new int[]{0, 5}) {
-            kolom.getColumn(i).setMinWidth(lebar[i]);
-            kolom.getColumn(i).setMaxWidth(lebar[i]);
-        }
-
-        teksRenderer teks = new teksRenderer();
-        for (int i : new int[]{0,1,2,3,4}) {
-            kolom.getColumn(i).setCellRenderer(teks);
-        }
-        aksiRenderer aksi = new aksiRenderer(FlowLayout.LEFT, "iconPanel/icon_Pensil.svg", "iconPanel/icon_hapus.svg");
-        kolom.getColumn(5).setCellRenderer(aksi);
-
-        tWali.getTableHeader().setDefaultRenderer(new headerRenderer(-1));
-    }    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -101,31 +39,24 @@ public class panelWaliKelas extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lSelamatNama = new javax.swing.JLabel();
         panelUtama = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        pHeader = new javax.swing.JPanel();
-        pCari = new javax.swing.JPanel();
-        iconCari = new javax.swing.JLabel();
-        tCari = new javax.swing.JTextField();
-        btnTambah = new javax.swing.JButton();
-        jPanel10 = new javax.swing.JPanel();
-        cStatus = new javax.swing.JComboBox<>();
-        cStatus1 = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tWali = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        containerQR = new javax.swing.JPanel();
 
+        setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
         setLayout(new java.awt.BorderLayout());
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
-        jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setPreferredSize(new java.awt.Dimension(1083, 89));
 
         lSelamatNama.setFont(new java.awt.Font("Poppins SemiBold", 0, 28)); // NOI18N
-        lSelamatNama.setText("Data Jadwal");
+        lSelamatNama.setText("Absensi Mapel");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -133,7 +64,7 @@ public class panelWaliKelas extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(lSelamatNama)
-                .addGap(0, 902, Short.MAX_VALUE))
+                .addGap(0, 977, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,146 +73,85 @@ public class panelWaliKelas extends javax.swing.JPanel {
                 .addGap(0, 46, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
+        add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
         panelUtama.setBackground(new java.awt.Color(255, 255, 255));
         panelUtama.setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
         panelUtama.setLayout(new java.awt.BorderLayout());
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 24, 1, 24));
-        jPanel3.setPreferredSize(new java.awt.Dimension(1035, 98));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 24, 1, 24));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1035, 98));
 
-        pHeader.setBackground(new java.awt.Color(255, 255, 255));
-        pHeader.setLayout(new java.awt.BorderLayout(16, 0));
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setPreferredSize(new java.awt.Dimension(470, 42));
+        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 5));
 
-        pCari.setBackground(new java.awt.Color(255, 255, 255));
-        pCari.setMaximumSize(new java.awt.Dimension(353, 100));
-        pCari.setMinimumSize(new java.awt.Dimension(353, 100));
-        pCari.setPreferredSize(new java.awt.Dimension(353, 100));
-        pCari.setLayout(new java.awt.BorderLayout());
+        jButton1.setForeground(new java.awt.Color(141, 143, 155));
+        jButton1.setText("Semua");
+        jButton1.setPreferredSize(new java.awt.Dimension(126, 36));
+        jButton1.setRequestFocusEnabled(false);
+        jPanel6.add(jButton1);
 
-        iconCari.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        iconCari.setMaximumSize(new java.awt.Dimension(44, 37));
-        iconCari.setMinimumSize(new java.awt.Dimension(37, 37));
-        iconCari.setPreferredSize(new java.awt.Dimension(44, 37));
-        pCari.add(iconCari, java.awt.BorderLayout.LINE_START);
+        jButton3.setForeground(new java.awt.Color(141, 143, 155));
+        jButton3.setText("QR Code");
+        jButton3.setPreferredSize(new java.awt.Dimension(126, 36));
+        jPanel6.add(jButton3);
 
-        tCari.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
-        tCari.setBorder(null);
-        tCari.setPreferredSize(new java.awt.Dimension(385, 49));
-        pCari.add(tCari, java.awt.BorderLayout.CENTER);
+        jButton4.setForeground(new java.awt.Color(141, 143, 155));
+        jButton4.setText("Manual");
+        jButton4.setPreferredSize(new java.awt.Dimension(126, 36));
+        jPanel6.add(jButton4);
 
-        pHeader.add(pCari, java.awt.BorderLayout.WEST);
-
-        btnTambah.setBackground(new java.awt.Color(35, 127, 234));
-        btnTambah.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
-        btnTambah.setForeground(new java.awt.Color(255, 255, 255));
-        btnTambah.setText("Tambah  Jadwal");
-        btnTambah.setIconTextGap(8);
-        btnTambah.setMaximumSize(new java.awt.Dimension(216, 49));
-        btnTambah.setMinimumSize(new java.awt.Dimension(216, 49));
-        btnTambah.setPreferredSize(new java.awt.Dimension(216, 49));
-        btnTambah.addActionListener(this::btnTambahActionPerformed);
-        pHeader.add(btnTambah, java.awt.BorderLayout.EAST);
-
-        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel10.setPreferredSize(new java.awt.Dimension(370, 49));
-
-        cStatus.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
-        cStatus.setForeground(new java.awt.Color(141, 143, 155));
-        cStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua Kelas", "VII", "VIII", "IX", " " }));
-        cStatus.setPreferredSize(new java.awt.Dimension(72, 49));
-
-        cStatus1.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
-        cStatus1.setForeground(new java.awt.Color(141, 143, 155));
-        cStatus1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semester", "Ganjil", "Genap" }));
-        cStatus1.setPreferredSize(new java.awt.Dimension(72, 49));
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addComponent(cStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cStatus1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 18, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 1077, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(cStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(cStatus1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 46, Short.MAX_VALUE))
         );
 
-        pHeader.add(jPanel10, java.awt.BorderLayout.CENTER);
+        panelUtama.add(jPanel1, java.awt.BorderLayout.NORTH);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pHeader, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)
+        containerQR.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout containerQRLayout = new javax.swing.GroupLayout(containerQR);
+        containerQR.setLayout(containerQRLayout);
+        containerQRLayout.setHorizontalGroup(
+            containerQRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1183, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(pHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+        containerQRLayout.setVerticalGroup(
+            containerQRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 456, Short.MAX_VALUE)
         );
 
-        panelUtama.add(jPanel3, java.awt.BorderLayout.NORTH);
+        jScrollPane2.setViewportView(containerQR);
 
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        panelUtama.add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
-        tWali.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        tWali.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        tWali.setFillsViewportHeight(true);
-        tWali.setFocusable(false);
-        tWali.setGridColor(new java.awt.Color(245, 247, 250));
-        tWali.setIntercellSpacing(new java.awt.Dimension(0, 1));
-        tWali.setRowHeight(52);
-        tWali.setShowHorizontalLines(true);
-        jScrollPane1.setViewportView(tWali);
-
-        panelUtama.add(jScrollPane1, java.awt.BorderLayout.CENTER);
-
-        jPanel1.add(panelUtama, java.awt.BorderLayout.CENTER);
-
-        add(jPanel1, java.awt.BorderLayout.CENTER);
+        add(panelUtama, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTambahActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnTambah;
-    private javax.swing.JComboBox<String> cStatus;
-    private javax.swing.JComboBox<String> cStatus1;
-    private javax.swing.JLabel iconCari;
+    private javax.swing.JPanel containerQR;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lSelamatNama;
-    private javax.swing.JPanel pCari;
-    private javax.swing.JPanel pHeader;
     private javax.swing.JPanel panelUtama;
-    private javax.swing.JTextField tCari;
-    private javax.swing.JTable tWali;
     // End of variables declaration//GEN-END:variables
 }
