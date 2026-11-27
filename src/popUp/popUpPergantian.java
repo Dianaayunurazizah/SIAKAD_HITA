@@ -4,6 +4,8 @@
  */
 package popUp;
 
+import com.formdev.flatlaf.ui.FlatLineBorder;
+
 /**
  *
  * @author ASUS
@@ -18,7 +20,20 @@ public class popUpPergantian extends javax.swing.JDialog {
     public popUpPergantian(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        aturTanggal();
     }
+    
+    private void aturTanggal() {
+         tTanggal.setBorder(new FlatLineBorder(
+                  new java.awt.Insets(0, 12, 0, 8),
+                  new java.awt.Color(0xA0A0A0), 1, 20));
+         javax.swing.JComponent editor = (javax.swing.JComponent)tTanggal.getDateEditor().getUiComponent();
+         editor.setOpaque(false);
+         editor.setBorder(null);
+         tTanggal.getCalendarButton().setBorder(null);
+         tTanggal.getCalendarButton().setContentAreaFilled(false);
+         tTanggal.getCalendarButton().setOpaque(false);
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,21 +44,268 @@ public class popUpPergantian extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel13 = new javax.swing.JPanel();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        tTanggal = new com.toedter.calendar.JDateChooser();
+        jPanel14 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jPanel28 = new javax.swing.JPanel();
+        jPanel30 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jPanel29 = new javax.swing.JPanel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel31 = new javax.swing.JPanel();
+        tEmail2 = new javax.swing.JTextField();
+        jPanel32 = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        panelBtn = new javax.swing.JPanel();
+        btnBatal1 = new javax.swing.JButton();
+        btnSimpan1 = new javax.swing.JButton();
+        btnUbah1 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1054, 600));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(220, 220, 220)));
+        jPanel1.setMaximumSize(new java.awt.Dimension(1028, 100));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1028, 100));
+
+        jLabel1.setFont(new java.awt.Font("Poppins SemiBold", 0, 28)); // NOI18N
+        jLabel1.setText("Tambah Data Pergantian Guru");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 40, 24, 40));
+        jPanel6.setPreferredSize(new java.awt.Dimension(1054, 302));
+
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setMaximumSize(new java.awt.Dimension(946, 171));
+        jPanel8.setMinimumSize(new java.awt.Dimension(946, 171));
+        jPanel8.setPreferredSize(new java.awt.Dimension(974, 254));
+        jPanel8.setLayout(new java.awt.GridLayout(3, 1, 0, 13));
+
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setLayout(new java.awt.BorderLayout());
+
+        jPanel13.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel13.setMaximumSize(new java.awt.Dimension(958, 51));
+        jPanel13.setMinimumSize(new java.awt.Dimension(958, 51));
+        jPanel13.setPreferredSize(new java.awt.Dimension(958, 51));
+        jPanel13.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Jadwal" }));
+        jPanel13.add(jComboBox3);
+        jPanel13.add(tTanggal);
+
+        jPanel9.add(jPanel13, java.awt.BorderLayout.SOUTH);
+
+        jPanel14.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel14.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jLabel14.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel14.setText("Jadwal");
+        jLabel14.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel14.setIconTextGap(8);
+        jLabel14.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel14.add(jLabel14);
+
+        jLabel12.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel12.setText("Tanggal");
+        jLabel12.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel12.setIconTextGap(8);
+        jLabel12.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel14.add(jLabel12);
+
+        jPanel9.add(jPanel14, java.awt.BorderLayout.CENTER);
+
+        jPanel8.add(jPanel9);
+
+        jPanel28.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel28.setLayout(new java.awt.BorderLayout());
+
+        jPanel30.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel30.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jLabel19.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel19.setText("Guru Asli");
+        jLabel19.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel19.setIconTextGap(8);
+        jLabel19.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel30.add(jLabel19);
+
+        jLabel23.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel23.setText("Guru Pengganti");
+        jLabel23.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel23.setIconTextGap(8);
+        jLabel23.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel30.add(jLabel23);
+
+        jPanel28.add(jPanel30, java.awt.BorderLayout.CENTER);
+
+        jPanel29.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel29.setMaximumSize(new java.awt.Dimension(958, 51));
+        jPanel29.setMinimumSize(new java.awt.Dimension(958, 51));
+        jPanel29.setPreferredSize(new java.awt.Dimension(958, 51));
+        jPanel29.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Guru Asli" }));
+        jComboBox1.addActionListener(this::jComboBox1ActionPerformed);
+        jPanel29.add(jComboBox1);
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Guru Pengganti" }));
+        jPanel29.add(jComboBox2);
+
+        jPanel28.add(jPanel29, java.awt.BorderLayout.SOUTH);
+
+        jPanel8.add(jPanel28);
+
+        jPanel4.setLayout(new java.awt.BorderLayout());
+
+        jPanel31.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel31.setMaximumSize(new java.awt.Dimension(958, 51));
+        jPanel31.setMinimumSize(new java.awt.Dimension(958, 51));
+        jPanel31.setPreferredSize(new java.awt.Dimension(958, 51));
+        jPanel31.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        tEmail2.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jPanel31.add(tEmail2);
+
+        jPanel4.add(jPanel31, java.awt.BorderLayout.SOUTH);
+
+        jPanel32.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel32.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jLabel21.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel21.setText("Keterangan");
+        jLabel21.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel21.setIconTextGap(8);
+        jLabel21.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel32.add(jLabel21);
+
+        jPanel4.add(jPanel32, java.awt.BorderLayout.CENTER);
+
+        jPanel8.add(jPanel4);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 974, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
+        );
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(220, 220, 220)));
+
+        panelBtn.setBackground(new java.awt.Color(255, 255, 255));
+        panelBtn.setLayout(new javax.swing.BoxLayout(panelBtn, javax.swing.BoxLayout.LINE_AXIS));
+
+        btnBatal1.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        btnBatal1.setText("Batal");
+        btnBatal1.setMaximumSize(new java.awt.Dimension(138, 44));
+        btnBatal1.setMinimumSize(new java.awt.Dimension(138, 44));
+        btnBatal1.setPreferredSize(new java.awt.Dimension(138, 44));
+        panelBtn.add(btnBatal1);
+
+        btnSimpan1.setBackground(new java.awt.Color(35, 128, 234));
+        btnSimpan1.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        btnSimpan1.setForeground(new java.awt.Color(255, 255, 255));
+        btnSimpan1.setText("Simpan");
+        btnSimpan1.setMaximumSize(new java.awt.Dimension(138, 44));
+        btnSimpan1.setMinimumSize(new java.awt.Dimension(138, 44));
+        btnSimpan1.setPreferredSize(new java.awt.Dimension(138, 44));
+        panelBtn.add(btnSimpan1);
+
+        btnUbah1.setBackground(new java.awt.Color(35, 128, 234));
+        btnUbah1.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        btnUbah1.setForeground(new java.awt.Color(255, 255, 255));
+        btnUbah1.setText("Ubah");
+        btnUbah1.setMaximumSize(new java.awt.Dimension(138, 44));
+        btnUbah1.setMinimumSize(new java.awt.Dimension(138, 44));
+        btnUbah1.setPreferredSize(new java.awt.Dimension(138, 44));
+        panelBtn.add(btnUbah1);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(576, 576, 576)
+                .addComponent(panelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(panelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -83,5 +345,33 @@ public class popUpPergantian extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBatal1;
+    private javax.swing.JButton btnSimpan1;
+    private javax.swing.JButton btnUbah1;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel28;
+    private javax.swing.JPanel jPanel29;
+    private javax.swing.JPanel jPanel30;
+    private javax.swing.JPanel jPanel31;
+    private javax.swing.JPanel jPanel32;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel panelBtn;
+    private javax.swing.JTextField tEmail2;
+    private com.toedter.calendar.JDateChooser tTanggal;
     // End of variables declaration//GEN-END:variables
 }
