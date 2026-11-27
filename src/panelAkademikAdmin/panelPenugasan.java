@@ -65,6 +65,9 @@ public class panelPenugasan extends javax.swing.JPanel {
         tabel.addColumn("Tahun Ajaran");
         tabel.addColumn("Aksi");
         
+        tabel.addRow(new Object[]{1, "11234567", "Zanuba Arifah C, S.Pd.",
+        "IPA", "VII A", "2026/2027.Ganjil", ""});
+        
         tPenugasan.setModel(tabel);
         setupTabel();
     }
@@ -73,7 +76,7 @@ public class panelPenugasan extends javax.swing.JPanel {
         TableColumnModel kolom = tPenugasan.getColumnModel();
 
         // font isi baris disamakan dengan header
-        tPenugasan.setFont(new Font("Poppins", Font.PLAIN, 14));
+        tPenugasan.setFont(new Font("Poppins", Font.PLAIN, 16));
 
         // lebar kolom
         int[] lebar = {50,180,260,180,100,140,110};
@@ -96,6 +99,8 @@ public class panelPenugasan extends javax.swing.JPanel {
         kolom.getColumn(6).setCellRenderer(aksi);
 
         tPenugasan.getTableHeader().setDefaultRenderer(new headerRenderer(-1));
+        tPenugasan.getTableHeader().setReorderingAllowed(false); //ngunci kolom
+        tPenugasan.getTableHeader().setResizingAllowed(false); //ngunci lebar kolom
     }
 
     /**
@@ -244,6 +249,7 @@ public class panelPenugasan extends javax.swing.JPanel {
         tPenugasan.setGridColor(new java.awt.Color(245, 247, 250));
         tPenugasan.setIntercellSpacing(new java.awt.Dimension(0, 1));
         tPenugasan.setRowHeight(52);
+        tPenugasan.setSelectionBackground(new java.awt.Color(234, 242, 254));
         tPenugasan.setShowHorizontalLines(true);
         jScrollPane1.setViewportView(tPenugasan);
 

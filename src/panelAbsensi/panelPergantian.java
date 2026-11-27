@@ -62,6 +62,9 @@ public class panelPergantian extends javax.swing.JPanel {
         tabel.addColumn("Status");
         tabel.addColumn("Aksi");
         
+        tabel.addRow(new Object[]{1, "PGN2026001",
+        "22/10/2026","Matematika", "M. Abdul Rohman Hamid, S.Pd.", "Diana Ayu Nur Azizah, S.Pd.", "Aktif", ""});
+        
         tPergantian.setModel(tabel);
         setupTabel();   // pasang lagi lebar kolom dan renderer, karena setModel menghapusnya
     }
@@ -81,10 +84,10 @@ public class panelPergantian extends javax.swing.JPanel {
         TableColumnModel kolom = tPergantian.getColumnModel();
         
         // font isi baris disamakan dengan header
-        tPergantian.setFont(new Font("Poppins", Font.PLAIN, 14));
+        tPergantian.setFont(new Font("Poppins", Font.PLAIN, 16));
 
         // lebar kolom
-        int[] lebar = {50, 180, 100, 100, 250, 250, 100, 80};
+        int[] lebar = {50, 180, 100, 140, 250, 250, 100, 80};
         for (int i = 0; i < lebar.length; i++) {
             kolom.getColumn(i).setPreferredWidth(lebar[i]);
             kolom.getColumn(i).setResizable(false);
@@ -103,7 +106,9 @@ public class panelPergantian extends javax.swing.JPanel {
         aksiRenderer aksi = new aksiRenderer(FlowLayout.LEFT,"iconPanel/icon_Pensil.svg","iconPanel/icon_hapus.svg" );
         kolom.getColumn(7).setCellRenderer(aksi);
         
-        tPergantian.getTableHeader().setDefaultRenderer(new headerRenderer(6));
+        tPergantian.getTableHeader().setDefaultRenderer(new headerRenderer(-1));
+        tPergantian.getTableHeader().setReorderingAllowed(false); //ngunci kolom
+        tPergantian.getTableHeader().setResizingAllowed(false); //ngunci lebar kolom
     }
     /**
      * This method is called from within the constructor to initialize the form.
