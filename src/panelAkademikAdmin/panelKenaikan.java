@@ -7,7 +7,15 @@ package panelAkademikAdmin;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Insets;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+import renderer.KeputusanCell;
+import renderer.headerRenderer;
+import renderer.rekomendasiRenderer;
+import renderer.backgroudPink;
 
 /**
  *
@@ -22,6 +30,7 @@ public class panelKenaikan extends javax.swing.JPanel {
         initComponents();
         iconPanel();
         radiusPanel();
+        loadTabel();
     }
     
     public void iconPanel() {
@@ -42,6 +51,57 @@ public class panelKenaikan extends javax.swing.JPanel {
         panelHeader.putClientProperty("FlatLaf.style", "arc: 20");
         panelUtama.putClientProperty("FlatLaf.style", "arc: 20");
     }
+    
+    public void loadTabel() {
+        DefaultTableModel tabel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int r, int c) {
+                return c == 5;
+            }
+        };
+        tabel.addColumn("No");
+        tabel.addColumn("NISN");
+        tabel.addColumn("Nama Siswa");
+        tabel.addColumn("Kehadiran");
+        tabel.addColumn("Rekomendasi");
+        tabel.addColumn("Keputusan");
+
+        tabel.addRow(new Object[]{1, "7346593634", "Yunior Nadinda", "98%", "Memenuhi syarat", "Naik"});
+        tabel.addRow(new Object[]{2, "7346593785", "Abdul Wahid", "50%", "Perlu Ditinjau", "Tinggal"});
+        
+        tKenaikan.setModel(tabel);
+        setupTabel();   // pasang lagi lebar kolom dan renderer, karena setModel menghapusnya
+    }
+    
+    private void setupTabel(){
+        TableColumnModel kolom = tKenaikan.getColumnModel();
+        
+        // font isi baris disamakan dengan header
+        tKenaikan.setFont(new Font("Poppins", Font.PLAIN, 16));
+
+        // lebar kolom
+        int[] lebar = {50, 150, 260, 100, 200, 200};
+        for (int i = 0; i < lebar.length; i++) {
+            kolom.getColumn(i).setPreferredWidth(lebar[i]);
+            kolom.getColumn(i).setResizable(false);
+        }
+
+        // kolom kecil dikunci supaya tidak ikut melebar
+        for (int i : new int[]{0, 1}) {
+            kolom.getColumn(i).setMinWidth(lebar[i]);
+            kolom.getColumn(i).setMaxWidth(lebar[i]);
+        }
+        
+        backgroudPink teks = new backgroudPink();
+        for (int i : new int[]{0,1,2,3})
+            kolom.getColumn(i).setCellRenderer(teks);
+        kolom.getColumn(4).setCellRenderer(new rekomendasiRenderer());
+        KeputusanCell keputusan = new KeputusanCell();
+        kolom.getColumn(5).setCellRenderer(keputusan);
+        kolom.getColumn(5).setCellEditor(keputusan);
+        
+        tKenaikan.getTableHeader().setDefaultRenderer(new headerRenderer(6));
+    }    
 
 
     /**
@@ -83,7 +143,7 @@ public class panelKenaikan extends javax.swing.JPanel {
         tCari = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tPenugasan = new javax.swing.JTable();
+        tKenaikan = new javax.swing.JTable();
         jPanel9 = new javax.swing.JPanel();
         btnProses = new javax.swing.JButton();
         btnBatal = new javax.swing.JButton();
@@ -338,8 +398,8 @@ public class panelKenaikan extends javax.swing.JPanel {
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
-        tPenugasan.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        tPenugasan.setModel(new javax.swing.table.DefaultTableModel(
+        tKenaikan.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        tKenaikan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -350,13 +410,14 @@ public class panelKenaikan extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tPenugasan.setFillsViewportHeight(true);
-        tPenugasan.setFocusable(false);
-        tPenugasan.setGridColor(new java.awt.Color(245, 247, 250));
-        tPenugasan.setIntercellSpacing(new java.awt.Dimension(0, 1));
-        tPenugasan.setRowHeight(52);
-        tPenugasan.setShowHorizontalLines(true);
-        jScrollPane1.setViewportView(tPenugasan);
+        tKenaikan.setFillsViewportHeight(true);
+        tKenaikan.setFocusable(false);
+        tKenaikan.setGridColor(new java.awt.Color(229, 231, 235));
+        tKenaikan.setIntercellSpacing(new java.awt.Dimension(0, 1));
+        tKenaikan.setRowHeight(52);
+        tKenaikan.setSelectionBackground(new java.awt.Color(234, 242, 254));
+        tKenaikan.setShowHorizontalLines(true);
+        jScrollPane1.setViewportView(tKenaikan);
 
         panelUtama.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -460,6 +521,6 @@ public class panelKenaikan extends javax.swing.JPanel {
     private javax.swing.JPanel panelHeader;
     private javax.swing.JPanel panelUtama;
     private javax.swing.JTextField tCari;
-    private javax.swing.JTable tPenugasan;
+    private javax.swing.JTable tKenaikan;
     // End of variables declaration//GEN-END:variables
 }

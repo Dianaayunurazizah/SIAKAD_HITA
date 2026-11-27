@@ -24,10 +24,10 @@ public class statusRenderer extends JPanel implements TableCellRenderer {
         }
     };
     public statusRenderer() {
-        setLayout(new GridBagLayout());
+        setLayout(new FlowLayout(FlowLayout.LEFT, 8,7));
         badge.setOpaque(false);
         badge.setFont(new Font("Poppins", Font.PLAIN,14));
-        badge.setPreferredSize(new Dimension(80,28));
+        badge.setPreferredSize(new Dimension(80,37));
         add(badge);
     }
     

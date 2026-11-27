@@ -430,7 +430,6 @@
                         </Column>
                       </TableColumnModel>
                     </Property>
-                    <Property name="columnSelectionAllowed" type="boolean" value="true"/>
                     <Property name="fillsViewportHeight" type="boolean" value="true"/>
                     <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="fa" green="f7" red="f5" type="rgb"/>
@@ -572,7 +571,7 @@
                                   <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="247" max="32767" attributes="0"/>
+                              <EmptySpace pref="235" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -602,7 +601,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Poppins" size="16" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="M. Abdul Rohman H / VII E / 07:12 / Hadir"/>
+                        <Property name="text" type="java.lang.String" value="Jaya Ageng Sapuro / VII A / 07:00 / Hadir"/>
                       </Properties>
                     </Component>
                   </SubComponents>

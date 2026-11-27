@@ -61,6 +61,9 @@ public class panelMapel extends javax.swing.JPanel {
         tabel.addColumn("Status");
         tabel.addColumn("Aksi");
         
+        tabel.addRow(new Object[]{1,"1234562026001", "Bahasa Indonesia",
+        "Aktif",""});
+        
         tMapel.setModel(tabel);
         setupTabel();
     }
@@ -69,7 +72,7 @@ public class panelMapel extends javax.swing.JPanel {
         TableColumnModel kolom = tMapel.getColumnModel();
 
         // font isi baris disamakan dengan header
-        tMapel.setFont(new Font("Poppins", Font.PLAIN, 14));
+        tMapel.setFont(new Font("Poppins", Font.PLAIN, 16));
 
         // lebar kolom
         int[] lebar = {50, 230, 250, 230, 120};
@@ -79,7 +82,7 @@ public class panelMapel extends javax.swing.JPanel {
         }
 
         // mengunci kolom ukuran kecil
-        for (int i : new int[]{0, 4}) {
+        for (int i : new int[]{0,4}) {
             kolom.getColumn(i).setMinWidth(lebar[i]);
             kolom.getColumn(i).setMaxWidth(lebar[i]);
         }
@@ -93,6 +96,8 @@ public class panelMapel extends javax.swing.JPanel {
         kolom.getColumn(4).setCellRenderer(aksi);
 
         tMapel.getTableHeader().setDefaultRenderer(new headerRenderer(-1));
+        tMapel.getTableHeader().setReorderingAllowed(false); //ngunci kolom
+        tMapel.getTableHeader().setResizingAllowed(false); //ngunci lebar kolom
     }
     
 
@@ -245,6 +250,7 @@ public class panelMapel extends javax.swing.JPanel {
         tMapel.setGridColor(new java.awt.Color(245, 247, 250));
         tMapel.setIntercellSpacing(new java.awt.Dimension(0, 1));
         tMapel.setRowHeight(52);
+        tMapel.setSelectionBackground(new java.awt.Color(234, 242, 254));
         tMapel.setShowHorizontalLines(true);
         jScrollPane1.setViewportView(tMapel);
 

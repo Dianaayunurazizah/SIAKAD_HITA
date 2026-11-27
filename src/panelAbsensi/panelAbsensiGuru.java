@@ -12,10 +12,7 @@ import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
-import renderer.aksiRenderer;
-import renderer.headerRenderer;
-import renderer.statusRenderer;
-import renderer.teksRenderer;
+import renderer.*;
 
 /**
  *
@@ -65,6 +62,11 @@ public class panelAbsensiGuru extends javax.swing.JPanel {
         tabel.addColumn("Status");
         tabel.addColumn("Aksi");
         
+        tabel.addRow(new Object[]{1, "AGR2026001", "M. Abdul Rohman Hamid, S.Pd.",
+        "22/10/2026", "07.02", "14.18", "Aktif", ""});
+        tabel.addRow(new Object[]{2, "AGR2026002", "Diana Ayu Nur Azizah, S.Pd.",
+        "22/10/2026", "07.00", "14.30", "Aktif", ""});
+        
         tAbsensiGuru.setModel(tabel);
         setupTabel();   // pasang lagi lebar kolom dan renderer, karena setModel menghapusnya
     }
@@ -84,17 +86,17 @@ public class panelAbsensiGuru extends javax.swing.JPanel {
         TableColumnModel kolom = tAbsensiGuru.getColumnModel();
         
         // font isi baris disamakan dengan header
-        tAbsensiGuru.setFont(new Font("Poppins", Font.PLAIN, 14));
+        tAbsensiGuru.setFont(new Font("Poppins", Font.PLAIN, 16));
 
         // lebar kolom
-        int[] lebar = {50, 120, 260, 140, 150, 150, 100, 100};
+        int[] lebar = {50, 120, 260, 140, 200, 200, 100, 100};
         for (int i = 0; i < lebar.length; i++) {
             kolom.getColumn(i).setPreferredWidth(lebar[i]);
             kolom.getColumn(i).setResizable(false);
         }
 
         // kolom kecil dikunci supaya tidak ikut melebar
-        for (int i : new int[]{0,3, 7}) {
+        for (int i : new int[]{0,4,5,6,7}) {
             kolom.getColumn(i).setMinWidth(lebar[i]);
             kolom.getColumn(i).setMaxWidth(lebar[i]);
         }
@@ -102,11 +104,16 @@ public class panelAbsensiGuru extends javax.swing.JPanel {
         teksRenderer teks = new teksRenderer();
         for (int i : new int[]{0,1,2,3,4,5})
             kolom.getColumn(i).setCellRenderer(teks);
+        absensiGuruRenderer jam = new absensiGuruRenderer();
+        kolom.getColumn(4).setCellRenderer(jam);
+        kolom.getColumn(5).setCellRenderer(jam);
         kolom.getColumn(6).setCellRenderer(new statusRenderer());
         aksiRenderer aksi = new aksiRenderer(FlowLayout.LEFT,"iconPanel/icon_Pensil.svg","iconPanel/icon_hapus.svg" );
         kolom.getColumn(7).setCellRenderer(aksi);
         
         tAbsensiGuru.getTableHeader().setDefaultRenderer(new headerRenderer(-1));
+        tAbsensiGuru.getTableHeader().setReorderingAllowed(false); //ngunci kolom
+        tAbsensiGuru.getTableHeader().setResizingAllowed(false); //ngunci lebar kolom
     }    
 
     /**
