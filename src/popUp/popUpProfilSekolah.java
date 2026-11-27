@@ -29,18 +29,617 @@ public class popUpProfilSekolah extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        panelBtn = new javax.swing.JPanel();
+        btnBatal = new javax.swing.JButton();
+        btnSimpan = new javax.swing.JButton();
+        btnUbah = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel3 = new javax.swing.JPanel();
+        pFoto = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        tNIP = new javax.swing.JTextField();
+        tNamaGuru = new javax.swing.JTextField();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jPanel16 = new javax.swing.JPanel();
+        jPanel17 = new javax.swing.JPanel();
+        tNamaGuru3 = new javax.swing.JTextField();
+        tNamaGuru4 = new javax.swing.JTextField();
+        jPanel18 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jPanel15 = new javax.swing.JPanel();
+        tNamaGuru5 = new javax.swing.JTextField();
+        jPanel25 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        jPanel22 = new javax.swing.JPanel();
+        jPanel23 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tAlamat = new javax.swing.JTextArea();
+        jPanel24 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel26 = new javax.swing.JPanel();
+        jPanel27 = new javax.swing.JPanel();
+        jPanel31 = new javax.swing.JPanel();
+        tNIP1 = new javax.swing.JTextField();
+        tNamaGuru1 = new javax.swing.JTextField();
+        jPanel32 = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jPanel33 = new javax.swing.JPanel();
+        jPanel34 = new javax.swing.JPanel();
+        jComboBox4 = new javax.swing.JComboBox<>();
+        jComboBox5 = new javax.swing.JComboBox<>();
+        jPanel35 = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jPanel36 = new javax.swing.JPanel();
+        jPanel37 = new javax.swing.JPanel();
+        tTempatLahir2 = new javax.swing.JTextField();
+        tTempatLahir3 = new javax.swing.JTextField();
+        jPanel38 = new javax.swing.JPanel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jPanel39 = new javax.swing.JPanel();
+        jPanel40 = new javax.swing.JPanel();
+        jComboBox6 = new javax.swing.JComboBox<>();
+        jPanel41 = new javax.swing.JPanel();
+        jLabel28 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        jPanel42 = new javax.swing.JPanel();
+        jPanel43 = new javax.swing.JPanel();
+        tNIP2 = new javax.swing.JTextField();
+        tNamaGuru2 = new javax.swing.JTextField();
+        jPanel44 = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1063, 808));
+        setMinimumSize(new java.awt.Dimension(1063, 808));
+        setPreferredSize(new java.awt.Dimension(1063, 808));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(220, 220, 220)));
+        jPanel1.setMaximumSize(new java.awt.Dimension(1028, 100));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1028, 100));
+
+        jLabel1.setFont(new java.awt.Font("Poppins SemiBold", 0, 28)); // NOI18N
+        jLabel1.setText("Ubah Profil Sekolah");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(720, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(220, 220, 220)));
+        jPanel2.setMaximumSize(new java.awt.Dimension(1028, 90));
+        jPanel2.setMinimumSize(new java.awt.Dimension(1028, 90));
+
+        panelBtn.setBackground(new java.awt.Color(255, 255, 255));
+        panelBtn.setLayout(new javax.swing.BoxLayout(panelBtn, javax.swing.BoxLayout.LINE_AXIS));
+
+        btnBatal.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        btnBatal.setText("Batal");
+        btnBatal.setMaximumSize(new java.awt.Dimension(138, 44));
+        btnBatal.setMinimumSize(new java.awt.Dimension(138, 44));
+        btnBatal.setPreferredSize(new java.awt.Dimension(138, 44));
+        panelBtn.add(btnBatal);
+
+        btnSimpan.setBackground(new java.awt.Color(35, 128, 234));
+        btnSimpan.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
+        btnSimpan.setText("Simpan");
+        btnSimpan.setMaximumSize(new java.awt.Dimension(138, 44));
+        btnSimpan.setMinimumSize(new java.awt.Dimension(138, 44));
+        btnSimpan.setPreferredSize(new java.awt.Dimension(138, 44));
+        panelBtn.add(btnSimpan);
+
+        btnUbah.setBackground(new java.awt.Color(35, 128, 234));
+        btnUbah.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        btnUbah.setForeground(new java.awt.Color(255, 255, 255));
+        btnUbah.setText("Ubah");
+        btnUbah.setMaximumSize(new java.awt.Dimension(138, 44));
+        btnUbah.setMinimumSize(new java.awt.Dimension(138, 44));
+        btnUbah.setPreferredSize(new java.awt.Dimension(138, 44));
+        panelBtn.add(btnUbah);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(588, Short.MAX_VALUE)
+                .addComponent(panelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(panelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
+        );
+
+        getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_END);
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setMaximumSize(null);
+        jScrollPane1.setMinimumSize(null);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 40, 24, 40));
+        jPanel3.setMaximumSize(new java.awt.Dimension(1063, 1400));
+        jPanel3.setMinimumSize(new java.awt.Dimension(1054, 585));
+        jPanel3.setPreferredSize(new java.awt.Dimension(1054, 1400));
+
+        pFoto.setPreferredSize(new java.awt.Dimension(141, 141));
+
+        javax.swing.GroupLayout pFotoLayout = new javax.swing.GroupLayout(pFoto);
+        pFoto.setLayout(pFotoLayout);
+        pFotoLayout.setHorizontalGroup(
+            pFotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 141, Short.MAX_VALUE)
+        );
+        pFotoLayout.setVerticalGroup(
+            pFotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 141, Short.MAX_VALUE)
+        );
+
+        jLabel2.setFont(new java.awt.Font("Poppins Medium", 0, 24)); // NOI18N
+        jLabel2.setText("Logo Sekolah");
+
+        jButton1.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(35, 128, 234));
+        jButton1.setText("Unggah Foto");
+
+        jLabel8.setFont(new java.awt.Font("Poppins Medium", 0, 24)); // NOI18N
+        jLabel8.setText("Identitas Sekolah");
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setMinimumSize(new java.awt.Dimension(958, 352));
+        jPanel6.setPreferredSize(new java.awt.Dimension(946, 352));
+        jPanel6.setLayout(new java.awt.GridLayout(3, 1, 0, 13));
+
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setLayout(new java.awt.BorderLayout());
+
+        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel11.setMaximumSize(new java.awt.Dimension(958, 51));
+        jPanel11.setMinimumSize(new java.awt.Dimension(958, 51));
+        jPanel11.setPreferredSize(new java.awt.Dimension(958, 51));
+        jPanel11.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        tNIP.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jPanel11.add(tNIP);
+
+        tNamaGuru.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jPanel11.add(tNamaGuru);
+
+        jPanel8.add(jPanel11, java.awt.BorderLayout.SOUTH);
+
+        jPanel12.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel12.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jLabel11.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel11.setText("NPSN");
+        jLabel11.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel11.setIconTextGap(8);
+        jLabel11.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel12.add(jLabel11);
+
+        jLabel10.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel10.setText("Nama Sekolah");
+        jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel10.setIconTextGap(8);
+        jLabel10.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel12.add(jLabel10);
+
+        jPanel8.add(jPanel12, java.awt.BorderLayout.CENTER);
+
+        jPanel6.add(jPanel8);
+
+        jPanel16.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel16.setLayout(new java.awt.BorderLayout());
+
+        jPanel17.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel17.setMaximumSize(new java.awt.Dimension(958, 51));
+        jPanel17.setMinimumSize(new java.awt.Dimension(958, 51));
+        jPanel17.setPreferredSize(new java.awt.Dimension(958, 51));
+        jPanel17.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        tNamaGuru3.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jPanel17.add(tNamaGuru3);
+
+        tNamaGuru4.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jPanel17.add(tNamaGuru4);
+
+        jPanel16.add(jPanel17, java.awt.BorderLayout.SOUTH);
+
+        jPanel18.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel18.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jLabel13.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel13.setText("Status Sekolah");
+        jLabel13.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel13.setIconTextGap(8);
+        jLabel13.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel18.add(jLabel13);
+
+        jLabel22.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel22.setText("Jenjang");
+        jLabel22.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel22.setIconTextGap(8);
+        jLabel22.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel18.add(jLabel22);
+
+        jPanel16.add(jPanel18, java.awt.BorderLayout.CENTER);
+
+        jPanel6.add(jPanel16);
+
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel10.setLayout(new java.awt.BorderLayout());
+
+        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel15.setMaximumSize(new java.awt.Dimension(958, 51));
+        jPanel15.setMinimumSize(new java.awt.Dimension(958, 51));
+        jPanel15.setPreferredSize(new java.awt.Dimension(958, 51));
+        jPanel15.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        tNamaGuru5.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jPanel15.add(tNamaGuru5);
+
+        jPanel10.add(jPanel15, java.awt.BorderLayout.SOUTH);
+
+        jPanel25.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel25.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jLabel18.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel18.setText("Kepala Sekolah");
+        jLabel18.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel18.setIconTextGap(8);
+        jLabel18.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel25.add(jLabel18);
+
+        jPanel10.add(jPanel25, java.awt.BorderLayout.CENTER);
+
+        jPanel6.add(jPanel10);
+
+        jPanel22.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel22.setLayout(new java.awt.BorderLayout());
+
+        jPanel23.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel23.setMaximumSize(new java.awt.Dimension(958, 104));
+        jPanel23.setMinimumSize(new java.awt.Dimension(958, 100));
+        jPanel23.setPreferredSize(new java.awt.Dimension(958, 100));
+        jPanel23.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+
+        tAlamat.setColumns(20);
+        tAlamat.setRows(5);
+        jScrollPane2.setViewportView(tAlamat);
+
+        jPanel23.add(jScrollPane2);
+
+        jPanel22.add(jPanel23, java.awt.BorderLayout.SOUTH);
+
+        jPanel24.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel24.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jLabel17.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel17.setText("Alamat Lengkap");
+        jLabel17.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel17.setIconTextGap(8);
+        jLabel17.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel24.add(jLabel17);
+
+        jPanel22.add(jPanel24, java.awt.BorderLayout.CENTER);
+
+        jLabel9.setFont(new java.awt.Font("Poppins Medium", 0, 24)); // NOI18N
+        jLabel9.setText("Alamat");
+
+        jPanel26.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel26.setMinimumSize(new java.awt.Dimension(958, 352));
+        jPanel26.setPreferredSize(new java.awt.Dimension(946, 352));
+        jPanel26.setLayout(new java.awt.GridLayout(4, 1, 0, 13));
+
+        jPanel27.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel27.setLayout(new java.awt.BorderLayout());
+
+        jPanel31.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel31.setMaximumSize(new java.awt.Dimension(958, 51));
+        jPanel31.setMinimumSize(new java.awt.Dimension(958, 51));
+        jPanel31.setPreferredSize(new java.awt.Dimension(958, 51));
+        jPanel31.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        tNIP1.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jPanel31.add(tNIP1);
+
+        tNamaGuru1.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jPanel31.add(tNamaGuru1);
+
+        jPanel27.add(jPanel31, java.awt.BorderLayout.SOUTH);
+
+        jPanel32.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel32.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jLabel21.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel21.setText("NPSN");
+        jLabel21.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel21.setIconTextGap(8);
+        jLabel21.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel32.add(jLabel21);
+
+        jLabel23.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel23.setText("Nama Sekolah");
+        jLabel23.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel23.setIconTextGap(8);
+        jLabel23.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel32.add(jLabel23);
+
+        jPanel27.add(jPanel32, java.awt.BorderLayout.CENTER);
+
+        jPanel26.add(jPanel27);
+
+        jPanel33.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel33.setLayout(new java.awt.BorderLayout());
+
+        jPanel34.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel34.setMaximumSize(new java.awt.Dimension(958, 51));
+        jPanel34.setMinimumSize(new java.awt.Dimension(958, 51));
+        jPanel34.setPreferredSize(new java.awt.Dimension(958, 51));
+        jPanel34.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jComboBox4.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel34.add(jComboBox4);
+
+        jComboBox5.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel34.add(jComboBox5);
+
+        jPanel33.add(jPanel34, java.awt.BorderLayout.SOUTH);
+
+        jPanel35.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel35.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jLabel24.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel24.setText("Status Sekolah");
+        jLabel24.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel24.setIconTextGap(8);
+        jLabel24.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel35.add(jLabel24);
+
+        jLabel25.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel25.setText("Jenjang");
+        jLabel25.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel25.setIconTextGap(8);
+        jLabel25.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel35.add(jLabel25);
+
+        jPanel33.add(jPanel35, java.awt.BorderLayout.CENTER);
+
+        jPanel26.add(jPanel33);
+
+        jPanel36.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel36.setLayout(new java.awt.BorderLayout());
+
+        jPanel37.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel37.setMaximumSize(new java.awt.Dimension(958, 51));
+        jPanel37.setMinimumSize(new java.awt.Dimension(958, 51));
+        jPanel37.setPreferredSize(new java.awt.Dimension(958, 51));
+        jPanel37.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        tTempatLahir2.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jPanel37.add(tTempatLahir2);
+
+        tTempatLahir3.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jPanel37.add(tTempatLahir3);
+
+        jPanel36.add(jPanel37, java.awt.BorderLayout.SOUTH);
+
+        jPanel38.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel38.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jLabel26.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel26.setText("Akreditasi");
+        jLabel26.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel26.setIconTextGap(8);
+        jLabel26.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel38.add(jLabel26);
+
+        jLabel27.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel27.setText("Tahun Berdiri");
+        jLabel27.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel27.setIconTextGap(8);
+        jLabel27.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel38.add(jLabel27);
+
+        jPanel36.add(jPanel38, java.awt.BorderLayout.CENTER);
+
+        jPanel26.add(jPanel36);
+
+        jPanel39.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel39.setLayout(new java.awt.BorderLayout());
+
+        jPanel40.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel40.setMaximumSize(new java.awt.Dimension(958, 51));
+        jPanel40.setMinimumSize(new java.awt.Dimension(958, 51));
+        jPanel40.setPreferredSize(new java.awt.Dimension(958, 51));
+        jPanel40.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jComboBox6.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel40.add(jComboBox6);
+
+        jPanel39.add(jPanel40, java.awt.BorderLayout.SOUTH);
+
+        jPanel41.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel41.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jLabel28.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel28.setText("Kepala Sekolah");
+        jLabel28.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel28.setIconTextGap(8);
+        jLabel28.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel41.add(jLabel28);
+
+        jPanel39.add(jPanel41, java.awt.BorderLayout.CENTER);
+
+        jPanel26.add(jPanel39);
+
+        jPanel42.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel42.setLayout(new java.awt.BorderLayout());
+
+        jPanel43.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel43.setMaximumSize(new java.awt.Dimension(958, 51));
+        jPanel43.setMinimumSize(new java.awt.Dimension(958, 51));
+        jPanel43.setPreferredSize(new java.awt.Dimension(958, 51));
+        jPanel43.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        tNIP2.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jPanel43.add(tNIP2);
+
+        tNamaGuru2.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jPanel43.add(tNamaGuru2);
+
+        jPanel42.add(jPanel43, java.awt.BorderLayout.SOUTH);
+
+        jPanel44.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel44.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jLabel29.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel29.setText("NPSN");
+        jLabel29.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel29.setIconTextGap(8);
+        jLabel29.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel44.add(jLabel29);
+
+        jLabel30.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel30.setText("Nama Sekolah");
+        jLabel30.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel30.setIconTextGap(8);
+        jLabel30.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel44.add(jLabel30);
+
+        jPanel42.add(jPanel44, java.awt.BorderLayout.CENTER);
+
+        jLabel12.setFont(new java.awt.Font("Poppins Medium", 0, 24)); // NOI18N
+        jLabel12.setText("Kontak");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel42, javax.swing.GroupLayout.PREFERRED_SIZE, 986, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(pFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 986, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel12))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel42, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jScrollPane1.setViewportView(jPanel3);
+
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -83,5 +682,83 @@ public class popUpProfilSekolah extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBatal;
+    private javax.swing.JButton btnSimpan;
+    private javax.swing.JButton btnUbah;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JComboBox<String> jComboBox5;
+    private javax.swing.JComboBox<String> jComboBox6;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel22;
+    private javax.swing.JPanel jPanel23;
+    private javax.swing.JPanel jPanel24;
+    private javax.swing.JPanel jPanel25;
+    private javax.swing.JPanel jPanel26;
+    private javax.swing.JPanel jPanel27;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel31;
+    private javax.swing.JPanel jPanel32;
+    private javax.swing.JPanel jPanel33;
+    private javax.swing.JPanel jPanel34;
+    private javax.swing.JPanel jPanel35;
+    private javax.swing.JPanel jPanel36;
+    private javax.swing.JPanel jPanel37;
+    private javax.swing.JPanel jPanel38;
+    private javax.swing.JPanel jPanel39;
+    private javax.swing.JPanel jPanel40;
+    private javax.swing.JPanel jPanel41;
+    private javax.swing.JPanel jPanel42;
+    private javax.swing.JPanel jPanel43;
+    private javax.swing.JPanel jPanel44;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JPanel pFoto;
+    private javax.swing.JPanel panelBtn;
+    private javax.swing.JTextArea tAlamat;
+    private javax.swing.JTextField tNIP;
+    private javax.swing.JTextField tNIP1;
+    private javax.swing.JTextField tNIP2;
+    private javax.swing.JTextField tNamaGuru;
+    private javax.swing.JTextField tNamaGuru1;
+    private javax.swing.JTextField tNamaGuru2;
+    private javax.swing.JTextField tNamaGuru3;
+    private javax.swing.JTextField tNamaGuru4;
+    private javax.swing.JTextField tNamaGuru5;
+    private javax.swing.JTextField tTempatLahir2;
+    private javax.swing.JTextField tTempatLahir3;
     // End of variables declaration//GEN-END:variables
 }

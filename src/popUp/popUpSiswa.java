@@ -4,6 +4,14 @@
  */
 package popUp;
 
+import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.ui.FlatLineBorder;
+import java.awt.Color;
+import java.awt.Insets;
+import javax.swing.Box;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 /**
  *
  * @author ASUS
@@ -18,6 +26,23 @@ public class popUpSiswa extends javax.swing.JDialog {
     public popUpSiswa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        radiusPanel();
+        
+        panelBtn.add(Box.createHorizontalStrut(12), 1);
+        panelBtn.add(Box.createHorizontalStrut(12), 3);
+    }
+    
+    private void radiusPanel(){
+        tNISN.putClientProperty("JTextField.placeholderText", "Masukkan NISN");
+        tNamaSiswa.putClientProperty("JTextField.placeholderText", "Masukkan Nama Siswa");
+        tTempatLahir.putClientProperty("JTextField.placeholderText", "Masukkan Tempat Lahir");
+        tEmail.putClientProperty("JTextField.placeholderText", "Masukkan Email");
+        tNoHP.putClientProperty("JTextField.placeholderText", "Masukkan No HP");
+        
+        pLK.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), new Color(0xA0A0A0), 1, 15));
+        pPerempuan.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), new Color(0xA0A0A0), 1, 15));
+        pFoto.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), new Color(0xA0A0A0), 1, 25));
     }
 
     /**
@@ -29,18 +54,480 @@ public class popUpSiswa extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        panelBtn = new javax.swing.JPanel();
+        btnBatal = new javax.swing.JButton();
+        btnSimpan = new javax.swing.JButton();
+        btnUbah = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel3 = new javax.swing.JPanel();
+        pFoto = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        tNISN = new javax.swing.JTextField();
+        tNamaSiswa = new javax.swing.JTextField();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jPanel16 = new javax.swing.JPanel();
+        jPanel17 = new javax.swing.JPanel();
+        jPanel22 = new javax.swing.JPanel();
+        pLK = new javax.swing.JPanel();
+        rbLaki = new javax.swing.JRadioButton();
+        pPerempuan = new javax.swing.JPanel();
+        rbPerempuan = new javax.swing.JRadioButton();
+        cPilihKelas = new javax.swing.JComboBox<>();
+        jPanel18 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jPanel19 = new javax.swing.JPanel();
+        jPanel20 = new javax.swing.JPanel();
+        tTempatLahir = new javax.swing.JTextField();
+        tTanggalLahir = new com.toedter.calendar.JDateChooser();
+        jPanel21 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jPanel23 = new javax.swing.JPanel();
+        jPanel24 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tAlamat = new javax.swing.JTextArea();
+        jPanel25 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        jPanel26 = new javax.swing.JPanel();
+        jPanel27 = new javax.swing.JPanel();
+        tEmail = new javax.swing.JTextField();
+        tNoHP = new com.toedter.calendar.JDateChooser();
+        jPanel28 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jPanel29 = new javax.swing.JPanel();
+        jPanel30 = new javax.swing.JPanel();
+        cStatusSiswa = new javax.swing.JComboBox<>();
+        cAkunPengguna = new javax.swing.JComboBox<>();
+        jPanel31 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1054, 841));
+        setMinimumSize(new java.awt.Dimension(1054, 841));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(220, 220, 220)));
+        jPanel1.setMaximumSize(new java.awt.Dimension(1028, 100));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1028, 100));
+
+        jLabel1.setFont(new java.awt.Font("Poppins SemiBold", 0, 28)); // NOI18N
+        jLabel1.setText("Tambah Data Siswa");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(711, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(220, 220, 220)));
+        jPanel2.setMaximumSize(new java.awt.Dimension(1028, 90));
+        jPanel2.setMinimumSize(new java.awt.Dimension(1028, 90));
+
+        panelBtn.setBackground(new java.awt.Color(255, 255, 255));
+        panelBtn.setLayout(new javax.swing.BoxLayout(panelBtn, javax.swing.BoxLayout.LINE_AXIS));
+
+        btnBatal.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        btnBatal.setText("Batal");
+        btnBatal.setMaximumSize(new java.awt.Dimension(138, 44));
+        btnBatal.setMinimumSize(new java.awt.Dimension(138, 44));
+        btnBatal.setPreferredSize(new java.awt.Dimension(138, 44));
+        panelBtn.add(btnBatal);
+
+        btnSimpan.setBackground(new java.awt.Color(35, 128, 234));
+        btnSimpan.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
+        btnSimpan.setText("Simpan");
+        btnSimpan.setMaximumSize(new java.awt.Dimension(138, 44));
+        btnSimpan.setMinimumSize(new java.awt.Dimension(138, 44));
+        btnSimpan.setPreferredSize(new java.awt.Dimension(138, 44));
+        panelBtn.add(btnSimpan);
+
+        btnUbah.setBackground(new java.awt.Color(35, 128, 234));
+        btnUbah.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        btnUbah.setForeground(new java.awt.Color(255, 255, 255));
+        btnUbah.setText("Ubah");
+        btnUbah.setMaximumSize(new java.awt.Dimension(138, 44));
+        btnUbah.setMinimumSize(new java.awt.Dimension(138, 44));
+        btnUbah.setPreferredSize(new java.awt.Dimension(138, 44));
+        panelBtn.add(btnUbah);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(579, Short.MAX_VALUE)
+                .addComponent(panelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(panelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
+        );
+
+        getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_END);
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setMaximumSize(null);
+        jScrollPane1.setMinimumSize(new java.awt.Dimension(1054, 651));
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 40, 24, 40));
+        jPanel3.setMaximumSize(new java.awt.Dimension(1054, 651));
+        jPanel3.setMinimumSize(new java.awt.Dimension(1054, 651));
+        jPanel3.setPreferredSize(new java.awt.Dimension(1054, 651));
+
+        pFoto.setPreferredSize(new java.awt.Dimension(189, 238));
+
+        javax.swing.GroupLayout pFotoLayout = new javax.swing.GroupLayout(pFoto);
+        pFoto.setLayout(pFotoLayout);
+        pFotoLayout.setHorizontalGroup(
+            pFotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 189, Short.MAX_VALUE)
+        );
+        pFotoLayout.setVerticalGroup(
+            pFotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 238, Short.MAX_VALUE)
+        );
+
+        jButton1.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(35, 128, 234));
+        jButton1.setText("Unggah Foto");
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setPreferredSize(new java.awt.Dimension(946, 263));
+        jPanel6.setLayout(new java.awt.GridLayout(3, 1, 0, 13));
+
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setLayout(new java.awt.BorderLayout());
+
+        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel11.setMaximumSize(new java.awt.Dimension(958, 51));
+        jPanel11.setMinimumSize(new java.awt.Dimension(958, 51));
+        jPanel11.setPreferredSize(new java.awt.Dimension(958, 51));
+        jPanel11.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        tNISN.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jPanel11.add(tNISN);
+
+        tNamaSiswa.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jPanel11.add(tNamaSiswa);
+
+        jPanel8.add(jPanel11, java.awt.BorderLayout.SOUTH);
+
+        jPanel12.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel12.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jLabel11.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel11.setText("NISN");
+        jLabel11.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel11.setIconTextGap(8);
+        jLabel11.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel12.add(jLabel11);
+
+        jLabel10.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel10.setText("Nama Siswa");
+        jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel10.setIconTextGap(8);
+        jLabel10.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel12.add(jLabel10);
+
+        jPanel8.add(jPanel12, java.awt.BorderLayout.CENTER);
+
+        jPanel6.add(jPanel8);
+
+        jPanel16.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel16.setLayout(new java.awt.BorderLayout());
+
+        jPanel17.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel17.setMaximumSize(new java.awt.Dimension(958, 51));
+        jPanel17.setMinimumSize(new java.awt.Dimension(958, 51));
+        jPanel17.setPreferredSize(new java.awt.Dimension(958, 51));
+        jPanel17.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jPanel22.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel22.setMaximumSize(new java.awt.Dimension(958, 51));
+        jPanel22.setMinimumSize(new java.awt.Dimension(958, 51));
+        jPanel22.setPreferredSize(new java.awt.Dimension(958, 51));
+        jPanel22.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        pLK.setBackground(new java.awt.Color(255, 255, 255));
+        pLK.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 8, 1, 1));
+        pLK.setLayout(new java.awt.BorderLayout());
+
+        rbLaki.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        rbLaki.setText("Laki - Laki");
+        rbLaki.setIconTextGap(8);
+        pLK.add(rbLaki, java.awt.BorderLayout.CENTER);
+
+        jPanel22.add(pLK);
+
+        pPerempuan.setBackground(new java.awt.Color(255, 255, 255));
+        pPerempuan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 8, 1, 1));
+        pPerempuan.setLayout(new java.awt.BorderLayout());
+
+        rbPerempuan.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        rbPerempuan.setText("Perempuan");
+        rbPerempuan.setIconTextGap(8);
+        pPerempuan.add(rbPerempuan, java.awt.BorderLayout.CENTER);
+
+        jPanel22.add(pPerempuan);
+
+        jPanel17.add(jPanel22);
+
+        cPilihKelas.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        cPilihKelas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel17.add(cPilihKelas);
+
+        jPanel16.add(jPanel17, java.awt.BorderLayout.SOUTH);
+
+        jPanel18.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel18.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jLabel13.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel13.setText("Jenis Kelamin");
+        jLabel13.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel13.setIconTextGap(8);
+        jLabel13.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel18.add(jLabel13);
+
+        jLabel14.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel14.setText("Pilih Kelas");
+        jLabel14.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel14.setIconTextGap(8);
+        jLabel14.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel18.add(jLabel14);
+
+        jPanel16.add(jPanel18, java.awt.BorderLayout.CENTER);
+
+        jPanel6.add(jPanel16);
+
+        jPanel19.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel19.setLayout(new java.awt.BorderLayout());
+
+        jPanel20.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel20.setMaximumSize(new java.awt.Dimension(958, 51));
+        jPanel20.setMinimumSize(new java.awt.Dimension(958, 51));
+        jPanel20.setPreferredSize(new java.awt.Dimension(958, 51));
+        jPanel20.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        tTempatLahir.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jPanel20.add(tTempatLahir);
+
+        tTanggalLahir.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jPanel20.add(tTanggalLahir);
+
+        jPanel19.add(jPanel20, java.awt.BorderLayout.SOUTH);
+
+        jPanel21.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel21.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jLabel15.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel15.setText("Tempat Lahir");
+        jLabel15.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel15.setIconTextGap(8);
+        jLabel15.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel21.add(jLabel15);
+
+        jLabel16.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel16.setText("Tanggal Lahir");
+        jLabel16.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel16.setIconTextGap(8);
+        jLabel16.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel21.add(jLabel16);
+
+        jPanel19.add(jPanel21, java.awt.BorderLayout.CENTER);
+
+        jPanel6.add(jPanel19);
+
+        jPanel23.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel23.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel23.setLayout(new java.awt.BorderLayout());
+
+        jPanel24.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel24.setMaximumSize(new java.awt.Dimension(958, 104));
+        jPanel24.setMinimumSize(new java.awt.Dimension(958, 100));
+        jPanel24.setPreferredSize(new java.awt.Dimension(958, 100));
+        jPanel24.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+
+        tAlamat.setColumns(20);
+        tAlamat.setRows(5);
+        jScrollPane2.setViewportView(tAlamat);
+
+        jPanel24.add(jScrollPane2);
+
+        jPanel23.add(jPanel24, java.awt.BorderLayout.SOUTH);
+
+        jPanel25.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel25.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jLabel17.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel17.setText("Alamat");
+        jLabel17.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel17.setIconTextGap(8);
+        jLabel17.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel25.add(jLabel17);
+
+        jPanel23.add(jPanel25, java.awt.BorderLayout.CENTER);
+
+        jPanel26.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel26.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel26.setLayout(new java.awt.BorderLayout());
+
+        jPanel27.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel27.setMaximumSize(new java.awt.Dimension(958, 51));
+        jPanel27.setMinimumSize(new java.awt.Dimension(958, 51));
+        jPanel27.setPreferredSize(new java.awt.Dimension(958, 51));
+        jPanel27.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        tEmail.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jPanel27.add(tEmail);
+
+        tNoHP.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jPanel27.add(tNoHP);
+
+        jPanel26.add(jPanel27, java.awt.BorderLayout.SOUTH);
+
+        jPanel28.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel28.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jLabel18.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel18.setText("Email");
+        jLabel18.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel18.setIconTextGap(8);
+        jLabel18.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel28.add(jLabel18);
+
+        jLabel19.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel19.setText("No HP");
+        jLabel19.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel19.setIconTextGap(8);
+        jLabel19.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel28.add(jLabel19);
+
+        jPanel26.add(jPanel28, java.awt.BorderLayout.CENTER);
+
+        jPanel29.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel29.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel29.setLayout(new java.awt.BorderLayout());
+
+        jPanel30.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel30.setMaximumSize(new java.awt.Dimension(958, 51));
+        jPanel30.setMinimumSize(new java.awt.Dimension(958, 51));
+        jPanel30.setPreferredSize(new java.awt.Dimension(958, 51));
+        jPanel30.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        cStatusSiswa.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        cStatusSiswa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aktif", "Nonaktif", "Cuti" }));
+        jPanel30.add(cStatusSiswa);
+
+        cAkunPengguna.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        cAkunPengguna.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tidak Dibuat", "Aktif", "Tidak Aktif" }));
+        jPanel30.add(cAkunPengguna);
+
+        jPanel29.add(jPanel30, java.awt.BorderLayout.SOUTH);
+
+        jPanel31.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel31.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jLabel20.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel20.setText("Status Siswa");
+        jLabel20.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel20.setIconTextGap(8);
+        jLabel20.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel31.add(jLabel20);
+
+        jLabel21.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel21.setText("Akun Pengguna");
+        jLabel21.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel21.setIconTextGap(8);
+        jLabel21.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel31.add(jLabel21);
+
+        jPanel29.add(jPanel31, java.awt.BorderLayout.CENTER);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 759, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, 759, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, 974, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(pFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(2, Short.MAX_VALUE))
+        );
+
+        jScrollPane1.setViewportView(jPanel3);
+
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -55,14 +542,15 @@ public class popUpSiswa extends javax.swing.JDialog {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
+            UIManager.put("Button.arc", 20);
+            UIManager.put("Component.arc", 15);
+            UIManager.put("TextComponent.arc", 15);
+            UIManager.put("Component.borderwidth", 1);
+            UIManager.put("Component.borderColor", new Color(0xA0A0A0));
+            UIManager.put("PopupMenu.borderCornerRadius", 50); 
+            UIManager.put("PopupMenu.background", Color.WHITE);
+            UIManager.setLookAndFeel(new FlatLightLaf());
+        } catch (UnsupportedLookAndFeelException e) {
         }
         //</editor-fold>
 
@@ -83,5 +571,62 @@ public class popUpSiswa extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBatal;
+    private javax.swing.JButton btnSimpan;
+    private javax.swing.JButton btnUbah;
+    private javax.swing.JComboBox<String> cAkunPengguna;
+    private javax.swing.JComboBox<String> cPilihKelas;
+    private javax.swing.JComboBox<String> cStatusSiswa;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel22;
+    private javax.swing.JPanel jPanel23;
+    private javax.swing.JPanel jPanel24;
+    private javax.swing.JPanel jPanel25;
+    private javax.swing.JPanel jPanel26;
+    private javax.swing.JPanel jPanel27;
+    private javax.swing.JPanel jPanel28;
+    private javax.swing.JPanel jPanel29;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel30;
+    private javax.swing.JPanel jPanel31;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPanel pFoto;
+    private javax.swing.JPanel pLK;
+    private javax.swing.JPanel pPerempuan;
+    private javax.swing.JPanel panelBtn;
+    private javax.swing.JRadioButton rbLaki;
+    private javax.swing.JRadioButton rbPerempuan;
+    private javax.swing.JTextArea tAlamat;
+    private javax.swing.JTextField tEmail;
+    private javax.swing.JTextField tNISN;
+    private javax.swing.JTextField tNamaSiswa;
+    private com.toedter.calendar.JDateChooser tNoHP;
+    private com.toedter.calendar.JDateChooser tTanggalLahir;
+    private javax.swing.JTextField tTempatLahir;
     // End of variables declaration//GEN-END:variables
 }
