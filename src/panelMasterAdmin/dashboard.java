@@ -41,6 +41,9 @@ public class dashboard extends javax.swing.JPanel {
         btnArrow1.setIcon(new FlatSVGIcon("iconPanel/arrowDashboard.svg", 32, 32));
         btnArrow2.setIcon(new FlatSVGIcon("iconPanel/arrowDashboard.svg", 32, 32));
         btnArrow3.setIcon(new FlatSVGIcon("iconPanel/arrowDashboard.svg", 32, 32));
+        btnArrow4.setIcon(new FlatSVGIcon("iconPanel/arrowDashboard.svg", 32, 32));
+        btnArrow5.setIcon(new FlatSVGIcon("iconPanel/arrowDashboard.svg", 32, 32));
+        btnArrow6.setIcon(new FlatSVGIcon("iconPanel/arrowDashboard.svg", 32, 32));
         
         iconAktivitas.setIcon(new FlatSVGIcon("iconPanel/iconAktivitas.svg", 32, 32));
         iconProfilSekolah.setIcon(new FlatSVGIcon("iconPanel/dashboardInfoSekolah.svg", 32, 32));
@@ -152,6 +155,7 @@ public class dashboard extends javax.swing.JPanel {
         pAktivitas = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         iconAktivitas = new javax.swing.JLabel();
+        btnArrow6 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel14 = new javax.swing.JPanel();
 
@@ -180,10 +184,10 @@ public class dashboard extends javax.swing.JPanel {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(lSelamatNama, javax.swing.GroupLayout.PREFERRED_SIZE, 42, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lSelamatNama, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
-                .addGap(30, 30, 30))
+                .addGap(18, 18, 18))
         );
 
         add(jPanel2, java.awt.BorderLayout.PAGE_START);
@@ -535,6 +539,19 @@ public class dashboard extends javax.swing.JPanel {
         iconAktivitas.setText("Aktivitas Terbaru");
         iconAktivitas.setIconTextGap(8);
 
+        btnArrow6.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        btnArrow6.setForeground(new java.awt.Color(46, 120, 249));
+        btnArrow6.setText("Lihat Semua");
+        btnArrow6.setBorder(null);
+        btnArrow6.setContentAreaFilled(false);
+        btnArrow6.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnArrow6.setIconTextGap(8);
+        btnArrow6.setMaximumSize(new java.awt.Dimension(36, 36));
+        btnArrow6.setMinimumSize(new java.awt.Dimension(36, 36));
+        btnArrow6.setPreferredSize(new java.awt.Dimension(36, 36));
+        btnArrow6.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btnArrow6.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
@@ -542,14 +559,17 @@ public class dashboard extends javax.swing.JPanel {
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(iconAktivitas, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(420, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 261, Short.MAX_VALUE)
+                .addComponent(btnArrow6, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(iconAktivitas)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnArrow6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iconAktivitas))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pAktivitas.add(jPanel13, java.awt.BorderLayout.PAGE_START);
@@ -577,6 +597,7 @@ public class dashboard extends javax.swing.JPanel {
     private javax.swing.JButton btnArrow3;
     private javax.swing.JButton btnArrow4;
     private javax.swing.JButton btnArrow5;
+    private javax.swing.JButton btnArrow6;
     private javax.swing.JLabel iconAktivitas;
     private javax.swing.JLabel iconGuru;
     private javax.swing.JLabel iconKelas;

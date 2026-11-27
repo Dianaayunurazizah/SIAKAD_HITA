@@ -25,7 +25,7 @@ public class frameGuru extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(frameGuru.class.getName());
 
-    private PanelCustom dashboard, jadwalMengajar, absensiSaya, absensiMapel, pergantianGuru;
+    private PanelCustom dashboard, jadwalMengajar, waliKelas, absensiSaya, absensiMapel, pergantianGuru;
     private PanelCustom[] semuaMenu;
     
     private boolean sidebarMelebar = true;
@@ -71,6 +71,10 @@ public class frameGuru extends javax.swing.JFrame {
         jadwalMengajar = new PanelCustom(iconJadwal, txtJadwal, btnJadwal);
         jadwalMengajar.setIconNormal(new FlatSVGIcon("iconSidebar/jadwal_normal.svg", 24, 24));
         jadwalMengajar.setIconAktif(new FlatSVGIcon("iconSidebar/jadwal_aktif.svg", 24, 24));
+        
+        waliKelas = new PanelCustom(iconWali, txtWali, btnWali);
+        waliKelas.setIconNormal(new FlatSVGIcon("iconSidebar/wali_normal.svg", 24, 24));
+        waliKelas.setIconAktif(new FlatSVGIcon("iconSidebar/wali_aktif.svg", 24, 24));
 
         absensiSaya = new PanelCustom(iconAbsensiSaya, txtAbsensiSaya, btnAbsensiSaya);
         absensiSaya.setIconNormal(new FlatSVGIcon("iconSidebar/abguru_normal.svg", 24, 24));
@@ -85,7 +89,7 @@ public class frameGuru extends javax.swing.JFrame {
         pergantianGuru.setIconAktif(new FlatSVGIcon("iconSidebar/pergantian_aktif.svg", 24, 24));
 
         semuaMenu = new PanelCustom[]{
-            dashboard, jadwalMengajar, absensiSaya, absensiMapel, pergantianGuru
+            dashboard, jadwalMengajar, waliKelas, absensiSaya, absensiMapel, pergantianGuru
         };
         
         aktifkanMenu(dashboard);
@@ -109,6 +113,7 @@ public class frameGuru extends javax.swing.JFrame {
     private void radiusPanel(){
         btnDashboard.putClientProperty("FlatLaf.style", "arc: 25");
         btnJadwal.putClientProperty("FlatLaf.style", "arc: 25");
+        btnWali.putClientProperty("FlatLaf.style", "arc: 25");
         btnAbsensiSaya.putClientProperty("FlatLaf.style", "arc: 25");
         btnAbsensiMapel.putClientProperty("FlatLaf.style", "arc: 25");
         btnPergantianGuru.putClientProperty("FlatLaf.style", "arc: 25");
@@ -245,6 +250,8 @@ public class frameGuru extends javax.swing.JFrame {
         t.start();
     }
     
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -262,6 +269,9 @@ public class frameGuru extends javax.swing.JFrame {
         btnJadwal = new javax.swing.JPanel();
         iconJadwal = new javax.swing.JLabel();
         txtJadwal = new javax.swing.JLabel();
+        btnWali = new javax.swing.JPanel();
+        iconWali = new javax.swing.JLabel();
+        txtWali = new javax.swing.JLabel();
         btnAbsensiSaya = new javax.swing.JPanel();
         iconAbsensiSaya = new javax.swing.JLabel();
         txtAbsensiSaya = new javax.swing.JLabel();
@@ -345,6 +355,31 @@ public class frameGuru extends javax.swing.JFrame {
         btnJadwal.add(txtJadwal, java.awt.BorderLayout.CENTER);
 
         panelMenu.add(btnJadwal);
+
+        btnWali.setBackground(new java.awt.Color(255, 255, 255));
+        btnWali.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 8, 8, 8));
+        btnWali.setMaximumSize(new java.awt.Dimension(32767, 55));
+        btnWali.setMinimumSize(new java.awt.Dimension(100, 55));
+        btnWali.setPreferredSize(new java.awt.Dimension(250, 55));
+        btnWali.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnWaliMouseClicked(evt);
+            }
+        });
+        btnWali.setLayout(new java.awt.BorderLayout(8, 0));
+
+        iconWali.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconWali.setMaximumSize(new java.awt.Dimension(37, 37));
+        iconWali.setMinimumSize(new java.awt.Dimension(37, 37));
+        iconWali.setPreferredSize(new java.awt.Dimension(37, 37));
+        btnWali.add(iconWali, java.awt.BorderLayout.LINE_START);
+
+        txtWali.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        txtWali.setForeground(new java.awt.Color(124, 126, 137));
+        txtWali.setText("Wali Kelas");
+        btnWali.add(txtWali, java.awt.BorderLayout.CENTER);
+
+        panelMenu.add(btnWali);
 
         btnAbsensiSaya.setBackground(new java.awt.Color(255, 255, 255));
         btnAbsensiSaya.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 8, 8, 8));
@@ -510,6 +545,11 @@ public class frameGuru extends javax.swing.JFrame {
         tampilMenuUser();
     }//GEN-LAST:event_btnArrowProfilActionPerformed
 
+    private void btnWaliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnWaliMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnWaliMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -542,6 +582,7 @@ public class frameGuru extends javax.swing.JFrame {
     private javax.swing.JPanel btnDashboard;
     private javax.swing.JPanel btnJadwal;
     private javax.swing.JPanel btnPergantianGuru;
+    private javax.swing.JPanel btnWali;
     private javax.swing.JLabel iconAbsensiMapel;
     private javax.swing.JLabel iconAbsensiSaya;
     private javax.swing.JLabel iconDashboard;
@@ -549,6 +590,7 @@ public class frameGuru extends javax.swing.JFrame {
     private javax.swing.JLabel iconJadwal;
     private javax.swing.JLabel iconLogoAplikasi;
     private javax.swing.JLabel iconPergantian;
+    private javax.swing.JLabel iconWali;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -563,5 +605,6 @@ public class frameGuru extends javax.swing.JFrame {
     private javax.swing.JLabel txtDashboard;
     private javax.swing.JLabel txtJadwal;
     private javax.swing.JLabel txtPergantian;
+    private javax.swing.JLabel txtWali;
     // End of variables declaration//GEN-END:variables
 }
