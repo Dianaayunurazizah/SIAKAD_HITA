@@ -122,7 +122,6 @@ public class panelLapGuru extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         btnPDF = new javax.swing.JButton();
         btnExcel = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -130,7 +129,7 @@ public class panelLapGuru extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1083, 693));
         setLayout(new java.awt.BorderLayout());
 
-        panelHeader.setPreferredSize(new java.awt.Dimension(1035, 89));
+        panelHeader.setPreferredSize(new java.awt.Dimension(1035, 92));
 
         jLabel2.setFont(new java.awt.Font("Poppins SemiBold", 0, 28)); // NOI18N
         jLabel2.setText("Laporan Absensi Guru");
@@ -147,7 +146,7 @@ public class panelLapGuru extends javax.swing.JPanel {
             panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHeaderLayout.createSequentialGroup()
                 .addComponent(jLabel2)
-                .addGap(0, 46, Short.MAX_VALUE))
+                .addGap(0, 49, Short.MAX_VALUE))
         );
 
         add(panelHeader, java.awt.BorderLayout.NORTH);
@@ -532,8 +531,8 @@ public class panelLapGuru extends javax.swing.JPanel {
         panelTabel.setLayout(new java.awt.BorderLayout());
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 0, 8, 16));
-        jPanel5.setPreferredSize(new java.awt.Dimension(1087, 65));
+        jPanel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 0, 24, 16));
+        jPanel5.setPreferredSize(new java.awt.Dimension(1087, 77));
         jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 10, 5));
 
         btnPDF.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
@@ -552,10 +551,6 @@ public class panelLapGuru extends javax.swing.JPanel {
 
         panelTabel.add(jPanel5, java.awt.BorderLayout.NORTH);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(16, 0, 0, 0));
-        jPanel2.setPreferredSize(new java.awt.Dimension(1035, 427));
-
         jScrollPane1.setPreferredSize(new java.awt.Dimension(1035, 402));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -566,30 +561,13 @@ public class panelLapGuru extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "No", "Nama Siswa", "Hadir", "Sakit", "Izin", "Alpa", "Persentase kehadiran"
+                "No", "Nama Guru", "Hadir", "Sakit", "Izin", "Alpa", "Persentase kehadiran"
             }
         ));
         jTable1.setPreferredSize(new java.awt.Dimension(1035, 327));
         jScrollPane1.setViewportView(jTable1);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1808, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1808, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 357, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        panelTabel.add(jPanel2, java.awt.BorderLayout.CENTER);
+        panelTabel.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jPanel3.add(panelTabel, java.awt.BorderLayout.CENTER);
 
@@ -631,7 +609,6 @@ public class panelLapGuru extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel38;
     private javax.swing.JPanel jPanel39;

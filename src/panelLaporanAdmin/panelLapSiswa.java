@@ -45,6 +45,9 @@ public class panelLapSiswa extends javax.swing.JPanel {
     private void initComponents() {
 
         panelHeader = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         panelUtama = new javax.swing.JPanel();
         panelAtas = new javax.swing.JPanel();
@@ -86,43 +89,53 @@ public class panelLapSiswa extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         btnPDF = new javax.swing.JButton();
         btnExcel = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
         setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
         setLayout(new java.awt.BorderLayout());
 
-        panelHeader.setPreferredSize(new java.awt.Dimension(1035, 89));
+        panelHeader.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 24, 0));
+        panelHeader.setPreferredSize(new java.awt.Dimension(1083, 92));
+        panelHeader.setLayout(new java.awt.GridLayout(2, 1));
+
+        jPanel6.setPreferredSize(new java.awt.Dimension(470, 36));
+        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 0));
+
+        jButton1.setBackground(new java.awt.Color(242, 242, 242));
+        jButton1.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(141, 143, 155));
+        jButton1.setText("Mapel");
+        jButton1.setBorder(null);
+        jButton1.setPreferredSize(new java.awt.Dimension(50, 36));
+        jButton1.setRequestFocusEnabled(false);
+        jPanel6.add(jButton1);
+
+        jButton4.setBackground(new java.awt.Color(242, 242, 242));
+        jButton4.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(141, 143, 155));
+        jButton4.setText("Pagi");
+        jButton4.setBorder(null);
+        jButton4.setPreferredSize(new java.awt.Dimension(50, 36));
+        jPanel6.add(jButton4);
+
+        panelHeader.add(jPanel6);
 
         jLabel2.setFont(new java.awt.Font("Poppins SemiBold", 0, 28)); // NOI18N
         jLabel2.setText("Laporan Absensi Siswa");
-
-        javax.swing.GroupLayout panelHeaderLayout = new javax.swing.GroupLayout(panelHeader);
-        panelHeader.setLayout(panelHeaderLayout);
-        panelHeaderLayout.setHorizontalGroup(
-            panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelHeaderLayout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addGap(0, 1512, Short.MAX_VALUE))
-        );
-        panelHeaderLayout.setVerticalGroup(
-            panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelHeaderLayout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addGap(0, 46, Short.MAX_VALUE))
-        );
+        jLabel2.setPreferredSize(new java.awt.Dimension(328, 39));
+        panelHeader.add(jLabel2);
 
         add(panelHeader, java.awt.BorderLayout.NORTH);
 
         panelUtama.setBackground(new java.awt.Color(255, 255, 255));
         panelUtama.setOpaque(false);
-        panelUtama.setPreferredSize(new java.awt.Dimension(1035, 556));
+        panelUtama.setPreferredSize(new java.awt.Dimension(1083, 556));
         panelUtama.setLayout(new java.awt.BorderLayout());
 
         panelAtas.setBackground(new java.awt.Color(255, 255, 255));
-        panelAtas.setBorder(javax.swing.BorderFactory.createEmptyBorder(16, 8, 8, 8));
-        panelAtas.setPreferredSize(new java.awt.Dimension(1035, 80));
+        panelAtas.setBorder(javax.swing.BorderFactory.createEmptyBorder(16, 8, 0, 8));
+        panelAtas.setPreferredSize(new java.awt.Dimension(1083, 80));
 
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
         jPanel12.setPreferredSize(new java.awt.Dimension(1035, 44));
@@ -149,16 +162,20 @@ public class panelLapSiswa extends javax.swing.JPanel {
         panelAtas.setLayout(panelAtasLayout);
         panelAtasLayout.setHorizontalGroup(
             panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 1824, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(panelAtasLayout.createSequentialGroup()
+                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 1808, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 16, Short.MAX_VALUE))
         );
         panelAtasLayout.setVerticalGroup(
             panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(panelAtasLayout.createSequentialGroup()
+                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 20, Short.MAX_VALUE))
         );
 
         panelUtama.add(panelAtas, java.awt.BorderLayout.NORTH);
 
-        jPanel3.setPreferredSize(new java.awt.Dimension(1035, 474));
+        jPanel3.setPreferredSize(new java.awt.Dimension(1083, 474));
         jPanel3.setLayout(new java.awt.BorderLayout());
 
         panelBox.setBorder(javax.swing.BorderFactory.createEmptyBorder(16, 0, 16, 0));
@@ -495,8 +512,8 @@ public class panelLapSiswa extends javax.swing.JPanel {
         panelTabel.setLayout(new java.awt.BorderLayout());
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 0, 8, 16));
-        jPanel5.setPreferredSize(new java.awt.Dimension(1087, 65));
+        jPanel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 0, 24, 16));
+        jPanel5.setPreferredSize(new java.awt.Dimension(1087, 77));
         jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 10, 5));
 
         btnPDF.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
@@ -515,10 +532,6 @@ public class panelLapSiswa extends javax.swing.JPanel {
 
         panelTabel.add(jPanel5, java.awt.BorderLayout.NORTH);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(16, 0, 0, 0));
-        jPanel2.setPreferredSize(new java.awt.Dimension(1035, 427));
-
         jScrollPane1.setPreferredSize(new java.awt.Dimension(1035, 402));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -535,24 +548,7 @@ public class panelLapSiswa extends javax.swing.JPanel {
         jTable1.setPreferredSize(new java.awt.Dimension(1035, 327));
         jScrollPane1.setViewportView(jTable1);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1808, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1808, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 357, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        panelTabel.add(jPanel2, java.awt.BorderLayout.CENTER);
+        panelTabel.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jPanel3.add(panelTabel, java.awt.BorderLayout.CENTER);
 
@@ -578,6 +574,8 @@ public class panelLapSiswa extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cMapel;
     private javax.swing.JComboBox<String> cPeriode;
     private javax.swing.JComboBox<String> cTahunAjaran;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel19;
@@ -594,7 +592,6 @@ public class panelLapSiswa extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel38;
     private javax.swing.JPanel jPanel39;
@@ -605,6 +602,7 @@ public class panelLapSiswa extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel53;
     private javax.swing.JPanel jPanel54;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JPanel panelAtas;
