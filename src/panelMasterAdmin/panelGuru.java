@@ -61,7 +61,6 @@ public class panelGuru extends javax.swing.JPanel {
         tabel.addColumn("Jenis Kelamin");
         tabel.addColumn("No Telepon");
         tabel.addColumn("Status");
-        tabel.addColumn("");
         
         tabel.addRow(new Object[]{1,"", "1234562026001", "Diana Ayu Nur Azizah, S.Pd.",
         "Perempuan", "08599036670", "Aktif", ""});
@@ -77,14 +76,14 @@ public class panelGuru extends javax.swing.JPanel {
         tGuru.setFont(new Font("Poppins", Font.PLAIN, 16));
 
         // lebar kolom
-        int[] lebar = {50, 70, 180, 260, 140, 150, 100, 80};
+        int[] lebar = {50, 70, 180, 260, 140, 150, 100};
         for (int i = 0; i < lebar.length; i++) {
             kolom.getColumn(i).setPreferredWidth(lebar[i]);
             kolom.getColumn(i).setResizable(false);
         }
 
         // kolom kecil dikunci supaya tidak ikut melebar
-        for (int i : new int[]{0, 1, 7}) {
+        for (int i : new int[]{0, 1}) {
             kolom.getColumn(i).setMinWidth(lebar[i]);
             kolom.getColumn(i).setMaxWidth(lebar[i]);
         }
@@ -94,8 +93,6 @@ public class panelGuru extends javax.swing.JPanel {
             kolom.getColumn(i).setCellRenderer(teks);
         kolom.getColumn(1).setCellRenderer(new fotoRenderer());
         kolom.getColumn(6).setCellRenderer(new statusRenderer());
-        aksiRenderer aksi = new aksiRenderer(FlowLayout.CENTER,"iconPanel/icon_titikTiga.svg");
-        kolom.getColumn(7).setCellRenderer(aksi);
         
         tGuru.getTableHeader().setDefaultRenderer(new headerRenderer(-1));
         tGuru.getTableHeader().setReorderingAllowed(false); //ngunci kolom

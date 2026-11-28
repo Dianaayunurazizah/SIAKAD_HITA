@@ -7,7 +7,14 @@ package panelLaporanAdmin;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Insets;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+import renderer.backgroudPink;
+import renderer.headerRenderer;
+import renderer.persentaseRenderer;
+import renderer.teksRenderer;
 
 /**
  *
@@ -20,44 +27,11 @@ public class panelLapGuru extends javax.swing.JPanel {
      */
     public panelLapGuru() {
         initComponents();
-        
-//          iconPanel();
         radiusPanel();
-//        
-//        setPlaceholder(cTahunAjaran, "Pilih Tahun Ajaran");
-//        setPlaceholder(cKelas, "Pilih Kelas");
-//        setPlaceholder(cMapel, "Pilih Mapel");
-//        setPlaceholder(cPeriode, "Pilih Periode");
+        loadTabel();
+
     }
     
-//    private void setPlaceholder(javax.swing.JComboBox<String> combo, String teks) {
-//        combo.setSelectedIndex(-1);
-//        combo.setRenderer(new javax.swing.DefaultListCellRenderer(){;
-//        @Override
-//        public java.awt.Component getListCellRendererComponent(
-//        javax.swing.JList<?> list, Object value, int index,
-//                boolean isSelected, boolean cellHasFocus) {
-//            super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-//            if (value == null) {
-//                setText(teks);
-//                setForeground(new java.awt.Color(0xA0A0A0));
-//            }
-//            return this;
-//        }
-//        });
-//    }
-//    public void iconPanel() {
-//        
-//        tCari.setOpaque(false);
-//        tCari.putClientProperty("JTextField.placeholderText", "Cari");
-//        tTanggal.setIcon(new FlatSVGIcon("iconPanel/icon_Tanggal.svg", 18, 18));
-//        btnTambah.setIcon(new FlatSVGIcon("iconPanel/icon_tambah.svg", 20, 20));
-//        lblIcon.setIcon(new FlatSVGIcon("iconPanel/icon_bullet.svg", 20, 20));
-//        
-//        
-//    }
-    
-   
     public void radiusPanel(){
         //panelUtama.putClientProperty("FlatLaf.style", "arc: 20");
         panelAtas.putClientProperty("FlatLaf.style", "arc: 20");
@@ -71,6 +45,58 @@ public class panelLapGuru extends javax.swing.JPanel {
         btnExcel.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), new Color(0xA0A0A0), 1, 20));
     }
 
+    public void loadTabel() {
+        DefaultTableModel tabel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int r, int c) {
+                return false;
+            }
+        };
+        tabel.addColumn("No");
+        tabel.addColumn("Nama Guru");
+        tabel.addColumn("Hadir");
+        tabel.addColumn("Sakit");
+        tabel.addColumn("Izin");
+        tabel.addColumn("Alpha");
+        tabel.addColumn("Persentase Kehadiran");
+        
+tabel.addRow(new Object[]{1, "HAMDAN ABI ABBAS ALI", 28, 0, 0, 0, 100.0});
+tabel.addRow(new Object[]{2, "Yuniar Nadinda",       27, 1, 0, 0, 96.4});
+tabel.addRow(new Object[]{3, "Abdul Wahid",          18, 4, 1, 1, 69.0});
+tabel.addRow(new Object[]{4, "Yura Mahesa",          28, 0, 0, 0, 100.0});
+tabel.addRow(new Object[]{5, "Lukmanullah",          26, 0, 1, 1, 92.9});
+
+        tGuru.setModel(tabel);
+        setupTabel();   // pasang lagi lebar kolom dan renderer, karena setModel menghapusnya
+    }
+    
+    private void setupTabel(){
+        TableColumnModel kolom = tGuru.getColumnModel();
+        
+        // font isi baris disamakan dengan header
+        tGuru.setFont(new Font("Poppins", Font.PLAIN, 16));
+
+        // lebar kolom
+        int[] lebar = {50,260,90,90,90,90,260};
+        for (int i = 0; i < lebar.length; i++) {
+            kolom.getColumn(i).setPreferredWidth(lebar[i]);
+            kolom.getColumn(i).setResizable(false);
+        }
+
+         //kolom kecil dikunci supaya tidak ikut melebar
+        for (int i : new int[]{0,2,3,4,5}) {
+            kolom.getColumn(i).setMinWidth(lebar[i]);
+            kolom.getColumn(i).setMaxWidth(lebar[i]);
+        }
+        
+        backgroudPink teks = new backgroudPink();
+        for (int i : new int[]{0,1,2,3,4,5})
+            kolom.getColumn(i).setCellRenderer(teks);
+        kolom.getColumn(6).setCellRenderer(new persentaseRenderer());
+        tGuru.getTableHeader().setDefaultRenderer(new headerRenderer(-1));
+        tGuru.getTableHeader().setReorderingAllowed(false); //ngunci kolom
+        tGuru.getTableHeader().setResizingAllowed(false); //ngunci lebar kolom
+    }    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -123,7 +149,7 @@ public class panelLapGuru extends javax.swing.JPanel {
         btnPDF = new javax.swing.JButton();
         btnExcel = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tGuru = new javax.swing.JTable();
 
         setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
         setPreferredSize(new java.awt.Dimension(1083, 693));
@@ -551,9 +577,10 @@ public class panelLapGuru extends javax.swing.JPanel {
 
         panelTabel.add(jPanel5, java.awt.BorderLayout.NORTH);
 
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jScrollPane1.setPreferredSize(new java.awt.Dimension(1035, 402));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tGuru.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -564,8 +591,14 @@ public class panelLapGuru extends javax.swing.JPanel {
                 "No", "Nama Guru", "Hadir", "Sakit", "Izin", "Alpa", "Persentase kehadiran"
             }
         ));
-        jTable1.setPreferredSize(new java.awt.Dimension(1035, 327));
-        jScrollPane1.setViewportView(jTable1);
+        tGuru.setFillsViewportHeight(true);
+        tGuru.setGridColor(new java.awt.Color(245, 247, 250));
+        tGuru.setIntercellSpacing(new java.awt.Dimension(0, 1));
+        tGuru.setPreferredSize(new java.awt.Dimension(1035, 327));
+        tGuru.setRowHeight(52);
+        tGuru.setSelectionBackground(new java.awt.Color(234, 242, 254));
+        tGuru.setShowHorizontalLines(true);
+        jScrollPane1.setViewportView(tGuru);
 
         panelTabel.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -620,11 +653,11 @@ public class panelLapGuru extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel53;
     private javax.swing.JPanel jPanel54;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel panelAtas;
     private javax.swing.JPanel panelBox;
     private javax.swing.JPanel panelHeader;
     private javax.swing.JPanel panelTabel;
     private javax.swing.JPanel panelUtama;
+    private javax.swing.JTable tGuru;
     // End of variables declaration//GEN-END:variables
 }

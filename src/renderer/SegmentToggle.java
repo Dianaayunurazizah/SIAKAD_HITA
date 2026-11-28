@@ -55,7 +55,7 @@ public class SegmentToggle extends JPanel {
         boolean naik = NAIK.equals(nilai);
         g2.setColor(naik ? new Color(0x2E8B57) : new Color(0xE74C3C));
         if (naik) g2.fillRect(b.x, b.y, W / 2, H);
-        else      g2.fillRect(b.x + W / 2, b.y, W / 2, H);
+        else g2.fillRect(b.x + W / 2, b.y, W / 2, H);
         g2.setClip(null);
 
         g2.setColor(new Color(0xD1D5DB));
