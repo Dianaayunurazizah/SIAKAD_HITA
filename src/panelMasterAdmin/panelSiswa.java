@@ -64,10 +64,9 @@ public class panelSiswa extends javax.swing.JPanel {
         tabel.addColumn("Jenis Kelamin");
         tabel.addColumn("No Telepon");
         tabel.addColumn("Status");
-        tabel.addColumn("");
 
         tabel.addRow(new Object[]{1,"", "1234562026001", "Jaya Ageng Sapuro",
-        "Laki - Laki", "08599036670", "Aktif", ""});
+        "Laki - Laki", "08599036670", "Aktif"});
         
         tSiswa.setModel(tabel);
         setupTabel();   // pasang lagi lebar kolom dan renderer, karena setModel menghapusnya
@@ -80,14 +79,14 @@ public class panelSiswa extends javax.swing.JPanel {
         tSiswa.setFont(new Font("Poppins", Font.PLAIN, 16));
 
         // lebar kolom
-        int[] lebar = {50, 70, 130, 280, 140, 150, 120, 80};
+        int[] lebar = {50, 70, 130, 280, 140, 150, 120};
         for (int i = 0; i < lebar.length; i++) {
             kolom.getColumn(i).setPreferredWidth(lebar[i]);
             kolom.getColumn(i).setResizable(false);
         }
 
         // kolom kecil dikunci supaya tidak ikut melebar
-        for (int i : new int[]{0, 1, 7}) {
+        for (int i : new int[]{0, 1}) {
             kolom.getColumn(i).setMinWidth(lebar[i]);
             kolom.getColumn(i).setMaxWidth(lebar[i]);
         }
@@ -97,8 +96,6 @@ public class panelSiswa extends javax.swing.JPanel {
             kolom.getColumn(i).setCellRenderer(teks);
         kolom.getColumn(1).setCellRenderer(new fotoRenderer());
         kolom.getColumn(6).setCellRenderer(new statusRenderer());
-        aksiRenderer aksi = new aksiRenderer(FlowLayout.CENTER,"iconPanel/icon_titikTiga.svg");
-        kolom.getColumn(7).setCellRenderer(aksi);
         
         tSiswa.getTableHeader().setDefaultRenderer(new headerRenderer(-1));
         tSiswa.getTableHeader().setReorderingAllowed(false); //ngunci kolom
