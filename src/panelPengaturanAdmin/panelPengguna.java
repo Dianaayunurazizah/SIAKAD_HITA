@@ -58,6 +58,9 @@ public class panelPengguna extends javax.swing.JPanel {
         tabel.addColumn("Status");
         tabel.addColumn("Aksi");
 
+        tabel.addRow(new Object[]{1,"P62026001", "Eka Futkiyana Sari",
+        "eka@gmail.com","Admin", "Aktif", ""});
+        
         tPengguna.setModel(tabel);
         setupTabel();   
     }
@@ -66,7 +69,7 @@ public class panelPengguna extends javax.swing.JPanel {
         TableColumnModel kolom = tPengguna.getColumnModel();
         
         // font isi baris disamakan dengan header
-        tPengguna.setFont(new Font("Poppins", Font.PLAIN, 14));
+        tPengguna.setFont(new Font("Poppins", Font.PLAIN, 16));
 
         // lebar kolom
         int[] lebar = {50, 130, 250, 230, 100, 100, 100};
@@ -88,7 +91,9 @@ public class panelPengguna extends javax.swing.JPanel {
         aksiRenderer aksi = new aksiRenderer(FlowLayout.LEFT,"iconPanel/icon_Pensil.svg","iconPanel/icon_hapus.svg");
         kolom.getColumn(6).setCellRenderer(aksi);
         
-        tPengguna.getTableHeader().setDefaultRenderer(new headerRenderer(5));
+        tPengguna.getTableHeader().setDefaultRenderer(new headerRenderer(-1));
+        tPengguna.getTableHeader().setReorderingAllowed(false); //ngunci kolom
+        tPengguna.getTableHeader().setResizingAllowed(false); //ngunci lebar kolom
     }
     /**
      * This method is called from within the constructor to initialize the form.

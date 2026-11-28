@@ -47,32 +47,37 @@ public class panelGuru extends javax.swing.JPanel {
         panelUtama.putClientProperty("FlatLaf.style", "arc: 20");
     }
     
-    public void loadTabel(){
-    DefaultTableModel tabel = new DefaultTableModel() {
-        @Override public boolean isCellEditable(int r, int c) { return false; }
-    };
-    tabel.addColumn("No");
-    tabel.addColumn("Foto");
-    tabel.addColumn("NIP");
-    tabel.addColumn("Nama Guru");
-    tabel.addColumn("Jenis Kelamin");
-    tabel.addColumn("No Telepon");
-    tabel.addColumn("Status");
-    tabel.addColumn("");
+    public void loadTabel() {
+        DefaultTableModel tabel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int r, int c) {
+                return false;
+            }
+        };
+        tabel.addColumn("No");
+        tabel.addColumn("Foto");
+        tabel.addColumn("NIP");
+        tabel.addColumn("Nama Guru");
+        tabel.addColumn("Jenis Kelamin");
+        tabel.addColumn("No Telepon");
+        tabel.addColumn("Status");
+        tabel.addColumn("");
+        
+        tabel.addRow(new Object[]{1,"", "1234562026001", "Diana Ayu Nur Azizah, S.Pd.",
+        "Perempuan", "08599036670", "Aktif", ""});
 
-
-    tGuru.setModel(tabel);
-    setupTabel();   // pasang lagi lebar kolom dan renderer, karena setModel menghapusnya
-    }  
+        tGuru.setModel(tabel);
+        setupTabel();   // pasang lagi lebar kolom dan renderer, karena setModel menghapusnya
+    }
     
     private void setupTabel(){
         TableColumnModel kolom = tGuru.getColumnModel();
         
         // font isi baris disamakan dengan header
-        tGuru.setFont(new Font("Poppins", Font.PLAIN, 14));
+        tGuru.setFont(new Font("Poppins", Font.PLAIN, 16));
 
         // lebar kolom
-        int[] lebar = {50, 70, 180, 260, 140, 150, 120, 40};
+        int[] lebar = {50, 70, 180, 260, 140, 150, 100, 80};
         for (int i = 0; i < lebar.length; i++) {
             kolom.getColumn(i).setPreferredWidth(lebar[i]);
             kolom.getColumn(i).setResizable(false);
@@ -92,7 +97,9 @@ public class panelGuru extends javax.swing.JPanel {
         aksiRenderer aksi = new aksiRenderer(FlowLayout.CENTER,"iconPanel/icon_titikTiga.svg");
         kolom.getColumn(7).setCellRenderer(aksi);
         
-        tGuru.getTableHeader().setDefaultRenderer(new headerRenderer(6));
+        tGuru.getTableHeader().setDefaultRenderer(new headerRenderer(-1));
+        tGuru.getTableHeader().setReorderingAllowed(false); //ngunci kolom
+        tGuru.getTableHeader().setResizingAllowed(false); //ngunci lebar kolom
     }
 
     /**
@@ -249,11 +256,11 @@ public class panelGuru extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tGuru.setColumnSelectionAllowed(true);
         tGuru.setFillsViewportHeight(true);
         tGuru.setFocusable(false);
         tGuru.setGridColor(new java.awt.Color(245, 247, 250));
         tGuru.setIntercellSpacing(new java.awt.Dimension(0, 1));
+        tGuru.setRowHeight(52);
         tGuru.setSelectionBackground(new java.awt.Color(234, 242, 254));
         tGuru.setShowHorizontalLines(true);
         tGuru.getTableHeader().setReorderingAllowed(false);

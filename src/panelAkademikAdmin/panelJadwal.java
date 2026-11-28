@@ -63,6 +63,9 @@ public class panelJadwal extends javax.swing.JPanel {
         tabel.addColumn("Guru");
         tabel.addColumn("Aksi");
         
+        tabel.addRow(new Object[]{1, "11234", "Selasa",
+        "11.00", "VII A", "Bahasa Indonesia", "Diana Ayu Nur Azizah, S.Pd.", ""});
+                
         tJadwal.setModel(tabel);
         setupTabel();
     }
@@ -71,7 +74,7 @@ public class panelJadwal extends javax.swing.JPanel {
         TableColumnModel kolom = tJadwal.getColumnModel();
 
         // font isi baris disamakan dengan header
-        tJadwal.setFont(new Font("Poppins", Font.PLAIN, 14));
+        tJadwal.setFont(new Font("Poppins", Font.PLAIN, 16));
 
         // lebar kolom
         int[] lebar = {50,120, 90, 180, 90, 180, 260, 100};
@@ -94,6 +97,8 @@ public class panelJadwal extends javax.swing.JPanel {
         kolom.getColumn(7).setCellRenderer(aksi);
 
         tJadwal.getTableHeader().setDefaultRenderer(new headerRenderer(-1));
+        tJadwal.getTableHeader().setReorderingAllowed(false); //ngunci kolom
+        tJadwal.getTableHeader().setResizingAllowed(false); //ngunci lebar kolom
     }
 
     /**
@@ -242,6 +247,7 @@ public class panelJadwal extends javax.swing.JPanel {
         tJadwal.setGridColor(new java.awt.Color(245, 247, 250));
         tJadwal.setIntercellSpacing(new java.awt.Dimension(0, 1));
         tJadwal.setRowHeight(52);
+        tJadwal.setSelectionBackground(new java.awt.Color(234, 242, 254));
         tJadwal.setShowHorizontalLines(true);
         jScrollPane1.setViewportView(tJadwal);
 

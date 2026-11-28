@@ -8,13 +8,15 @@ import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Insets;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import renderer.aksiRenderer;
-import renderer.fotoRenderer;
+import renderer.hadirRenderer;
 import renderer.headerRenderer;
-import renderer.statusRenderer;
 import renderer.teksRenderer;
+
 
 /**
  *
@@ -31,6 +33,7 @@ public class panelAbsensiQR extends javax.swing.JPanel {
         iconPanel();
         radiusPanel();
         aturTanggal();
+        loadTabel();
     }
     public void iconPanel() {
         iconCari.setIcon(new FlatSVGIcon("iconPanel/icon_cari.svg", 28,28));
@@ -69,6 +72,54 @@ public class panelAbsensiQR extends javax.swing.JPanel {
          btn.setOpaque(false);
      }
     
+    public void loadTabel() { //LETAK MANGGIL SQL DATA DAN NAMA HEADER TABLE
+        DefaultTableModel tabel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int r, int c) {
+                return false;
+            }
+        };
+        tabel.addColumn("Tanggal");
+        tabel.addColumn("Nama");
+        tabel.addColumn("Kelas");
+        tabel.addColumn("Jam Absen");
+        tabel.addColumn("Status");
+        
+        tabel.addRow(new Object[]{"12/06/1006", "Jaya Ageng Sapuro",
+        "VII A", "07.00", ""});
+        
+        tQR.setModel(tabel);
+        setupTabel();
+    }
+
+    private void setupTabel() { //LETAK ATUR LEBAR KOLMOM DAN MANGGIL RENDERER
+        TableColumnModel kolom = tQR.getColumnModel();
+        tQR.setSelectionBackground(new java.awt.Color(234, 242, 254));
+        // font isi baris disamakan dengan header
+        tQR.setFont(new Font("Poppins", Font.PLAIN, 16));
+
+        // lebar kolom
+        int[] lebar = {100,280,100,140,120};
+        for (int i = 0; i < lebar.length; i++) {
+            kolom.getColumn(i).setPreferredWidth(lebar[i]);
+            kolom.getColumn(i).setResizable(false);
+        }
+
+        // mengunci kolom ukuran kecil
+        for (int i : new int[]{4}) {
+            kolom.getColumn(i).setMinWidth(lebar[i]);
+            kolom.getColumn(i).setMaxWidth(lebar[i]);
+        }
+
+        teksRenderer teks = new teksRenderer();
+        for (int i : new int[]{1, 2, 3,}) {
+            kolom.getColumn(i).setCellRenderer(teks);
+        }
+        kolom.getColumn(4).setCellRenderer(new hadirRenderer());
+        tQR.getTableHeader().setDefaultRenderer(new headerRenderer(-1));
+        tQR.getTableHeader().setReorderingAllowed(false); //ngunci kolom
+        tQR.getTableHeader().setResizingAllowed(false); //ngunci lebar kolom
+    }         
   
 
     /**
@@ -292,7 +343,6 @@ public class panelAbsensiQR extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tQR.setColumnSelectionAllowed(true);
         tQR.setFillsViewportHeight(true);
         tQR.setGridColor(new java.awt.Color(245, 247, 250));
         tQR.setIntercellSpacing(new java.awt.Dimension(0, 1));
@@ -343,7 +393,7 @@ public class panelAbsensiQR extends javax.swing.JPanel {
         jLabel1.setText("Berhasil dicatat");
 
         jLabel5.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
-        jLabel5.setText("M. Abdul Rohman H / VII E / 07:12 / Hadir");
+        jLabel5.setText("Jaya Ageng Sapuro / VII A / 07:00 / Hadir");
 
         javax.swing.GroupLayout panelNotifLayout = new javax.swing.GroupLayout(panelNotif);
         panelNotif.setLayout(panelNotifLayout);
@@ -354,7 +404,7 @@ public class panelAbsensiQR extends javax.swing.JPanel {
                 .addGroup(panelNotifLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel5))
-                .addContainerGap(247, Short.MAX_VALUE))
+                .addContainerGap(235, Short.MAX_VALUE))
         );
         panelNotifLayout.setVerticalGroup(
             panelNotifLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

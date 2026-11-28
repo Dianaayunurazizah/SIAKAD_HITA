@@ -4,6 +4,9 @@
  */
 package popUp;
 
+import com.formdev.flatlaf.extras.FlatSVGIcon;
+import com.formdev.flatlaf.ui.FlatLineBorder;
+
 /**
  *
  * @author ASUS
@@ -18,7 +21,27 @@ public class popUpAbsensiMapel extends javax.swing.JDialog {
     public popUpAbsensiMapel(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        iconPanel();
+        aturTanggal();
     }
+    
+    
+    public void iconPanel() {
+        tTanggal.setIcon(new FlatSVGIcon("iconPanel/icon_Tanggal.svg", 18, 18));
+        lblIcon.setIcon(new FlatSVGIcon("iconPanel/icon_Informasi.svg", 20, 20));
+    }
+    
+    private void aturTanggal() {
+         tTanggal.setBorder(new FlatLineBorder(
+                  new java.awt.Insets(0, 12, 0, 8),
+                  new java.awt.Color(0xA0A0A0), 1, 20));
+         javax.swing.JComponent editor = (javax.swing.JComponent)tTanggal.getDateEditor().getUiComponent();
+         editor.setOpaque(false);
+         editor.setBorder(null);
+         tTanggal.getCalendarButton().setBorder(null);
+         tTanggal.getCalendarButton().setContentAreaFilled(false);
+         tTanggal.getCalendarButton().setOpaque(false);
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,18 +52,247 @@ public class popUpAbsensiMapel extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        lblIcon = new javax.swing.JLabel();
+        lblInformasi = new javax.swing.JLabel();
+        lblInformasi1 = new javax.swing.JLabel();
+        panelBtn = new javax.swing.JPanel();
+        btnBatal = new javax.swing.JButton();
+        btnSimpan = new javax.swing.JButton();
+        btnUbah = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel13 = new javax.swing.JPanel();
+        jPanel34 = new javax.swing.JPanel();
+        tTanggal = new com.toedter.calendar.JDateChooser();
+        cJadwal = new javax.swing.JComboBox<>();
+        jPanel14 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(220, 220, 220)));
+        jPanel1.setMaximumSize(new java.awt.Dimension(1028, 100));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1028, 100));
+
+        jLabel1.setFont(new java.awt.Font("Poppins SemiBold", 0, 28)); // NOI18N
+        jLabel1.setText("Tambah Absensi Mapel");
+
+        jLabel2.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(112, 112, 112));
+        jLabel2.setText("Isi kehadiran siswa untuk mata pelajaran yang dipilih");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(653, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel2)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.NORTH);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(220, 220, 220)));
+        jPanel2.setMaximumSize(new java.awt.Dimension(1028, 90));
+        jPanel2.setMinimumSize(new java.awt.Dimension(1028, 90));
+        jPanel2.setLayout(new java.awt.GridLayout());
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setPreferredSize(new java.awt.Dimension(361, 40));
+
+        lblIcon.setPreferredSize(new java.awt.Dimension(40, 40));
+
+        lblInformasi.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        lblInformasi.setForeground(new java.awt.Color(112, 112, 112));
+        lblInformasi.setText("Semua siswa diberi status awal hadir. Ubah");
+        lblInformasi.setPreferredSize(new java.awt.Dimension(321, 20));
+
+        lblInformasi1.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        lblInformasi1.setForeground(new java.awt.Color(112, 112, 112));
+        lblInformasi1.setText("hanya pada siswa yang tidak hadir");
+        lblInformasi1.setPreferredSize(new java.awt.Dimension(321, 20));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(lblIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(lblInformasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(lblInformasi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(lblInformasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(lblInformasi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(132, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(37, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
+        );
+
+        jPanel2.add(jPanel4);
+
+        panelBtn.setBackground(new java.awt.Color(255, 255, 255));
+        panelBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 40, 0, 0));
+        panelBtn.setLayout(new javax.swing.BoxLayout(panelBtn, javax.swing.BoxLayout.X_AXIS));
+
+        btnBatal.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        btnBatal.setText("Batal");
+        btnBatal.setMaximumSize(new java.awt.Dimension(138, 44));
+        btnBatal.setMinimumSize(new java.awt.Dimension(138, 44));
+        btnBatal.setPreferredSize(new java.awt.Dimension(138, 44));
+        panelBtn.add(btnBatal);
+
+        btnSimpan.setBackground(new java.awt.Color(35, 128, 234));
+        btnSimpan.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
+        btnSimpan.setText("Simpan");
+        btnSimpan.setMaximumSize(new java.awt.Dimension(138, 44));
+        btnSimpan.setMinimumSize(new java.awt.Dimension(138, 44));
+        btnSimpan.setPreferredSize(new java.awt.Dimension(138, 44));
+        panelBtn.add(btnSimpan);
+
+        btnUbah.setBackground(new java.awt.Color(35, 128, 234));
+        btnUbah.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        btnUbah.setForeground(new java.awt.Color(255, 255, 255));
+        btnUbah.setText("Ubah");
+        btnUbah.setMaximumSize(new java.awt.Dimension(138, 44));
+        btnUbah.setMinimumSize(new java.awt.Dimension(138, 44));
+        btnUbah.setPreferredSize(new java.awt.Dimension(138, 44));
+        panelBtn.add(btnUbah);
+
+        jPanel2.add(panelBtn);
+
+        getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 24, 24, 24));
+        jPanel3.setLayout(new java.awt.BorderLayout(0, 24));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Nama Siswa", "Status"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel3.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setLayout(new java.awt.BorderLayout());
+
+        jPanel13.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel13.setMaximumSize(new java.awt.Dimension(958, 51));
+        jPanel13.setMinimumSize(new java.awt.Dimension(958, 51));
+        jPanel13.setPreferredSize(new java.awt.Dimension(958, 51));
+        jPanel13.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jPanel34.setPreferredSize(new java.awt.Dimension(145, 49));
+
+        tTanggal.setBackground(new java.awt.Color(255, 255, 255));
+        tTanggal.setForeground(new java.awt.Color(141, 143, 155));
+        tTanggal.setDateFormatString("dd/MM/yyyy");
+        tTanggal.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        tTanggal.setOpaque(false);
+        tTanggal.setPreferredSize(new java.awt.Dimension(230, 49));
+
+        javax.swing.GroupLayout jPanel34Layout = new javax.swing.GroupLayout(jPanel34);
+        jPanel34.setLayout(jPanel34Layout);
+        jPanel34Layout.setHorizontalGroup(
+            jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(tTanggal, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
+        );
+        jPanel34Layout.setVerticalGroup(
+            jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(tTanggal, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+        );
+
+        jPanel13.add(jPanel34);
+
+        cJadwal.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        cJadwal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Jadwal", "Admin", "Guru", "Siswa" }));
+        jPanel13.add(cJadwal);
+
+        jPanel9.add(jPanel13, java.awt.BorderLayout.SOUTH);
+
+        jPanel14.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel14.setLayout(new java.awt.GridLayout(1, 2, 24, 0));
+
+        jLabel12.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel12.setText("Tanggal");
+        jLabel12.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel12.setIconTextGap(8);
+        jLabel12.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel14.add(jLabel12);
+
+        jLabel14.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconPanel/bintang.png"))); // NOI18N
+        jLabel14.setText("Jadwal");
+        jLabel14.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel14.setIconTextGap(8);
+        jLabel14.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel14.add(jLabel14);
+
+        jPanel9.add(jPanel14, java.awt.BorderLayout.CENTER);
+
+        jPanel3.add(jPanel9, java.awt.BorderLayout.PAGE_START);
+
+        getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -83,5 +335,29 @@ public class popUpAbsensiMapel extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBatal;
+    private javax.swing.JButton btnSimpan;
+    private javax.swing.JButton btnUbah;
+    private javax.swing.JComboBox<String> cJadwal;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel34;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblIcon;
+    private javax.swing.JLabel lblInformasi;
+    private javax.swing.JLabel lblInformasi1;
+    private javax.swing.JPanel panelBtn;
+    private com.toedter.calendar.JDateChooser tTanggal;
     // End of variables declaration//GEN-END:variables
 }

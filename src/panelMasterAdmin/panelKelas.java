@@ -32,6 +32,7 @@ public class panelKelas extends javax.swing.JPanel {
         iconPanel();
         radiusPanel();
         setupTabel();
+        loadTabel();
     }
     
     public void iconPanel() {
@@ -60,6 +61,9 @@ public class panelKelas extends javax.swing.JPanel {
         tabel.addColumn("Nama Kelas");
         tabel.addColumn("Aksi");
         
+        tabel.addRow(new Object[]{1,"1234562026001", "VII",
+        "A",""});
+        
         tKelas.setModel(tabel);
         setupTabel();
     }
@@ -68,7 +72,7 @@ public class panelKelas extends javax.swing.JPanel {
         TableColumnModel kolom = tKelas.getColumnModel();
 
         // font isi baris disamakan dengan header
-        tKelas.setFont(new Font("Poppins", Font.PLAIN, 14));
+        tKelas.setFont(new Font("Poppins", Font.PLAIN, 16));
 
         // lebar kolom
         int[] lebar = {50, 230, 250, 230, 120};
@@ -91,6 +95,8 @@ public class panelKelas extends javax.swing.JPanel {
         kolom.getColumn(4).setCellRenderer(aksi);
 
         tKelas.getTableHeader().setDefaultRenderer(new headerRenderer(-1));
+        tKelas.getTableHeader().setReorderingAllowed(false); //ngunci kolom
+        tKelas.getTableHeader().setResizingAllowed(false); //ngunci lebar kolom
     }
 
     /**
@@ -234,11 +240,11 @@ public class panelKelas extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tKelas.setColumnSelectionAllowed(true);
         tKelas.setFillsViewportHeight(true);
         tKelas.setGridColor(new java.awt.Color(245, 247, 250));
         tKelas.setIntercellSpacing(new java.awt.Dimension(0, 1));
         tKelas.setRowHeight(52);
+        tKelas.setSelectionBackground(new java.awt.Color(234, 242, 254));
         tKelas.setShowHorizontalLines(true);
         tKelas.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tKelas);

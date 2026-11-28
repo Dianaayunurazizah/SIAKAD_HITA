@@ -66,18 +66,21 @@ public class panelSiswa extends javax.swing.JPanel {
         tabel.addColumn("Status");
         tabel.addColumn("");
 
+        tabel.addRow(new Object[]{1,"", "1234562026001", "Jaya Ageng Sapuro",
+        "Laki - Laki", "08599036670", "Aktif", ""});
+        
         tSiswa.setModel(tabel);
         setupTabel();   // pasang lagi lebar kolom dan renderer, karena setModel menghapusnya
     }
     
     private void setupTabel(){
         TableColumnModel kolom = tSiswa.getColumnModel();
-        
+        tSiswa.setSelectionBackground(new java.awt.Color(234, 242, 254));
         // font isi baris disamakan dengan header
-        tSiswa.setFont(new Font("Poppins", Font.PLAIN, 14));
+        tSiswa.setFont(new Font("Poppins", Font.PLAIN, 16));
 
         // lebar kolom
-        int[] lebar = {50, 70, 130, 280, 140, 150, 120, 50};
+        int[] lebar = {50, 70, 130, 280, 140, 150, 120, 80};
         for (int i = 0; i < lebar.length; i++) {
             kolom.getColumn(i).setPreferredWidth(lebar[i]);
             kolom.getColumn(i).setResizable(false);
@@ -97,7 +100,9 @@ public class panelSiswa extends javax.swing.JPanel {
         aksiRenderer aksi = new aksiRenderer(FlowLayout.CENTER,"iconPanel/icon_titikTiga.svg");
         kolom.getColumn(7).setCellRenderer(aksi);
         
-        tSiswa.getTableHeader().setDefaultRenderer(new headerRenderer(6));
+        tSiswa.getTableHeader().setDefaultRenderer(new headerRenderer(-1));
+        tSiswa.getTableHeader().setReorderingAllowed(false); //ngunci kolom
+        tSiswa.getTableHeader().setResizingAllowed(false); //ngunci lebar kolom
     }
 
     /**
